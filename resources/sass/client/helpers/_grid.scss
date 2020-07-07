@@ -1,0 +1,51 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat($grid-mobile, minmax(0, 1fr));
+    gap: 20px;
+}
+.align-self-end {
+    align-self: end;
+}
+.align-self-start {
+    align-self: start;
+}
+.align-self-center {
+    align-self: center;
+}
+.justify-self-end {
+    justify-self: end;
+}
+.justify-self-start {
+    justify-self: start;
+}
+.justify-self-center {
+    justify-self: center;
+}
+
+@for $i from 1 through $grid-mobile {
+    .cols-#{$i} {
+        grid-column: span $i;
+    }
+}
+
+@include tablet {
+    .grid {
+        grid-template-columns: repeat($grid-tablet, minmax(0, 1fr));
+    }
+    @for $i from 1 through $grid-tablet {
+        .sm\:cols-#{$i} {
+            grid-column: span $i !important;
+        }
+    }
+}
+
+@include desktop {
+    .grid {
+        grid-template-columns: repeat($grid-desktop, minmax(0, 1fr));
+    }
+    @for $i from 1 through $grid-desktop {
+        .md\:cols-#{$i} {
+            grid-column: span $i !important;
+        }
+    }
+}

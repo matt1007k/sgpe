@@ -1,0 +1,201 @@
+a {
+    text-decoration: none;
+    color: $blue;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        // text-decoration: underline;
+        filter: brightness(120%);
+    }
+}
+
+.btn {
+    font-family: inherit;
+    padding: 8px 20px;
+    text-transform: capitalize;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba($light-blue, 0.2);
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: 500;
+    transition: all ease-in-out 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark-blue;
+
+    &:focus {
+        border: none;
+    }
+    i.left {
+        margin-right: 5px;
+        filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+    }
+    i.right {
+        margin-left: 5px;
+        filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+    }
+    &:hover {
+        text-decoration: none;
+        background: rgba($dark-blue, 0.2);
+        filter: opacity(80%);
+    }
+    &:disabled {
+        cursor: no-drop;
+        // background: rgba($light-blue, 0.8);
+        filter: opacity(50%);
+        // color: $dark-blue;
+        &:hover {
+            text-decoration: none;
+            // background: rgba($light-blue, 0.8);
+            filter: opacity(50%);
+        }
+    }
+}
+
+.btn-primary {
+    background-color: $blue;
+    color: white;
+    i.left,
+    i.right {
+        filter: invert(1);
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($blue, 1);
+    }
+}
+.btn-success {
+    background-color: $green;
+    color: white;
+    i.left,
+    i.right {
+        filter: $filter-green;
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($green, 1);
+    }
+}
+
+.btn-danger {
+    background-color: $red;
+    color: white;
+    i.left,
+    i.right {
+        filter: invert(1);
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($red, 1);
+    }
+}
+.btn-teal {
+    background-color: $dark-teal;
+    color: white;
+    i.left,
+    i.right {
+        filter: invert(1);
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($dark-teal, 1);
+    }
+}
+
+.btn-violet {
+    background-color: rgba($light-violet, 0.2);
+    color: $light-violet;
+    i.left,
+    i.right {
+        color: $light-violet;
+        filter: invert(0.2) saturate(2);
+    }
+    &:hover {
+        text-decoration: none;
+        background: rgba($light-violet, 0.2);
+    }
+}
+.btn-secondary {
+    background-color: white;
+    color: $dark-blue;
+    i.left,
+    i.rigth {
+        color: $blue;
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba(white, 1);
+    }
+}
+.btn-dark {
+    background: $dark-blue;
+    color: white;
+    i.left,
+    i.rigth {
+        color: $blue;
+    }
+    &:hover {
+        text-decoration: none;
+        background: rgba($dark-blue, 0.8);
+    }
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: $blue;
+    border: 1px solid rgba($blue, 1);
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($blue, 0.2);
+    }
+}
+.btn-outline-secondary {
+    background-color: transparent;
+    color: $dark-blue;
+    border: 1px solid rgba($dark-blue, 0.2);
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($dark-blue, 0.2);
+    }
+}
+.btn-outline-teal {
+    background-color: transparent;
+    color: $dark-teal;
+    border: 1px solid rgba($dark-teal, 0.2);
+    i.left,
+    i.right {
+        filter: invert(0.2) saturate(1);
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($dark-teal, 0.2);
+    }
+}
+
+.btn-sm {
+    padding: 6px 1.5rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+.btn-group {
+    // width: 100%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($light-blue, 0.2);
+}

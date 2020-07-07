@@ -1,0 +1,73 @@
+.alert {
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    .icon {
+        margin-right: 10px;
+    }
+}
+
+.alert-success {
+    border-top: 4px solid $green;
+    background: rgba($green, 0.2);
+    color: $green;
+    h5,
+    h4 {
+        color: $green;
+    }
+}
+
+.alert-danger {
+    border-top: 4px solid $red;
+    background: rgba($red, 0.2);
+    color: $red;
+    h5,
+    h4 {
+        color: $red;
+    }
+}
+
+.alert-floating {
+    position: fixed;
+    top: 3rem;
+    right: 2rem;
+    padding: 1rem;
+    background: white;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba($light-blue, 0.2);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    span {
+        margin-left: 10px;
+    }
+    .close {
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba($light-blue, 0.2);
+        }
+    }
+}
+.alert-floating-success {
+    background: $green;
+    color: white;
+    .icon {
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        place-items: center;
+        padding: 0.5rem;
+        i,
+        span {
+            color: $green;
+            font-size: 20px;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.modal {
+    position: fixed;
+    background: rgba($dark-blue, 0.6);
+    backdrop-filter: saturate(180%) blur(5px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // height: 100vh;
+    // width: 100%;
+    display: flex;
+    // place-items: center center;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+    .modal-content {
+        position: relative;
+        margin: 2rem;
+        bottom: 0;
+        .close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            color: $light-blue;
+            padding: 0.3rem 0.3rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            display: flex;
+            place-items: center;
+            &:hover {
+                background: rgba($light-blue, 0.2);
+            }
+        }
+        .card {
+            .actions {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: stretch;
+                margin-top: 1.25rem;
+                & > a,
+                button {
+                    // margin-bottom: 2rem;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@include tablet {
+    .modal {
+        justify-content: center;
+        align-items: center;
+        .modal-content {
+            .card {
+                .actions {
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    align-items: center;
+                    & > a,
+                    button {
+                        margin-top: 0;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

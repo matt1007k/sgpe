@@ -1,0 +1,22 @@
+$dark-blue: #3f3d56;
+$dark-teal: #0b7189;
+$blue: #228cdb;
+$light-blue: #9c95dc;
+$light-violet: #c19ab7;
+$red: #fa3f3f;
+$green: #65d16d;
+$silver: #d6d6d6;
+
+// $filter-red: invert(0.5) sepia(1) saturate(10) hue-rotate(330deg);
+$filter-red: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg)
+    brightness(99%) contrast(100%);
+$filter-green: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg)
+    brightness(100%) contrast(89%);
+$filter-blue: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+
+$tablet: 640px;
+$desktop: 1024px;
+
+$grid-mobile: 4;
+$grid-tablet: 8;
+$grid-desktop: 12;

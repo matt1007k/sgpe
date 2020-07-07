@@ -1,0 +1,39 @@
+.list-group {
+    .list-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 20px 10px;
+        border-bottom: 1px solid rgba($light-blue, 0.2);
+        list-style: none;
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+        .number {
+            margin-right: 1rem;
+            background: $blue;
+            color: white;
+            padding: 0.55rem 1rem;
+            border-radius: 50%;
+            font-weight: 500;
+        }
+        p {
+            color: $dark-blue;
+        }
+    }
+}
+.markdown {
+    > ul,
+    ol {
+        padding: 10px 1rem;
+    }
+    > p {
+        line-height: 25px;
+        margin-top: 20px;
+    }
+    > p img,
+    img {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,6 @@
+created:
+    - database/migrations/2020_06_19_161254_create_people_table.php
+    - app/Models/Person.php
+    - database/factories/PersonFactory.php
+models:
+    Person: { name: 'string:50', paternal_surname: 'string:50', maternal_surname: 'string:50', dni: 'string:9', modular_code: 'string:10', status: 'enum:activo,cesante,sobreviviente', user_id: id }

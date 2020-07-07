@@ -1,0 +1,52 @@
+.form__auth {
+    grid-column: 1/4;
+    width: 100%;
+    border-radius: 0;
+    img {
+        height: 60px;
+        // width: 200px;
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .code {
+        display: flex;
+        flex-direction: column;
+        .input2 {
+            margin-top: 1rem;
+            margin-left: 0;
+        }
+    }
+    .link {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+}
+@include tablet {
+    .form__auth {
+        grid-column: 1/2;
+        width: 100%;
+    }
+}
+@include desktop {
+    .form__auth {
+        grid-column: 3/4;
+        width: 100%;
+        .login {
+            padding: 4rem;
+        }
+
+        .code {
+            display: flex;
+            flex-direction: row;
+            .input2 {
+                margin-top: 0;
+                margin-left: 1rem;
+            }
+        }
+    }
+}

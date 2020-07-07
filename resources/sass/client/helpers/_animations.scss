@@ -1,0 +1,62 @@
+@keyframes pulse {
+    0% {
+        transform: translateY(30px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.transition {
+    transition: all 0.4s ease;
+}
+.rotate-infinity {
+    animation: rotating 2s linear infinite;
+}
+.ease {
+    transition-timing-function: ease;
+}
+.rotate-180 {
+    transform: rotate(180deg);
+}
+.rotate-full {
+    transform: rotate(360deg);
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+.opacity-100 {
+    opacity: 1;
+}
+.-translate-y-100 {
+    transform: translateY(-100%);
+}
+.-translate-y-2 {
+    transform: translateY(-0.2em);
+}
+.-translate-y-3 {
+    transform: translateY(-0.3em);
+}
+.translate-y-0 {
+    transform: translateY(0);
+}
+.translate-y-100 {
+    transform: translateY(100%);
+}
+.translate-y-2 {
+    transform: translateY(0.2em);
+}
+.translate-y-3 {
+    transform: translateY(0.3em);
+}

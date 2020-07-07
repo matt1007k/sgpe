@@ -1,0 +1,17 @@
+.bg-primary {
+    background: $blue !important;
+}
+.bg-light-primary {
+    &-opacity-20 {
+        background: rgba($blue, 0.2) !important;
+    }
+}
+.bg-light-blue {
+    &-opacity-20 {
+        background: rgba($light-blue, 0.2) !important;
+    }
+}
+
+.bg-white {
+    background-color: #fff !important;
+}

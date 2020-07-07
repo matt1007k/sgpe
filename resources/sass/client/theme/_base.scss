@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+.h-screen {
+    height: 100vh;
+}
+.w-full {
+    width: 100%;
+}
+.mw-full {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.bg-primary {
+    background-color: $blue;
+}
+.pointer {
+    cursor: pointer;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+
+@include desktop {
+}

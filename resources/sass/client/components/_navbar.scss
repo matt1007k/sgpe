@@ -1,0 +1,132 @@
+.navbar {
+    width: 100%;
+    padding: 0.5rem 0rem;
+    // text-align: center;
+    // background: rgba($blue, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    color: white;
+    font-size: inherit;
+    img {
+        margin-left: 15px;
+        height: 45px;
+    }
+    ul {
+        display: flex;
+        position: relative;
+        list-style: none;
+        li {
+            font-size: inherit;
+            margin: 0 8px;
+            a {
+                display: flex;
+                align-items: center;
+                .icon {
+                    font-size: 24px;
+                    // color: #fdfdfd;
+                    filter: contrast(4) invert(1) brightness(80%);
+                    margin-right: 10px;
+                }
+                span {
+                    color: white;
+                    display: none;
+                }
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+    .menu {
+        display: flex;
+        margin-left: 1rem;
+    }
+    .nav-left {
+        // display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background: white;
+        z-index: 11;
+    }
+
+    .nav-right {
+        margin-right: 1rem;
+    }
+}
+
+@include tablet {
+    .navbar {
+        ul {
+            li {
+                margin: 0;
+                a {
+                    span {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .menu {
+            display: none;
+        }
+        .nav-left {
+            position: relative;
+            display: flex;
+            margin-left: 0;
+            // margin-right: 0;
+            justify-content: flex-start;
+            background: transparent;
+            li {
+                margin-right: 2rem;
+                a {
+                    color: $silver;
+                }
+                &.active {
+                    a {
+                        font-weight: 600;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .nav-right {
+            margin-right: 1.5rem;
+        }
+    }
+}
+
+@include desktop {
+    .navbar {
+        // padding: 1.5rem 0;
+        text-align: left;
+        // color: white;
+        img {
+            margin-left: 0;
+            height: 45px;
+        }
+        ul {
+            display: flex;
+            text-transform: capitalize;
+            li {
+                margin: 0 8px;
+                a {
+                    display: flex;
+                    align-items: center;
+                    .icon {
+                        color: $light-violet;
+                        margin-right: 10px;
+                    }
+                    span {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .nav-right {
+            margin-right: 1rem;
+        }
+    }
+}

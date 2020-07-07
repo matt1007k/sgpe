@@ -1,0 +1,39 @@
+.badge {
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: inherit;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    width: fit-content;
+    &-sm {
+        border-radius: 8px !important;
+    }
+    i {
+        font-size: 24px;
+    }
+    i.left {
+        margin-right: 0.3rem;
+    }
+    i.right {
+        margin-left: 0.3rem;
+    }
+}
+.badge-danger {
+    background: rgba($red, 0.28);
+    color: $red;
+}
+.badge-success {
+    background: rgba($green, 0.28);
+    color: $green;
+}
+.badge-primary {
+    background: rgba($blue, 0.28);
+    color: $blue;
+}
+.badge-default {
+    background-color: white;
+    color: $dark-blue;
+    border: 1px solid rgba($light-blue, 0.2);
+}

@@ -1,0 +1,48 @@
+.flex {
+    display: flex;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+.justity-stretch {
+    justify-content: stretch;
+}
+.justity-between {
+    justify-content: space-between;
+}
+.justify-center {
+    justify-content: center;
+}
+.justity-end {
+    justify-content: flex-end;
+}
+.align-center {
+    align-items: center;
+}
+.align-end {
+    align-items: flex-end;
+}
+
+@include tablet {
+    .sm\:flex-col {
+        flex-direction: column;
+    }
+    .sm\:flex-row {
+        flex-direction: row;
+    }
+}
+
+@include desktop {
+    .md\:flex-col {
+        flex-direction: column;
+    }
+    .md\:flex-row {
+        flex-direction: row;
+    }
+}

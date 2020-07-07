@@ -1,0 +1,117 @@
+@extends('layouts.client')
+@section('title', 'Mis boletas de pago')
+
+@section('content')
+<div class="container">
+    <div class="content">
+        <h2>Boletas de pago</h2>
+        <div class="list__header">
+            <div class="filter flex align-center">
+                <div class="tooltip">
+                    <i class="material-icons icon">filter_list</i>
+                    <span>Filtrar por año</span>
+                </div>
+                <div class="list-year">
+                    @forelse($years['data'] as $year)
+                        @if($year === $filterYear)
+                            <a class="badge badge-success">
+                                <i class="material-icons left">check</i>
+                                {{ $year }}
+                            </a>
+                        @else
+                            <a href="{{ route('client.payments', ['year' => $year]) }}"  class="badge badge-default">
+                                {{ $year }}
+                            </a>
+                        @endif
+                    @empty
+                        <p class="text-light-blue">Sin años pagados.</p>
+                    @endforelse
+                </div>
+            </div>
+            <div class="order">
+                <div class="flex dropdown__container absolute" x-data="{ open: false }">
+                    Ordenar por:
+                    <a class="cursor-pointer" @click="open = true"><i class="material-icons-two-tone">sort</i>
+                    </a>
+                    <div class="dropdown" 
+                    x-show="open" 
+                    @click.away="open = false"
+                    x-transition:enter="transition"
+                    x-transition:enter-start="opacity-0 -translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition"
+                    x-transition:leave-end="opacity-0 -translate-y-3"
+                    >
+                        <ul class="dropdown__menu">
+                            <li>Último periodo</li>
+                            <li>Antiguo periodo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="list__item">
+        
+            @forelse($payments['data'] as $payment)
+            <div class="card item">
+                <div class="row">
+                    <h3>{{ $payment['periodo'] }}</h3>
+                    <x-status.person :status="$payment['person']['status']" />
+                </div>
+                <div class="row">
+                    <p class="headline">
+                        S/. {{ $payment['total_haber'] }}
+                    </p>
+                    <p class="text-light-blue">Total haber</p>
+                </div>
+                <div class="row align-center">
+                    <p class="headline">
+                        S/. {{ $payment['total_descuento'] }}
+                    </p>
+                    <p class="text-light-blue">Total descuento</p>
+                </div>
+                <div class="row">
+                    <p class="headline">
+                        S/. {{ $payment['monto_liquido'] }}
+                    </p>
+                    <p class="text-light-blue">Monto líquido</p>
+                </div>
+                <div class="row">
+                    <div class="actions">
+                        <a href="{{ $payment['link'] }}" target="_blank" class="action tooltip">
+                            <i class="material-icons-two-tone">print</i>
+                            <span>Imprimir</span>
+                        </a>
+                        {{-- <a href="{{ $payment['link'] }}" target="_blank" class="action tooltip">
+                           <i class="material-icons-two-tone">save_alt</i> 
+                            <span>Descargar</span>
+                        </a> --}}
+                    </div>
+                </div>
+            </div>
+            @empty
+                <x-not-data>
+                    No tienes ningún pago.
+                </x-not-data>
+            @endforelse
+
+        </div>
+    </div>
+</div>
+@push('scripts')
+<script>
+    window.Alpine.discoverUninitializedComponents(function(el){ window.Alpine.initializeComponent(el); console.log(el) })
+    var a = document.querySelectorAll('.dropdown__container');
+    // var dropdown = document.querySelector('.dropdown');
+    a.forEach(element => {
+        element.addEventListener('click', function(){
+            console.log();
+            
+            element.children.item(1).classList.toggle('active')
+        })
+    });
+</script>
+@endpush
+@endsection

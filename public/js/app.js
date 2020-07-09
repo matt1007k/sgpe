@@ -2051,10 +2051,19 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.users.length > 0) {
         var userVerified = this.users.filter(function (user) {
-          console.log(user.full_name.split(" ").includes(_this3.q));
-          return user.dni || user.full_name.split(" ").includes(_this3.q) == _this3.q;
+          var verified = false;
+
+          var userDataArray = _this3.convertStringToArray(user.full_name);
+
+          userDataArray.push(user.dni);
+
+          var searchFieldArray = _this3.convertStringToArray(_this3.q);
+
+          searchFieldArray.forEach(function (value) {
+            if (userDataArray.includes(value)) verified = true;
+          });
+          return verified;
         });
-        console.log("user", userVerified);
 
         if (userVerified) {
           this.verified = true;
@@ -2063,9 +2072,14 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
+    convertStringToArray: function convertStringToArray(string) {
+      var stringToLowerCase = string.toLowerCase();
+      var array = stringToLowerCase.split(" ");
+      return array;
+    },
     markVerified: function markVerified() {
       axios.post("/mark-verified/".concat(this.users[0]["dni"])).then(function (res) {
-        return console.log(res);
+        location.href = "/users";
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -38415,24 +38429,20 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "transition-group",
-                {
-                  staticClass: "list-group result",
-                  attrs: { name: "slide-fade", tag: "ul", css: false },
-                  on: {
-                    "bstaggered-enter": _vm.beforeEnter,
-                    enter: _vm.enter,
-                    leave: _vm.leave
-                  }
-                },
-                _vm._l(_vm.users, function(user, index) {
-                  return _c("li", { key: index, staticClass: "list-item" }, [
-                    _vm._v(_vm._s(user.full_name))
-                  ])
-                }),
-                0
-              ),
+              _vm.users.length || !_vm.info
+                ? _c(
+                    "ul",
+                    { staticClass: "list-group result" },
+                    _vm._l(_vm.users, function(user, index) {
+                      return _c(
+                        "li",
+                        { key: index, staticClass: "list-item" },
+                        [_vm._v(_vm._s(user.full_name))]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "transition",
@@ -38458,13 +38468,13 @@ var render = function() {
                     [_vm._v("Cancelar")]
                   ),
                   _vm._v(" "),
-                  _c("transition", { attrs: { name: "fade" } }, [
-                    !_vm.loading && !_vm.verified
+                  _c("transition", { attrs: { name: "slide-fade" } }, [
+                    !_vm.verified
                       ? _c(
                           "button",
                           {
                             staticClass: "btn btn-primary transition",
-                            attrs: { disabled: _vm.info },
+                            attrs: { disabled: _vm.info || _vm.loading },
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
@@ -38477,7 +38487,7 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("transition", { attrs: { name: "slide-fade" } }, [
+                  _c("transition", { attrs: { name: "fade" } }, [
                     !_vm.loading && _vm.verified
                       ? _c(
                           "button",

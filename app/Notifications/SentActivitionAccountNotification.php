@@ -2,26 +2,27 @@
 
 namespace App\Notifications;
 
-use App\Models\Message;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
-class SentMessageNotification extends Notification
+class SentActivitionAccountNotification extends Notification
 {
     use Queueable;
 
-    public $message;
+    public $subject = 'Activación de cuenta';
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(User $user)
     {
-        $this->message = $message;
+        $this->user = $user;
     }
 
     /**
@@ -44,14 +45,11 @@ class SentMessageNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->markdown('emails.sent-message', [
-                'message' => $this->message,
-                'user' => $notifiable
+            ->markdown('emails.activation-email', [
+                'admin' => $notifiable,
+                'user' => $this->user,
             ])
-            ->subject($this->message->subject);
-        // ->line('The introduction to the notification.')
-        // ->action('Notification Action', url('/'))
-        // ->line('Thank you for using our application!');
+            ->subject($this->subject);
     }
 
     /**

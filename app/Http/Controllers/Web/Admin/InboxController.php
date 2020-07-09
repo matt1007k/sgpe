@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
-use App\Events\MessageCreated;
 use App\Models\Message;
+use App\Events\MessageCreated;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreMessageRequest;
 
 class InboxController extends Controller
@@ -22,6 +23,8 @@ class InboxController extends Controller
 
     public function index()
     {
+        Gate::authorize('viewAny', new Message);
+
         $send = request('f') ? request('f') : 'me';
         $search = request('search') ? request('search') : '';
 
@@ -35,6 +38,8 @@ class InboxController extends Controller
 
     public function store(StoreMessageRequest $request)
     {
+        Gate::authorize('create', new Message);
+
         $message = Auth::user()->messages()->create(
             $request->validated(),
         );
@@ -46,6 +51,8 @@ class InboxController extends Controller
 
     public function destroy(Message $message)
     {
+        Gate::authorize('delete', $message);
+
         $message->delete();
         dd($message);
         return redirect()->route('inboxes.index')->with('message', 'Correo eliminado con exitó.');

@@ -42,6 +42,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         Auth::logout();
+        $user->sendMessageToAdmin();
         return redirect($this->redirectPath());
     }
 

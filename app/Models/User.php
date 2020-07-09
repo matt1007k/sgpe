@@ -32,10 +32,9 @@ class User extends Authenticatable
 
     public const VALIDATION_RULES = [
         'name' => ['required', 'string', 'min:3', 'max:255'],
-        'dni' => ['required', 'integer', 'digits_between:8,9', 'unique:users'],
+        'dni' => ['required', 'string', 'digits_between:8,9', 'unique:users'],
         'phone' => ['required', 'numeric', 'digits_between:6,9'],
         'email' => ['required', 'email', 'max:255', 'unique:users'],
-        'password' => ['string'],
     ];
 
     /**
@@ -71,6 +70,51 @@ class User extends Authenticatable
     public function scopeFilterStatus(Builder $query, $value)
     {
         $query->where('status', $value);
+    }
+
+    public function sendMessageToAdmin()
+    {
+        $body = $this->getBodyMessageToAdmin();
+
+        $this->messages()->create([
+            'to' => 'admin@drea.com',
+            'subject' => 'Activación de cuenta',
+            'body' => $body,
+        ]);
+    }
+
+    public function getBodyMessageToAdmin()
+    {
+        $url = $this->pathEdit();
+        return <<<EOT
+        Hola Administrador, me presento ante usted para solicitar la activación de mi cuenta de usuario. Para ingresar a ver mis boletas de pagos.
+
+        Espero su disposición, cualquier aviso se me comunique a mi correo o num. de teléfono ingresado.
+
+        **DNI** \t
+        $this->dni
+
+        **Correo electrónico**\t
+        $this->email
+                
+        **Teléfono o celular**\t
+        $this->phone
+
+        [Verificar usuario]($url)
+
+        Gracias por su atención,\t
+        ##### $this->name
+        EOT;
+    }
+
+    public function pathEdit()
+    {
+        return route('users.edit', $this);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 
     public function messages()

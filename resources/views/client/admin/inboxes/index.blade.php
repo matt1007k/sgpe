@@ -198,23 +198,12 @@
                         </div>
                     </div> 
                     <h2>{{ $message->subject }}</h2>
-                    <p class="mb-2 text-light-blue text-sm">{{ $message->created_at->diffForHumans() }}</p>
-                    <div class="mb-2 text-light-blue markdown">@parsedown($message->body)</div> 
-                    <div class="mb-2">
-                        <div class="mb-1"> 
-                            <span class="headline text-light-blue">DNI</span>  
-                            <h5>40594458</h5>
-                        </div>
-                        <div class="mb-1">
-                            <span class="headline text-light-blue">Correo electrónico</span>
-                            <h5>jjdj@gmail.com</h5>
-                        </div>
-                        <div>
-                            <span class="headline text-light-blue">Teléfono o celular</span>
-                            <h5>954452451</h5>
-                        </div>
-                    </div>
-                    <a href="{{ route('users.index', ['search' => '55555555']) }}">Verificar usuario</a>
+                    <p class="mb-2 text-light-blue text-sm">
+                        {{ $message->created_at->diffForHumans() }}
+                    </p>
+                    <div class="mb-2 text-light-blue markdown">
+                        @parsedown($message->body)
+                    </div> 
                 </div>               
                 
                 @endforeach

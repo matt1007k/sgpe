@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <transition-group
+        <!-- <transition-group
           name="slide-fade"
           tag="ul"
           v-bind:css="false"
@@ -51,26 +51,26 @@
           v-on:enter="enter"
           v-on:leave="leave"
           class="list-group result"
-        >
-          <!-- <ul class="list-group result" v-if="users.length || !info"> -->
+        >-->
+        <ul class="list-group result" v-if="users.length || !info">
           <li class="list-item" v-for="(user, index) in users" :key="index">{{ user.full_name }}</li>
-          <!-- </ul> -->
-        </transition-group>
+        </ul>
+        <!-- </transition-group> -->
 
         <transition name="fade">
           <template v-if="!users.length && !verified">Sin resultados</template>
         </transition>
         <div class="actions">
           <a class="btn btn-outline-secondary" @click="reload">Cancelar</a>
-          <transition name="fade">
+          <transition name="slide-fade">
             <button
               class="btn btn-primary transition"
-              v-if="!loading && !verified"
+              v-if="!verified"
               @click.prevent="verifyUser"
-              :disabled="info"
+              :disabled="info || loading"
             >Verificar</button>
           </transition>
-          <transition name="slide-fade">
+          <transition name="fade">
             <button
               class="btn btn-success transition"
               v-if="!loading && verified"
@@ -135,12 +135,17 @@ export default {
     checkUserVerified() {
       if (this.users.length > 0) {
         const userVerified = this.users.filter(user => {
-          console.log(user.full_name.split(" ").includes(this.q));
-          return (
-            user.dni || user.full_name.split(" ").includes(this.q) == this.q
-          );
+          let verified = false;
+          const userDataArray = this.convertStringToArray(user.full_name);
+          userDataArray.push(user.dni);
+
+          const searchFieldArray = this.convertStringToArray(this.q);
+
+          searchFieldArray.forEach(value => {
+            if (userDataArray.includes(value)) verified = true;
+          });
+          return verified;
         });
-        console.log("user", userVerified);
         if (userVerified) {
           this.verified = true;
         } else {
@@ -148,10 +153,17 @@ export default {
         }
       }
     },
+    convertStringToArray(string) {
+      const stringToLowerCase = string.toLowerCase();
+      const array = stringToLowerCase.split(" ");
+      return array;
+    },
     markVerified() {
       axios
         .post(`/mark-verified/${this.users[0]["dni"]}`)
-        .then(res => console.log(res))
+        .then(res => {
+          location.href = "/users";
+        })
         .catch(error => console.log(error));
     },
     reload() {

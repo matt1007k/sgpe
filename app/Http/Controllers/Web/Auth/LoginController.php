@@ -31,7 +31,11 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        // if($user->status == 'verified')
+        if ($user->isAdmin()) {
+            return redirect($this->redirectPath());
+        } else {
+            return redirect()->route('client.payments');
+        }
     }
 
     public function username()

@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('users', 'UserController');
+    Route::post('/mark-verified/{dni}', 'UserController@markVerified');
+
     Route::resource('inboxes', 'InboxController')
         ->except(['show', 'create', 'edit', 'update']);
 });

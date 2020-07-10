@@ -44,6 +44,9 @@ h5 {
 .text-primary {
     color: $blue;
 }
+.text-dark-blue {
+    color: $dark-blue;
+}
 .text-light-blue {
     color: $light-blue;
     filter: inherit;
@@ -61,6 +64,16 @@ h5 {
 
 .text-sm {
     font-size: 12px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.font-medium {
+    font-weight: 500;
 }
 
 @include desktop {

@@ -20,6 +20,11 @@ window.Vue = require("vue");
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component("verify-user", require("./components/VerifyUser.vue").default);
+Vue.component("modal-left", require("./components/ModalLeft.vue").default);
+Vue.component(
+    "btn-view-user",
+    require("./components/users/BtnViewUser.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +33,10 @@ Vue.component("verify-user", require("./components/VerifyUser.vue").default);
  */
 
 const app = new Vue({
-    el: "#app"
+    el: "#app",
+    data() {
+        return {
+            open: false
+        };
+    }
 });

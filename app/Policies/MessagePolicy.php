@@ -18,7 +18,7 @@ class MessagePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role === 'admin';
+        return $user->isAdmin();
     }
 
     /**
@@ -30,7 +30,7 @@ class MessagePolicy
      */
     public function view(User $user, Message $message)
     {
-        return $user->role === 'admin';
+        return $user->isAdmin();
     }
 
     /**
@@ -41,7 +41,7 @@ class MessagePolicy
      */
     public function create(User $user)
     {
-        return $user->role === 'admin';
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class MessagePolicy
      */
     public function update(User $user, Message $message)
     {
-        return $user->role === 'admin';
+        return $user->isAdmin();
     }
 
     /**
@@ -65,7 +65,7 @@ class MessagePolicy
      */
     public function delete(User $user, Message $message)
     {
-        return $user->role === 'admin';
+        return $user->isAdmin();
     }
 
     /**
@@ -89,6 +89,6 @@ class MessagePolicy
      */
     public function forceDelete(User $user, Message $message)
     {
-        //
+        return $user->isAdmin();
     }
 }

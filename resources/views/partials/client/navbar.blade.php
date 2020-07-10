@@ -3,9 +3,11 @@
         <div class="menu">
             <i class="material-icons">menu</i>
         </div>
-        <a href="#" class="logo mr-auto">
+        <a href="{{ route('home') }}" class="logo mr-auto">
             <img src="{{ asset('images/client/logo_dark.svg')}}" alt="Logo">
         </a>
+
+        @if(Auth::user()->isAdmin())
         <ul class="nav-left">
             <li class="{{ setActive('users.index') }}">
                 <a href="{{ route('users.index') }}">Usuarios</a>
@@ -14,6 +16,7 @@
                 <a href="{{ route('inboxes.index') }}">Correos</a>
             </li>
         </ul>
+        @endif
         <ul>            
             <li>
                 <a href="#">

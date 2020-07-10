@@ -68,7 +68,9 @@
     </div>
     <div class="content">
         <div class="list__item">
-        
+
+            
+
             @forelse($users as $user)
             <div class="mb-1 card grid">
                 <div class="cols-4 sm:cols-6 md:cols-4 text-left">
@@ -133,15 +135,16 @@
                            <i class="material-icons-two-tone">edit</i> 
                             <span>Editar</span>
                         </a>
-                        <a class="action tooltip">
-                            <i class="material-icons-two-tone">preview</i> 
-                             <span>Ver Detalle</span>
-                         </a>
+                        
+                        <btn-view-user :user="{{ $user }}" />
+                        
                     </div>
                 </div>
             </div>
             @empty
-                <h3>No hay registros</h3>
+            <x-not-data>
+                No hay ningún registro.
+            </x-not-data>
             @endforelse
 
             <div class="w-100 flex justify-between align-center flex-col sm:flex-row" style="justify-content: space-between">

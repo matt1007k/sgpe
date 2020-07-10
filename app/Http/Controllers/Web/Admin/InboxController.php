@@ -19,11 +19,12 @@ class InboxController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(Message::class, 'message');
     }
 
     public function index()
     {
-        Gate::authorize('viewAny', new Message);
+        $message = new Message;
 
         $send = request('f') ? request('f') : 'me';
         $search = request('search') ? request('search') : '';
@@ -33,13 +34,11 @@ class InboxController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('client.admin.inboxes.index', compact('inboxes', 'send', 'search'));
+        return view('client.admin.inboxes.index', compact('inboxes', 'send', 'search', 'message'));
     }
 
     public function store(StoreMessageRequest $request)
     {
-        Gate::authorize('create', new Message);
-
         $message = Auth::user()->messages()->create(
             $request->validated(),
         );
@@ -49,12 +48,9 @@ class InboxController extends Controller
         return redirect()->route('inboxes.index')->with('message', 'Correo enviado con exitó.');
     }
 
-    public function destroy(Message $message)
+    public function destroy(Message $inbox)
     {
-        Gate::authorize('delete', $message);
-
-        $message->delete();
-        dd($message);
+        $inbox->delete();
         return redirect()->route('inboxes.index')->with('message', 'Correo eliminado con exitó.');
     }
 }

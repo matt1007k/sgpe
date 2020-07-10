@@ -18,12 +18,11 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(User::class, 'user');
     }
 
     public function index()
     {
-        Gate::authorize('viewAny', new User);
-
         $status = request('f') ? request('f') : 'verified';
         $search = request('search') ? request('search') : '';
 
@@ -41,20 +40,18 @@ class UserController extends Controller
             'status' => 'unverified',
         ]);
 
-        Gate::authorize('create', $user);
-
         return view('client.admin.users.create', compact('user'));
     }
 
     public function store(UserCreatedRequest $request)
     {
-        Gate::authorize('viewAny', new User);
-
         $password = $request->password ? Hash::make($request->password) : null;
 
         User::create(
-            $request->validated(),
-            ['password' => $password]
+            array_merge(
+                $request->validated(),
+                ['password' => $password]
+            )
         );
 
         return redirect()->route('users.index')->with('message', 'Usuario registrado con exitó.');
@@ -62,15 +59,11 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        Gate::authorize('update', $user);
-
         return view('client.admin.users.edit', compact('user'));
     }
 
     public function update(UserCreatedRequest $request, User $user)
     {
-        Gate::authorize('update', $user);
-
         $password = $request->password ? Hash::make($request->password) : null;
 
         $user->update(
@@ -87,6 +80,8 @@ class UserController extends Controller
     {
         $user = User::where('dni', $dni)->firstOrFail();
 
+        Gate::authorize('update', $user); // Or $this->authorize()
+
         $user->update([
             'status' => 'verified'
         ]);
@@ -97,8 +92,6 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        Gate::authorize('delete', $user);
-
         $user->delete();
         return redirect()->route('users.index')->with('message', 'Usuario eliminado con exitó.');
     }

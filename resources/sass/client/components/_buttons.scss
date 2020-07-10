@@ -183,6 +183,20 @@ a {
         background: rgba($dark-teal, 0.2);
     }
 }
+.btn-outline-danger {
+    background-color: transparent;
+    color: $red;
+    border: 1px solid $red;
+    i.left,
+    i.right {
+        filter: $filter-red;
+    }
+    &:hover {
+        text-decoration: none;
+        opacity: 0.85;
+        background: rgba($red, 0.2);
+    }
+}
 
 .btn-sm {
     padding: 6px 1.5rem;

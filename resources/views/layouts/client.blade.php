@@ -24,7 +24,7 @@
     @stack('styles')
 </head>
 <body >
-    {{-- <div id="app"> --}}
+    <div id="app">
         
         @include('partials.client.navbar')
 
@@ -32,7 +32,7 @@
             @yield('content')
         </main>
 
-    {{-- </div> --}}
+    </div>
     @include('partials.messages.alert-floating')
     <livewire:scripts>
     @stack('scripts')

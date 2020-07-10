@@ -55,6 +55,9 @@
             }
         }
     }
+    .number {
+        font-size: 80px;
+    }
     .message {
         grid-column: 1/4;
         grid-row: 1;
@@ -64,9 +67,46 @@
         justify-content: center;
         align-items: flex-end;
         padding: 0 1rem 1rem;
+        overflow-x: hidden;
         .card {
             width: 400px;
             // height: 300px;
+        }
+
+        img {
+            height: 230px;
+        }
+        .circles {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba($blue, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:before {
+                content: "";
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                background: rgba($blue, 0.2);
+                border-radius: 50%;
+                z-index: 2;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: rgba($blue, 0.2);
+                border-radius: 50%;
+                z-index: 3;
+            }
+        }
+        .container {
+            z-index: 4;
         }
     }
 }
@@ -221,6 +261,30 @@
         .message {
             align-items: center;
             padding: 0;
+            .number {
+                font-size: 140px;
+            }
+            img {
+                height: 250px;
+            }
+
+            .circles {
+                width: 300px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:before {
+                    content: "";
+                    width: 200px;
+                    height: 200px;
+                }
+                &:after {
+                    content: "";
+                    width: 100px;
+                    height: 100px;
+                }
+            }
         }
     }
     .content {
@@ -294,6 +358,33 @@
                 .note {
                     width: 100%;
                     align-items: center;
+                }
+            }
+        }
+        .message {
+            .number {
+                font-size: 240px;
+            }
+
+            img {
+                height: 520.65px;
+            }
+            .circles {
+                width: 600px;
+                height: 600px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:before {
+                    content: "";
+                    width: 500px;
+                    height: 500px;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 400px;
+                    height: 400px;
                 }
             }
         }

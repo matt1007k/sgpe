@@ -23,14 +23,23 @@
 .badge-danger {
     background: rgba($red, 0.28);
     color: $red;
+    i {
+        filter: $filter-red;
+    }
 }
 .badge-success {
     background: rgba($green, 0.28);
     color: $green;
+    i {
+        filter: $filter-green;
+    }
 }
 .badge-primary {
     background: rgba($blue, 0.28);
     color: $blue;
+    i {
+        filter: $filter-blue;
+    }
 }
 .badge-default {
     background-color: white;

@@ -53,7 +53,11 @@
           class="list-group result"
         >-->
         <ul class="list-group result" v-if="users.length || !info">
-          <li class="list-item" v-for="(user, index) in users" :key="index">{{ user.full_name }}</li>
+          <li
+            class="list-item bg-primary"
+            v-for="(user, index) in users"
+            :key="index"
+          >{{ user.full_name }}</li>
         </ul>
         <!-- </transition-group> -->
 
@@ -202,41 +206,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
-
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
-}
-.bounce-leave-active {
-  animation: bounce-in 0.5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 </style>

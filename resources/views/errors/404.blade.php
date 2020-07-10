@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', "Acción no autorizada")
+@section('title', "Página no encontrada")
 
 @section('content')
 <div class="bg-white message ">
@@ -10,11 +10,11 @@
             <div class="number flex font-bold">
                 <span class="text-primary">4</span>
                 <span class="text-dark-blue">0</span>
-                <span class="text-primary">3</span>
+                <span class="text-primary">4</span>
             </div>   
             <div class="flex flex-col justify-center text-center">
-                <h2>Acción no autorizada</h2>
-                <h4 class="text-light-blue">Comunicate con el administrador. </h4>
+                <h2>Página no encontrada</h2>
+                <h4 class="text-light-blue">Verifique que esta página existe</h4>
                 <div class="flex justify-center ">
                     <a href="{{ url('/') }}" class="mt-4 btn btn-primary" >Regresar al inicio</a>
                 </div>

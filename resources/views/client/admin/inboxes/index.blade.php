@@ -6,7 +6,9 @@
     <div class="container">
         <div class="my-2 flex justity-between">
             <h2>Correos</h2>
-            <x-inboxes.sent-message />
+            @can('create', $message)
+                <x-inboxes.sent-message />
+            @endcan
         </div>
         <div class="grid">
             <div class="rounded-md bg-white py-1 px-1 md:px-2 cols-4 sm:cols-6 flex align-center">
@@ -134,7 +136,9 @@
                 </div>
                 @empty
                     <div class="cols-4 sm:cols-8 md:cols-12">
-                        <h3>No hay registros</h3>
+                        <x-not-data>
+                            No hay ningún mensaje.
+                        </x-not-data>
                     </div>
                 @endforelse
 

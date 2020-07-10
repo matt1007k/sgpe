@@ -33,9 +33,7 @@
                 <i class="material-icons left">check</i>
                 Verificar usuario
             </a>
-            <div id="app">  
                 <verify-user dni="{{ $user->dni }}" />
-            </div>
         </div>
     </div>
     @if(old('status', $user->status) === 'verified')

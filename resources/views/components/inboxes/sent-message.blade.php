@@ -1,4 +1,4 @@
-<div x-data="{ open: false }">
+{{-- <div x-data="{ open: false }">
     <a class="btn btn-primary" @click="open = true">
         <i class="material-icons">add</i>
         Nuevo mensaje
@@ -56,8 +56,10 @@
 
         </div>
     </div>
-</div>
-@push('styles')
+</div> --}}
+    <sent-message>
+    </sent-message>
+{{-- @push('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <style>
 .CodeMirror, .CodeMirror-scroll {
@@ -73,4 +75,4 @@
     });
     // simplemde.value('New input for **EasyMDE**');
 </script>
-@endpush
+@endpush --}}

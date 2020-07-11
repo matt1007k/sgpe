@@ -16,6 +16,9 @@
 .justity-between {
     justify-content: space-between;
 }
+.justity-start {
+    justify-content: flex-start;
+}
 .justify-center {
     justify-content: center;
 }
@@ -35,6 +38,19 @@
     }
     .sm\:flex-row {
         flex-direction: row;
+    }
+    .sm\:justity-start {
+        justify-content: flex-start;
+    }
+    .sm\:justify-center {
+        justify-content: center;
+    }
+
+    .sm\:align-start {
+        align-items: flex-start;
+    }
+    .sm\:align-center {
+        align-items: center;
     }
 }
 

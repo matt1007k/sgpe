@@ -41,41 +41,26 @@
                 </div>
             </div>
             <div class="order cols-4 sm:cols-2 md:cols-7 align-self-center justify-self-end">
-                <div class="flex dropdown__container align-center text-light-blue"
-                x-data="{ open: false }"
-                >
-                    Ordenar por:
-                    <a @click="open = true" class="cursor-pointer"><i class="ml-1 material-icons-two-tone">sort</i>
-                    </a>
-                    <div class="dropdown"
-                    x-show="open"
-                    @click.away="open = false"
-                    x-transition:enter="transition"
-                    x-transition:enter-start="opacity-0 -translate-y-2"
-                    x-transition:enter-end="opacity-100 translate-y-0"
-                    x-transition:leave="transition"
-                    x-transition:leave-end="opacity-0 -translate-y-3"
-                    >
-                        <ul class="dropdown__menu">
-                            <li>Último periodo</li>
-                            <li>Antiguo periodo</li>
-                        </ul>
-                    </div>
-                </div>
+                <dropdown-sort></dropdown-sort> 
             </div>
         </div>
     </div>
     <div class="content">
+        <tab-container>
+            
+        </tab-container>
         <div class="list__item grid"
-            x-data="{ tab: {{ $inboxes->count() > 0 ? $inboxes->first()->id : 1 }} }"
+            {{-- x-data="{ tab: {{ $inboxes->count() > 0 ? $inboxes->first()->id : 1 }} }" --}}
         >
         <div class="items cols-4 sm:cols-8 md:cols-5 flex flex-col">
             @forelse($inboxes as $message)
         
-                <div 
-                    class="mb-1 card card-message flex flex-col pointer"
-                    :class="{ 'card-light-blue': tab == {{ $message->id }} }"
-                    @click="tab = {{ $message->id }}"
+                <div
+                    class="mb-1 card card-message flex flex-col pointer
+                    @if($inboxes[0]->id == $message->id) card-light-blue @endif
+                    "
+                    {{-- :class="{ 'card-light-blue': tab == {{ $message->id }} }" --}}
+                    data-tab-target="#tab-{{ $message->id }}"
                     >
                     <div class="text-left">
                         <div class="mb-1 flex justity-between align-center">
@@ -85,54 +70,7 @@
                         <h3>{{ $message->subject }}</h3>
                         <div class="message-body text-truncate">@parsedown($message->body, false)</div>
                     </div>
-                    {{-- <div class="">
-                        <div class="actions flex justity-end">
-
-                            <div x-data="{ open: false }">
-                                <a @click="open = true" class="action tooltip">
-                                    <i class="material-icons-two-tone">delete</i>
-                                    <span>Eliminar</span>
-                                </a>
-                                <div class="modal" 
-                                    x-show="open"
-                                    @click.away="open = false"
-                                    x-transition:enter="transition"
-                                    x-transition:enter-start="opacity-0 -translate-y-2"
-                                    x-transition:enter-end="opacity-100 translate-y-0"
-                                    x-transition:leave="transition"
-                                    x-transition:leave-end="opacity-0 -translate-y-3"
-                                    >
-                                    <div class="modal-content" style="
-                                    width: 500px;">
-                                        <div class="close" @click="open = false">
-                                            <i class="material-icons">close</i>
-                                        </div>
-                                        <div class="card">
-                                            <x-form method="delete" >
-                                            <div class="flex flex-col sm:flex-row">
-                                                <div class="flex align-start ic icon-small icon-danger">
-                                                    <i class="material-icons-two-tone">warning</i>
-                                                </div>
-                                                <div class="ml-1 flex flex-col">
-                                                    <h3 class="mb-1">Eliminar registro</h3>
-                                                    <p class="text-light-blue">Estas seguro de eliminar el registro?. Esto borrar todos los datos existentes de manejar definitiva.</p>
-                                                </div>
-                                            </div>
-                                            <div class="actions">
-                                                <a
-                                                    class="btn btn-outline-secondary"  
-                                                    @click="open = false"
-                                                    >Cancelar</a>
-                                                <button class="btn btn-danger">Eliminar</button>
-                                            </div>
-                                            </x-form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                           
-                        
-                        </div>
-                    </div> --}}
+                    
                 </div>
                 @empty
                     <div class="cols-4 sm:cols-8 md:cols-12">
@@ -148,9 +86,9 @@
 
                 @foreach($inboxes as $message)
                 <div 
-                    class="card"
-                    x-show.transition.in.duration.400ms.out.duration.400ms="tab == {{ $message->id }}"
-                    
+                    class="card @if($inboxes[0]->id == $message->id) active @endif"
+                    id="tab-{{ $message->id }}"
+                    data-tab-content
                     >
                     <div class="mb-1 flex justity-between align-center">
                         <div>
@@ -158,48 +96,9 @@
                             <span class="text-light-blue text-sm">({{ $message->user->email }}) -> </span>
                             <span class="text-light-blue text-sm">Para {{ $send === 'me' ? 'mí' : $message->to }}</span>
                         </div>
-                        <div x-data="{ open: false }">
-                            <a @click="open = true" class="action tooltip">
-                                <i class="material-icons-two-tone">delete</i>
-                                <span>Eliminar</span>
-                            </a>
-                            <div class="modal" 
-                                x-show="open"
-                                @click.away="open = false"
-                                x-transition:enter="transition"
-                                x-transition:enter-start="opacity-0 -translate-y-2"
-                                x-transition:enter-end="opacity-100 translate-y-0"
-                                x-transition:leave="transition"
-                                x-transition:leave-end="opacity-0 -translate-y-3"
-                                >
-                                <div class="modal-content" style="
-                                width: 500px;">
-                                    <div class="close" @click="open = false">
-                                        <i class="material-icons">close</i>
-                                    </div>
-                                    <div class="card">
-                                        <x-form method="delete" :action="route('inboxes.destroy', $message)">
-                                        <div class="flex flex-col sm:flex-row">
-                                            <div class="flex align-start ic icon-small icon-danger">
-                                                <i class="material-icons-two-tone">warning</i>
-                                            </div>
-                                            <div class="ml-1 flex flex-col">
-                                                <h3 class="mb-1">Eliminar registro</h3>
-                                                <p class="text-light-blue">Estas seguro de eliminar el registro?. Esto borrar todos los datos existentes de manejar definitiva.</p>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <a
-                                                class="btn btn-outline-secondary"  
-                                                @click="open = false"
-                                                >Cancelar</a>
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </div>
-                                        </x-form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <btn-delete 
+                            :model="{{ $message }}" 
+                            resource="inboxes"></btn-delete>
                     </div> 
                     <h2>{{ $message->subject }}</h2>
                     <p class="mb-2 text-light-blue text-sm">
@@ -216,12 +115,14 @@
             
             @if($inboxes->count() > 0)
             <div class="cols-4 sm:cols-8 md:cols-12 w-100 flex justify-between align-center flex-col sm:flex-row" style="justify-content: space-between">
-                <h3>Total de registros: {{ $inboxes->total() }}</h3>
-                {{ $inboxes->links() }}
+                {{-- <h3>Total de registros: {{ $inboxes->total() }}</h3> --}}
+                {{-- {{ $inboxes->links() }} --}}
             </div>
             @endif
 
         </div>
     </div>
+    
 </div>
+
 @endsection

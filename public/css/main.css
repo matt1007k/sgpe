@@ -233,6 +233,10 @@ body {
   justify-content: space-between;
 }
 
+.justity-start {
+  justify-content: flex-start;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -256,6 +260,22 @@ body {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:justity-start {
+    justify-content: flex-start;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
+  }
+
+  .sm\:align-start {
+    align-items: flex-start;
+  }
+
+  .sm\:align-center {
+    align-items: center;
   }
 }
 
@@ -751,6 +771,10 @@ body {
   width: 45px;
   height: 45px;
   font-size: 30px;
+}
+
+.icon-medium i {
+  padding: 5px 10px;
 }
 
 .icon-big {
@@ -1525,7 +1549,14 @@ h5 {
 
 .card-profile {
   position: relative;
+  z-index: 1;
   height: 530px;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.card-profile a {
+  z-index: 2;
 }
 
 .card-profile .card-footer-float {
@@ -2268,6 +2299,7 @@ a:hover {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 3px 6px rgba(156, 149, 220, 0.2);
+  z-index: 2;
   transition: all 0.5s ease-in-out;
 }
 
@@ -2517,7 +2549,7 @@ a:hover {
   margin-top: 1rem;
 }
 
-.modal-left {
+.modal-right {
   position: fixed;
   top: 0;
   right: 0;
@@ -2531,7 +2563,7 @@ a:hover {
   justify-content: flex-end;
 }
 
-.modal-left .modal-content {
+.modal-right .modal-content {
   position: relative;
   top: 0;
   bottom: 0;
@@ -2539,7 +2571,7 @@ a:hover {
   width: 400px;
 }
 
-.modal-left .modal-content .close {
+.modal-right .modal-content .close {
   position: absolute;
   cursor: pointer;
   top: 1rem;
@@ -2551,32 +2583,35 @@ a:hover {
   align-items: center;
 }
 
-.modal-left .modal-content .close i {
+.modal-right .modal-content .close i {
   color: rgba(63, 61, 86, 0.7);
   -webkit-filter: opacity(70%);
           filter: opacity(70%);
 }
 
-.modal-left .modal-content .close:hover {
+.modal-right .modal-content .close:hover {
   background: rgba(63, 61, 86, 0.1);
 }
 
-.modal-left .modal-content .close:hover i {
+.modal-right .modal-content .close:hover i {
   -webkit-filter: opacity(100%);
           filter: opacity(100%);
   opacity: 1;
 }
 
-.modal-left .modal-content .card {
+.modal-right .modal-content .card {
   width: 100%;
   height: 100%;
   border-radius: 0;
 }
 
-.modal-left .modal-content .card .header {
-  background: linear-gradient(45deg, #228cdb, #fa3f3f);
+.modal-right .modal-content .card .header {
   margin: -2rem;
   padding: 2rem;
+}
+
+.modal-right .modal-content .card .header-linear-primary-red {
+  background: linear-gradient(45deg, #228cdb, #fa3f3f);
 }
 
 @media (min-width: 640px) {
@@ -2596,5 +2631,14 @@ a:hover {
     margin-top: 0;
     margin-left: 10px;
   }
+}
+
+[data-tab-content] {
+  display: none;
+  transition-delay: 0.2s;
+}
+
+.active[data-tab-content] {
+  display: block;
 }
 

@@ -10,31 +10,31 @@
     <title>Sistema de Boletas de Pago Electrónica - @yield('title', 'Inicio')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/client.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    {{-- <script src="{{ asset('js/client.js') }}" defer></script> --}}
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone"
-      rel="stylesheet">
+    rel="stylesheet">
     
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <livewire:styles>
-    @stack('styles')
-</head>
-<body >
-    <div id="app">
-        
-        @include('partials.client.navbar')
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-
-    </div>
-    @include('partials.messages.alert-floating')
+        <livewire:styles>
+        @stack('styles')
+    </head>
+    <body >
+        <div id="app">
+            
+            @include('partials.client.navbar')
+            
+            <main class="py-4">
+                @yield('content')
+            </main>
+            
+            @include('partials.messages.alert-floating')
+        </div>
+        @stack('scripts')
     <livewire:scripts>
-    @stack('scripts')
 </body>
 </html>

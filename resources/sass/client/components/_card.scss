@@ -8,7 +8,13 @@
 
 .card-profile {
     position: relative;
+    z-index: 1;
     height: 530px;
+    object-position: center;
+    // transition-delay: 0.2s;
+    a {
+        z-index: 2;
+    }
     .card-footer-float {
         background: white;
         position: absolute;

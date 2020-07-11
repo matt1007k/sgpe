@@ -150,7 +150,10 @@ return [
         'name' => 'nombre',
         'email' => 'correo electrónico',
         'phone' => 'teléfono',
-        'password' => 'contraseña'
+        'password' => 'contraseña',
+        'to' => 'para',
+        'subject' => 'asunto',
+        'body' => 'mensaje'
     ],
 
 ];

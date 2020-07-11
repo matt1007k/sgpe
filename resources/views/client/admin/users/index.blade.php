@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="order cols-4 sm:cols-2 md:cols-7 align-self-center justify-self-end">
-                <div class="flex dropdown__container align-center text-light-blue"
+                {{-- <div class="flex dropdown__container align-center text-light-blue"
                 x-data="{ open: false }"
                 >
                     Ordenar por:
@@ -62,15 +62,14 @@
                             <li>Antiguo periodo</li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
+                <dropdown-sort></dropdown-sort>
             </div>
         </div>
     </div>
     <div class="content">
         <div class="list__item">
-
             
-
             @forelse($users as $user)
             <div class="mb-1 card grid">
                 <div class="cols-4 sm:cols-6 md:cols-4 text-left">
@@ -88,49 +87,11 @@
                     </p>
                 </div>
                 <div class="cols-4 sm:cols-3 md:cols-3  align-self-start">
-                    <div class="mx-4 actions flex justity-between">
-                        <div x-data="{ open: false }">
-                            <a @click="open = true" class="action tooltip">
-                                <i class="material-icons-two-tone">delete</i>
-                                <span>Eliminar</span>
-                            </a>
-                            <div class="modal" 
-                                x-show="open"
-                                @click.away="open = false"
-                                x-transition:enter="transition"
-                                x-transition:enter-start="opacity-0 -translate-y-2"
-                                x-transition:enter-end="opacity-100 translate-y-0"
-                                x-transition:leave="transition"
-                                x-transition:leave-end="opacity-0 -translate-y-3"
-                                >
-                                <div class="modal-content" style="
-                                width: 500px;">
-                                    <div class="close" @click="open = false">
-                                        <i class="material-icons">close</i>
-                                    </div>
-                                    <div class="card">
-                                        <x-form method="delete" :action="route('users.destroy', $user)">
-                                        <div class="flex flex-col sm:flex-row">
-                                            <div class="flex align-start ic icon-small icon-danger">
-                                                <i class="material-icons-two-tone">warning</i>
-                                            </div>
-                                            <div class="ml-1 flex flex-col">
-                                                <h3 class="mb-1">Eliminar registro</h3>
-                                                <p class="text-light-blue">Estas seguro de eliminar el registro?. Esto borrar todos los datos existentes de manejar definitiva.</p>
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <a
-                                                class="btn btn-outline-secondary"  
-                                                @click="open = false"
-                                                >Cancelar</a>
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </div>
-                                        </x-form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="mx-4 actions flex justity-between">                        
+                        <btn-delete 
+                            :model="{{ $user }}" 
+                            resource="users"></btn-delete>
+
                         <a href="{{ route('users.edit', $user) }}" class="action tooltip">
                            <i class="material-icons-two-tone">edit</i> 
                             <span>Editar</span>

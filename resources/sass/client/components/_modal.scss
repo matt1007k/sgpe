@@ -48,7 +48,7 @@
     }
 }
 
-.modal-left {
+.modal-right {
     position: fixed;
     top: 0;
     right: 0;
@@ -92,9 +92,15 @@
             height: 100%;
             border-radius: 0;
             .header {
-                background: linear-gradient(45deg, $blue, $red);
                 margin: -2rem;
                 padding: 2rem;
+            }
+            .header-linear-primary-red {
+                background: linear-gradient(
+                    45deg,
+                    rgba($blue, 1),
+                    rgba($red, 1)
+                );
             }
         }
     }

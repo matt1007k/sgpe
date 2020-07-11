@@ -8,6 +8,8 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+import "./plugins/simplemde";
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,11 +21,32 @@ window.Vue = require("vue");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component("verify-user", require("./components/VerifyUser.vue").default);
 Vue.component("modal-left", require("./components/ModalLeft.vue").default);
+Vue.component(
+    "alert-floating",
+    require("./components/AlertFloating.vue").default
+);
+Vue.component("btn-delete", require("./components/BtnDelete.vue").default);
+Vue.component("verify-user", require("./components/VerifyUser.vue").default);
 Vue.component(
     "btn-view-user",
     require("./components/users/BtnViewUser.vue").default
+);
+Vue.component(
+    "dropdown-auth",
+    require("./components/users/DropdownAuth.vue").default
+);
+Vue.component(
+    "dropdown-sort",
+    require("./components/DropdownSort.vue").default
+);
+Vue.component(
+    "sent-message",
+    require("./components/inboxes/sentMessage.vue").default
+);
+Vue.component(
+    "tab-container",
+    require("./components/inboxes/TabContainer.vue").default
 );
 
 /**

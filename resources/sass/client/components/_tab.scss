@@ -1,0 +1,7 @@
+[data-tab-content] {
+    display: none;
+    transition-delay: 0.2s;
+}
+.active[data-tab-content] {
+    display: block;
+}

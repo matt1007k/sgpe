@@ -19,12 +19,12 @@ class InboxController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->authorizeResource(Message::class, 'message');
     }
 
     public function index()
     {
         $message = new Message;
+        $this->authorize('viewAny', $message);
 
         $send = request('f') ? request('f') : 'me';
         $search = request('search') ? request('search') : '';
@@ -39,18 +39,24 @@ class InboxController extends Controller
 
     public function store(StoreMessageRequest $request)
     {
+        $this->authorize('create', Message::class);
+
         $message = Auth::user()->messages()->create(
             $request->validated(),
         );
 
         event(new MessageCreated($message));
 
-        return redirect()->route('inboxes.index')->with('message', 'Correo enviado con exitó.');
+        request()->session()->flash('message', 'Correo enviado con exitó.');
+        return response()->json(['success' => true]);
     }
 
     public function destroy(Message $inbox)
     {
+        $this->authorize('forceDelete', $inbox);
+
         $inbox->delete();
-        return redirect()->route('inboxes.index')->with('message', 'Correo eliminado con exitó.');
+        request()->session()->flash('message', 'Mensaje eliminado con exitó.');
+        return response()->json(['success' => true]);
     }
 }

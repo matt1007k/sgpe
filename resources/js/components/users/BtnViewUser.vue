@@ -6,7 +6,7 @@
     </a>
     <modal-left :open="open" @close="isClose => open = isClose">
       <div class="card">
-        <div class="header flex flex-col align-center justify-center">
+        <div class="header header-linear-primary-red flex flex-col align-center justify-center">
           <div class="avatar avatar-default avatar-xl bg-white">
             <i class="material-icons">person</i>
           </div>

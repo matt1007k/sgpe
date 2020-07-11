@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div class="modal-left" v-show="open" @click="$emit('close', false)">
+    <div class="modal-right" v-show="open" @click="$emit('close', false)">
       <div class="modal-content">
         <div class="close" @click="$emit('close', false)">
           <i class="material-icons">close</i>

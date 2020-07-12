@@ -63,7 +63,7 @@ class User extends Authenticatable
             return;
         }
 
-        return  $query->orWhere('name', 'LIKE', "%$value%")
+        return  $query->where('name', 'LIKE', "%$value%")
             ->orWhere('dni', 'LIKE', "%$value%");
     }
 

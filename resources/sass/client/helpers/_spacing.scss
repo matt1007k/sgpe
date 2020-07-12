@@ -70,8 +70,6 @@
 .mr-1 {
     margin-right: 0.5rem;
 }
-
-// padding
 .mt-0 {
     margin-top: 0;
 }
@@ -80,6 +78,13 @@
 }
 .ml-0 {
     margin-left: 0;
+}
+
+// padding
+.-px-2 {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    padding: 0 1rem;
 }
 .mr-0 {
     margin-right: 0;

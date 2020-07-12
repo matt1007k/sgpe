@@ -55,11 +55,16 @@ h5 {
     color: white;
 }
 
-.text-truncate > * {
+.text-truncate {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.truncate-overflow {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 20px;
 }
 
 .text-sm {

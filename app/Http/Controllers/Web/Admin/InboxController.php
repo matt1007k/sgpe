@@ -29,7 +29,7 @@ class InboxController extends Controller
         $send = request('f') ? request('f') : 'me';
         $search = request('search') ? request('search') : '';
 
-        $inboxes = Message::with('user')->filterSend($send)
+        $inboxes = Message::with('user')->send($send)
             ->search($search)
             ->latest()
             ->paginate(10);

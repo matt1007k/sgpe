@@ -51,6 +51,9 @@
 
 .card-light-blue {
     background: rgba($blue, 0.2);
+    .truncate-overflow::after {
+        background: rgba($blue, 0.2);
+    }
     p,
     .message-body > * {
         color: rgba($dark-blue, 0.5);

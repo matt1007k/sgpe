@@ -2,7 +2,8 @@
 @section('title', 'Correos')
 
 @section('content')
-<div class="bg-light-primary-opacity-20 py-2 px-2">
+<inboxes-index />
+{{-- <div class="bg-light-primary-opacity-20 py-2 px-2">
     <div class="container">
         <div class="my-2 flex justity-between">
             <h2>Correos</h2>
@@ -20,8 +21,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container">
+</div> --}}
+{{-- <div class="container">
     <div class="content mt-0">
         <div class="grid">
             <div class="cols-4 sm:cols-6 md:cols-5">
@@ -46,11 +47,9 @@
         </div>
     </div>
     <div class="content">
-        <tab-container>
-            
-        </tab-container>
+        
         <div class="list__item grid"
-            {{-- x-data="{ tab: {{ $inboxes->count() > 0 ? $inboxes->first()->id : 1 }} }" --}}
+            x-data="{ tab: {{ $inboxes->count() > 0 ? $inboxes->first()->id : 1 }} }"
         >
         <div class="items cols-4 sm:cols-8 md:cols-5 flex flex-col">
             @forelse($inboxes as $message)
@@ -59,7 +58,7 @@
                     class="mb-1 card card-message flex flex-col pointer
                     @if($inboxes[0]->id == $message->id) card-light-blue @endif
                     "
-                    {{-- :class="{ 'card-light-blue': tab == {{ $message->id }} }" --}}
+                    :class="{ 'card-light-blue': tab == {{ $message->id }} }"
                     data-tab-target="#tab-{{ $message->id }}"
                     >
                     <div class="text-left">
@@ -115,14 +114,18 @@
             
             @if($inboxes->count() > 0)
             <div class="cols-4 sm:cols-8 md:cols-12 w-100 flex justify-between align-center flex-col sm:flex-row" style="justify-content: space-between">
-                {{-- <h3>Total de registros: {{ $inboxes->total() }}</h3> --}}
-                {{-- {{ $inboxes->links() }} --}}
+                <h3>Total de registros: {{ $inboxes->total() }}</h3>
+                {{ $inboxes->links() }}
             </div>
             @endif
 
         </div>
     </div>
     
-</div>
+</div> --}}
 
 @endsection
+@push('scripts')
+<script src="https://unpkg.com/marked@0.3.6"></script>
+    
+@endpush

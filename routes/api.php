@@ -11,7 +11,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/people/{person}', 'PersonController@show')->name('api.v1.people.show');
 Route::get('/people', 'PersonController@index')->name('api.v1.people.index');
-// Route::get('/messages', 'InboxController@index')->name('api.v1.inboxes.index');
+
+Route::get('/users/{user}', 'UserController@show')->name('api.v1.users.show');
+Route::get('/messages/{message}', 'MessageController@show')->name('api.v1.messages.show');
+// Route::get('/messages', 'MessageController@index')->name('api.v1.messages.index');
+
 
 Route::get('/verify-user', function () {
 

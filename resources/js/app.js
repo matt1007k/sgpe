@@ -27,7 +27,10 @@ Vue.component(
     require("./components/AlertFloating.vue").default
 );
 Vue.component("btn-delete", require("./components/BtnDelete.vue").default);
-Vue.component("verify-user", require("./components/VerifyUser.vue").default);
+Vue.component(
+    "verify-user",
+    require("./components/users/VerifyUser.vue").default
+);
 Vue.component(
     "btn-view-user",
     require("./components/users/BtnViewUser.vue").default
@@ -45,8 +48,8 @@ Vue.component(
     require("./components/inboxes/sentMessage.vue").default
 );
 Vue.component(
-    "tab-container",
-    require("./components/inboxes/TabContainer.vue").default
+    "inboxes-index",
+    require("./components/inboxes/Index.vue").default
 );
 
 /**

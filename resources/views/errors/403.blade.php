@@ -7,7 +7,7 @@
     <div class="circles"></div>
     <div class="container flex flex-col sm:flex-row align-center justify-between">
         <div class="flex flex-col justify-enter align-center w-full">
-            <div class="number flex font-bold">
+            <div class="number-big flex font-bold">
                 <span class="text-primary">4</span>
                 <span class="text-dark-blue">0</span>
                 <span class="text-primary">3</span>

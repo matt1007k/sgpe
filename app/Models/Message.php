@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Events\MessageCreated;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,6 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 class Message extends Model
 {
     protected $fillable = ['to', 'subject', 'body'];
+
+    public $allowedSorts = ['subject'];
 
     // protected $events = [
     //     'created' => MessageCreated::class
@@ -26,13 +26,14 @@ class Message extends Model
             ->orWhere('subject', 'LIKE', "%$value%");
     }
 
-    public function scopeFilterSend(Builder $query, $value)
+    public function scopeSend(Builder $query, $value)
     {
         if ($value == 'me') {
             return $query->where('user_id', '!=', Auth::user()->id);
         } else if ($value == 'send') {
             return $query->where('user_id', Auth::user()->id);
-        } else {
+        }
+        else {
             return;
         }
     }

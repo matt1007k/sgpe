@@ -12,13 +12,15 @@
             </a>
         </div>
         <div class="grid">
-            <div class="rounded-md bg-white py-1 px-1 md:px-2 cols-4 sm:cols-6 flex align-center">
+            <x-form method="get" :action="route('users.index')" class="rounded-md bg-white py-1 px-1 md:px-2 cols-4 sm:cols-6 flex align-center">
+            {{-- <div class=""> --}}
                 <div class="search-input">
                     <i class="material-icons left icon">search</i>
-                    <input type="search" class="input border-none" placeholder="Que usuarios buscas...">
+                    <input type="search" name="search" value="{{ old('search', $search) }}" class="input border-none" placeholder="Que usuarios buscas...">
                 </div>
                 <button class="btn btn-dark">Buscar</button>
-            </div>
+            {{-- </div> --}}
+            </x-form>
         </div>
     </div>
 </div>

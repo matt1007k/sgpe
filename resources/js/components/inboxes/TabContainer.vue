@@ -1,60 +1,120 @@
 <template>
-    <div class="posts-tab">
-        <ul class="posts-sidebar">
-            <li
-                v-for="post in posts"
-                :key="post.id"
-                :class="{ selected: post === selectedPost }"
-                @click="selectedPost = post"
-            >
-                {{ post.attributes.name }}
-            </li>
-        </ul>
-        <div class="selected-post-container">
-            <transition name="slide-fade" mode="out-in">
-                <div v-if="selectedPost" class="selected-post" key="selected">
-                    <h3>{{ selectedPost.attributes.name }}</h3>
-                    <div
-                        v-text="selectedPost.attributes.paternal_surname"
-                    ></div>
-                </div>
-                <div v-else key="unselected">
-                    Click on a blog title to the left to view it.
-                </div>
-            </transition>
-        </div>
+  <div class="content">
+    <tab-nav :filter="filter" :sort="sort" @onFilter="onFilter" @onSort="onSort" />
+    <div class="list__item grid">
+      <div
+        class="items cols-4 sm:cols-8 md:cols-5 flex flex-col"
+        style="max-height:500px;overflow-y: scroll"
+      >
+        <template v-for="message in messages">
+          <card-message
+            :message="message"
+            :key="message.id"
+            :class="{'card-light-blue': message === selectedMessage}"
+            @onSelected="selected => selectedMessage = selected"
+          />
+        </template>
+      </div>
+      <div class="preview cols-4 sm:cols-8 md:cols-7">
+        <transition name="slide-fade" mode="out-in">
+          <card-preview v-if="selectedMessage" :message="selectedMessage" :send="filter" />
+        </transition>
+      </div>
     </div>
+    <div
+      class="mt-2 cols-4 sm:cols-8 md:cols-12 w-100 flex justify-between align-center flex-col sm:flex-row"
+      style="justify-content: space-between"
+    >
+      <h3>
+        Total de registros
+        <span class="ml-1 text-light-blue">{{ meta.total }}</span>
+      </h3>
+      <paginator :links="links" :meta="meta" @onPage="onPage" />
+    </div>
+  </div>
 </template>
-
 <script>
+import Paginator from "../Paginator";
+import TabNav from "./TabNav";
+import CardMessage from "./CardMessage";
+import CardPreview from "./CardPreview";
 export default {
-    data: () => ({
-        posts: [],
-        selectedPost: null
-    }),
-    created() {
-        this.getMessages();
+  props: ["search"],
+  components: { Paginator, TabNav, CardMessage, CardPreview },
+  data: () => ({
+    messages: [],
+    links: {},
+    meta: {},
+    selectedMessage: null,
+    filter: "me",
+    sort: "-subject",
+    page: 1
+  }),
+  created() {
+    this.getMessages();
+  },
+  mounted() {
+    this.message = this.messages[0];
+  },
+  methods: {
+    getMessages() {
+      axios
+        .get(this.getUrl)
+        .then(res => {
+          this.messages = res.data.data;
+          this.selectedMessage = this.messages[0];
+          this.links = res.data.links;
+          this.meta = res.data.meta;
+        })
+        .catch(err => console.log(err));
     },
-    mounted() {
-        this.selectedPost = this.posts[0];
+    onPage(page) {
+      this.page = page;
+      axios
+        .get(this.getUrl)
+        .then(res => {
+          this.messages = res.data.data;
+          this.selectedMessage = this.messages[0];
+          this.links = res.data.links;
+          this.meta = res.data.meta;
+        })
+        .catch(err => console.log(err));
     },
-    methods: {
-        getMessages() {
-            const url = "/api/v1/people";
-            axios
-                .get(url)
-                .then(res => {
-                    this.posts = res.data.data;
-                    this.selectedPost = this.posts[0];
-                })
-                .catch(err => console.log(err));
-        }
+    onFilter(newFilter) {
+      this.filter = newFilter;
+      axios
+        .get(this.getUrl)
+        .then(res => {
+          this.messages = res.data.data;
+          this.selectedMessage = this.messages[0];
+          this.links = res.data.links;
+          this.meta = res.data.meta;
+        })
+        .catch(err => console.log(err));
+    },
+    onSort(newSort) {
+      this.sort = newSort;
+      axios
+        .get(this.getUrl)
+        .then(res => {
+          this.messages = res.data.data;
+          this.selectedMessage = this.messages[0];
+          this.links = res.data.links;
+          this.meta = res.data.meta;
+        })
+        .catch(err => console.log(err));
     }
+  },
+  computed: {
+    getUrl() {
+      return `/api/v1/messages?sort=${this.sort}&filter[send]=${this.filter}&filter[search]=${this.search}&page[number]=${this.page}`;
+    }
+  }
 };
 </script>
 
 <style scoped>
 .seclected {
-    background: silver;
+  background: silver;
 }
 </style>

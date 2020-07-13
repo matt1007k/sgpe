@@ -26,7 +26,7 @@ class PageController extends Controller
     public function index()
     {
         $filterYear = request('year') ? request('year') : date('Y');
-        $dni = '09398998';
+        $dni = '28211740';
 
         $urlBase = 'http://localhost:8001/api/v1/';
         $token = 'dfdsfsd';

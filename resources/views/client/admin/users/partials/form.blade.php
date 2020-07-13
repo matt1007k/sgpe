@@ -28,39 +28,15 @@
             <p>Estado</p>
             <livewire:users.show-status :status="$user->status" />
         </div>
-        <div x-data="{ open: false }">
-            <a class="btn btn-outline-teal" @click="open = true">
-                <i class="material-icons left">check</i>
-                Verificar usuario
-            </a>
-                <verify-user dni="{{ $user->dni }}" />
-        </div>
+        
+        <verify-user dni="{{ $user->dni }}" />
+
     </div>
     @if(old('status', $user->status) === 'verified')
-    <div class="my-4" x-data="{ open: false }">
-        <a class="cursor-pointer" @click="open = true">Generar o cambiar contraseña</a>
-        <div class="modal" 
-            x-show="open"
-            @click.away="open = false"
-            x-transition:enter="transition"
-            x-transition:enter-start="opacity-0 -translate-y-2"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition"
-            x-transition:leave-end="opacity-0 -translate-y-3"
-            >
-            <div class="modal-content" style="
-            width: 500px;">
-                <div class="close" @click="open = false">
-                    <i class="material-icons">close</i>
-                </div>
-                <div class="card">
-                    <h3 class="mb-1">Generar o cambiar contraseña</h3>
-                    <p class="text-light-blue">Genera una contraseña de manera aleatoria o ingresa una propia.</p>
-
-                    <livewire:users.password-generate />
-                </div>
-            </div>
-        </div>
+    <div class="my-4">  
+        <modal-generate>
+            <livewire:users.password-generate />
+        </modal-generate>
     </div>
     @endif
 

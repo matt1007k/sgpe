@@ -40,6 +40,11 @@ Vue.component(
     require("./components/users/DropdownAuth.vue").default
 );
 Vue.component(
+    "modal-generate",
+    require("./components/users/ModalGenerate.vue").default
+);
+
+Vue.component(
     "dropdown-sort",
     require("./components/DropdownSort.vue").default
 );

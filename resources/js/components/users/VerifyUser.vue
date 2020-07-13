@@ -1,18 +1,7 @@
 <template>
-  <div
-    class="modal"
-    x-show="open"
-    x-transition:enter="transition"
-    x-transition:enter-start="opacity-0 -translate-y-2"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition"
-    x-transition:leave-end="opacity-0 -translate-y-3"
-  >
-    <div class="modal-content" style="
-                width: 500px;">
-      <div class="close" @click="reload">
-        <i class="material-icons">close</i>
-      </div>
+  <div>
+    <button class="btn btn-outline-teal" @click.prevent="open = true">Verificar usuario</button>
+    <modal :open="open" @close="value => open = isClose">
       <div class="card">
         <h3>Verificar usuario</h3>
         <div class="group-input search-input">
@@ -53,11 +42,7 @@
           class="list-group result"
         >-->
         <ul class="list-group result" v-if="users.length || !info">
-          <li
-            class="list-item bg-primary"
-            v-for="(user, index) in users"
-            :key="index"
-          >{{ user.full_name }}</li>
+          <li class="list-item" v-for="(user, index) in users" :key="index">{{ user.full_name }}</li>
         </ul>
         <!-- </transition-group> -->
 
@@ -65,7 +50,7 @@
           <template v-if="!users.length && !verified">Sin resultados</template>
         </transition>
         <div class="actions">
-          <a class="btn btn-outline-secondary" @click="reload">Cancelar</a>
+          <a class="btn btn-outline-secondary" @click="open = false">Cancelar</a>
           <transition name="slide-fade">
             <button
               class="btn btn-primary transition"
@@ -86,12 +71,12 @@
           </transition>
         </div>
       </div>
-    </div>
+    </modal>
   </div>
 </template>
 
-
 <script>
+import Modal from "../Modal";
 export default {
   props: {
     dni: {
@@ -99,8 +84,10 @@ export default {
       //   required: true
     }
   },
+  components: { Modal },
   data() {
     return {
+      open: false,
       q: "",
       info: false,
       users: [],

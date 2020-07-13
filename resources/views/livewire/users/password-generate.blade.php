@@ -1,3 +1,4 @@
+
 <div class="w-100 mt-2 flex justify-stretch align-end">
     <div class="w-100">
         <label for="password">Contraseña</label>
@@ -14,10 +15,10 @@
 </div>
 
 <div class="actions">
-    <button 
+    <a 
         class="btn btn-outline-secondary"  
-        @click.prevent="open = false"
-        >Cancelar</button>
+        onclick="location.reload()"
+        >Cancelar</a>
     <button class="btn btn-primary">
         <i class="material-icons-two-tone left">edit</i>
         Cambiar

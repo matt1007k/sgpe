@@ -19,7 +19,7 @@
             </div>
             <div class="cols-4 sm:cols-8 md:cols-6">
                 <x-form method="post" :action="route('users.store')">
-                    @include('client.admin.users.partials.form', ['btnText' => 'Guardar'])
+                    @include('admin.users.partials.form', ['btnText' => 'Guardar'])
                 </x-form>
             </div>
         </div>

@@ -31,7 +31,6 @@
                     </span>   
                     <i class="material-icons-two-tone icon transition" :class="{'rotate-180': open}">expand_more</i>   
                 </a>
-
                 <div class="dropdown" 
                     x-show="open" 
                     @click.away="open = false"

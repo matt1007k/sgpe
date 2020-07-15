@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Message;
 use App\Events\MessageCreated;
@@ -34,7 +34,7 @@ class InboxController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('client.admin.inboxes.index', compact('inboxes', 'send', 'search', 'message'));
+        return view('admin.inboxes.index', compact('inboxes', 'send', 'search', 'message'));
     }
 
     public function store(StoreMessageRequest $request)

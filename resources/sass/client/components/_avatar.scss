@@ -79,6 +79,13 @@
     height: 55px;
     font-size: 40px;
 }
+.icon-dash-blue {
+    background: transparent;
+    border: 2px dashed rgba($blue, 0.2);
+    i {
+        filter: $filter-blue;
+    }
+}
 
 .icon-danger {
     background: rgba($red, 0.2);

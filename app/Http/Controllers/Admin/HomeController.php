@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Web\Admin;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -27,6 +29,15 @@ class HomeController extends Controller
         if (!Auth::user()->isAdmin()) {
             return redirect('/payments');
         }
-        return view('client.admin.home');
+
+        $users_count = User::all()->count();
+        $sended_me_count = Message::send('me')->get()->count();
+        $recivied_me_count = Message::send('send')->get()->count();
+
+        return view('admin.home', compact(
+            'users_count',
+            'sended_me_count',
+            'recivied_me_count'
+        ));
     }
 }

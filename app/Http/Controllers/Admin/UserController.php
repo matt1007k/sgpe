@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreatedRequest;
@@ -31,7 +31,7 @@ class UserController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('client.admin.users.index', compact('users', 'status', 'search'));
+        return view('admin.users.index', compact('users', 'status', 'search'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class UserController extends Controller
             'status' => 'unverified',
         ]);
 
-        return view('client.admin.users.create', compact('user'));
+        return view('admin.users.create', compact('user'));
     }
 
     public function store(UserCreatedRequest $request)
@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('client.admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(UserCreatedRequest $request, User $user)
@@ -86,8 +86,8 @@ class UserController extends Controller
             'status' => 'verified'
         ]);
 
-        return redirect()->route('users.index')
-            ->with('message', 'Usuario ha sido verificado con exitó.');
+        request()->session()->flash('message', 'Usuario ha sido verificado con exitó.');
+        return response()->json(['success' => true]);
     }
 
     public function destroy(User $user)

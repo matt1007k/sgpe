@@ -19,7 +19,7 @@
             </div>
             <div class="cols-4 sm:cols-8 md:cols-6">
                 <x-form method="put" :action="route('users.update', $user)">
-                    @include('client.admin.users.partials.form', ['btnText' => 'Editar'])
+                    @include('admin.users.partials.form', ['btnText' => 'Editar'])
                 </x-form>
             </div>
         </div>

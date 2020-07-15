@@ -29,25 +29,12 @@
                 </div>
             </div>
             <div class="order">
-                <div class="flex dropdown__container absolute" x-data="{ open: false }">
-                    Ordenar por:
-                    <a class="cursor-pointer" @click="open = true"><i class="material-icons-two-tone">sort</i>
-                    </a>
-                    <div class="dropdown" 
-                    x-show="open" 
-                    @click.away="open = false"
-                    x-transition:enter="transition"
-                    x-transition:enter-start="opacity-0 -translate-y-2"
-                    x-transition:enter-end="opacity-100 translate-y-0"
-                    x-transition:leave="transition"
-                    x-transition:leave-end="opacity-0 -translate-y-3"
-                    >
+                <dropdown-sort> 
                         <ul class="dropdown__menu">
                             <li>Último periodo</li>
                             <li>Antiguo periodo</li>
                         </ul>
-                    </div>
-                </div>
+                </dropdown-sort>
             </div>
         </div>
     </div>

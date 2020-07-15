@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
@@ -26,9 +27,11 @@ class PageController extends Controller
     public function index()
     {
         $filterYear = request('year') ? request('year') : date('Y');
-        $dni = '28211740';
+        // $dni = '28211740';
+        $dni = Auth::user()->dni;
 
-        $urlBase = 'http://localhost:8001/api/v1/';
+        $urlBase = 'http://scp.test/api/v1/';
+        // $urlBase = 'http://scp.sharedwithexpose.com/api/v1/';
         $token = 'dfdsfsd';
 
         $years = Http::get($urlBase . "years?dni={$dni}")->json();

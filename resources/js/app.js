@@ -9,6 +9,7 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 import "./plugins/simplemde";
+import "./plugins/google-charts";
 
 /**
  * The following block of code may be used to automatically register your
@@ -55,6 +56,11 @@ Vue.component(
 Vue.component(
     "inboxes-index",
     require("./components/inboxes/Index.vue").default
+);
+
+Vue.component(
+    "graph-users-status",
+    require("./components/dashboard/GraphUsersStatus.vue").default
 );
 
 /**

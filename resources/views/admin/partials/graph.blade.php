@@ -2,7 +2,7 @@
     <div class="card">
         <h5 class="text-light-blue text-uppercase">Estado de usuarios</h5>
         <div class="mt-2">
-            graph
+            <graph-users-status></graph-users-status>
         </div>
     </div>
 </div>

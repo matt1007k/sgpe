@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreatedRequest;
 use App\Models\User;
+use App\Services\MonthService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
@@ -95,5 +97,14 @@ class UserController extends Controller
         $user->delete();
         request()->session()->flash('message', 'Usuario eliminado con exitó.');
         return response()->json(['success' => true]);
+    }
+
+    public function usersStatus()
+    {
+        $titles = array(["Úlmos Meses", "Verificado", "Sin verificar"]);
+        $items = (new UserService())->getUsersCountByLastMounts();
+        $data = array_merge($titles, $items);
+
+        return  response()->json($data);
     }
 }

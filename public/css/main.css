@@ -1690,6 +1690,11 @@ h5 {
 .card-email .link {
   color: white;
   border-bottom: 2px dashed white;
+  transition: 0.5s;
+}
+
+.card-email .link:hover {
+  border-bottom: 2px solid white;
 }
 
 .card-light-blue {

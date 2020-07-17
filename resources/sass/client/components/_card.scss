@@ -101,6 +101,10 @@
     .link {
         color: white;
         border-bottom: 2px dashed white;
+        transition: 0.5s;
+        &:hover {
+            border-bottom: 2px solid white;
+        }
     }
 }
 

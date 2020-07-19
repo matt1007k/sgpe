@@ -469,11 +469,11 @@ body {
 }
 
 .mt-6 {
-  margin-top: 3rem;
+  margin-top: 3rem !important;
 }
 
 .mt-5 {
-  margin-top: 2.5rem;
+  margin-top: 2.5rem !important;
 }
 
 .my-4 {
@@ -589,6 +589,10 @@ body {
 @media (min-width: 640px) {
   .sm\:mt-0 {
     margin-top: 0;
+  }
+
+  .sm\:ml-0 {
+    margin-left: 0;
   }
 }
 
@@ -855,18 +859,12 @@ body {
 
 .navbar ul {
   display: flex;
-  position: relative;
   list-style: none;
 }
 
 .navbar ul li {
   font-size: inherit;
   margin: 0 8px;
-}
-
-.navbar ul li a {
-  display: flex;
-  align-items: center;
 }
 
 .navbar ul li a .icon {
@@ -876,8 +874,7 @@ body {
   margin-right: 10px;
 }
 
-.navbar ul li a span {
-  color: white;
+.navbar ul li a .name {
   display: none;
 }
 
@@ -908,7 +905,8 @@ body {
     margin: 0;
   }
 
-  .navbar ul li a span {
+  .navbar ul li a .name {
+    color: white;
     display: block;
   }
 
@@ -971,13 +969,20 @@ body {
     margin-right: 10px;
   }
 
-  .navbar ul li a span {
+  .navbar ul li a .name {
     color: white;
   }
 
   .navbar .nav-right {
     margin-right: 1rem;
   }
+}
+
+.container-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100%;
 }
 
 .landing-auth {
@@ -2419,7 +2424,7 @@ a:hover {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 3px 6px rgba(156, 149, 220, 0.2);
-  z-index: 2;
+  z-index: 1000;
   transition: all 0.5s ease-in-out;
 }
 
@@ -2472,10 +2477,6 @@ a:hover {
 .dropdown__container .dropdown .dropdown__menu li.active {
   background-color: rgba(34, 140, 219, 0.2);
   border-radius: 8px;
-}
-
-.dropdown__container .dropdown:after {
-  clear: none;
 }
 
 .badge {

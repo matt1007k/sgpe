@@ -11,17 +11,17 @@
             <h2>Perfil</h2>
        </div>
     </div>
-    <div class="content grid">
-        <div class="card card-profile bg-light-primary-opacity-20 cols-4 sm:cols-8 md:cols-12">
-            <a href="#" class="btn btn-outline-primary" style="position: absolute;top: 20px; right:20px;">Editar</a>
+    <div class="content grid justify-self-center">
+        <div class="card card-profile bg-light-primary-opacity-20 cols-4 sm:cols-8 md:cols-9">
+            
             <div class="flex flex-col justify-center align-center">
                 <div class="avatar avatar-xl">
-                    {{-- <div class="avatar-default">
+                    <div class="avatar-default">
                         <i class="material-icons-two-tone">face</i>
-                    </div> --}}
-                    <div class="avatar-image">
-                        <img src="https://e7.pngegg.com/pngimages/7/618/png-clipart-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl.png" alt="Avatar">
                     </div>
+                    {{-- <div class="avatar-image">
+                        <img src="https://e7.pngegg.com/pngimages/7/618/png-clipart-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl.png" alt="Avatar">
+                    </div> --}}
                 </div> 
                 <h3 class="mt-2">{{ Auth::user()->name }}</h3>
                 <livewire:users.show-status :status="Auth::user()->status" />
@@ -38,7 +38,7 @@
                 </div>
             </div>
             
-            <div class="card-footer-float flex flex-wrap justity-between flex-col sm:flex-row" style="">
+            <div class="card-footer-float flex flex-wrap justity-between flex-col sm:flex-row">
 
                 <div class="flex">
                     <span class="badge badge-primary badge-sm flex justify-center align-center" style="height: 32px; width: 32px">
@@ -70,6 +70,13 @@
                     </span>
                 </div>
 
+            </div>
+        </div>
+        <div class="card cols-4 sm:cols-8 md:cols-3 align-self-start">
+            <h4 class="mb-4 text-center">Puedes cambiar la información de tu cuenta.</h4>
+            <div class="flex flex-row md:flex-col ">
+                <a href="#" class="mb-2 btn btn-primary btn-full text-center">Editar información</a>
+                <a href="#" class="mb-2 ml-2 md:ml-0 text-center btn btn-outline-primary btn-full">Cambiar contraseña</a>
             </div>
         </div>
     </div>

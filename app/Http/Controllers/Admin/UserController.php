@@ -26,14 +26,20 @@ class UserController extends Controller
     public function index()
     {
         $status = request('f') ? request('f') : 'verified';
+        $sort = request('sort') ? request('sort') : 'desc';
         $search = request('search') ? request('search') : '';
 
         $users = User::filterStatus($status)
             ->search($search)
-            ->latest()
+            ->orderBy('created_at', $sort)
             ->paginate(10);
 
-        return view('admin.users.index', compact('users', 'status', 'search'));
+        return view('admin.users.index', compact(
+            'users',
+            'status',
+            'search',
+            'sort'
+        ));
     }
 
     public function create()

@@ -44,28 +44,20 @@
                 </div>
             </div>
             <div class="order cols-4 sm:cols-2 md:cols-7 align-self-center justify-self-end">
-                {{-- <div class="flex dropdown__container align-center text-light-blue"
-                x-data="{ open: false }"
-                >
-                    Ordenar por:
-                    <a @click="open = true" class="cursor-pointer"><i class="ml-1 material-icons-two-tone">sort</i>
-                    </a>
-                    <div class="dropdown"
-                    x-show="open"
-                    @click.away="open = false"
-                    x-transition:enter="transition"
-                    x-transition:enter-start="opacity-0 -translate-y-2"
-                    x-transition:enter-end="opacity-100 translate-y-0"
-                    x-transition:leave="transition"
-                    x-transition:leave-end="opacity-0 -translate-y-3"
-                    >
-                        <ul class="dropdown__menu">
-                            <li>Último periodo</li>
-                            <li>Antiguo periodo</li>
-                        </ul>
-                    </div>
-                </div> --}}
-                <dropdown-sort></dropdown-sort>
+                <dropdown-sort-b>
+                    <ul class="dropdown__menu">
+                        <li class="@if($sort == 'desc') active @endif">
+                            <a href="{{ route('users.index', ['sort' => 'desc']) }}">
+                                Último registros
+                            </a>
+                        </li>
+                        <li class="@if($sort == 'asc') active @endif">
+                            <a href="{{ route('users.index', ['sort' => 'asc']) }}">
+                                Antiguo registros
+                            </a>
+                        </li>
+                    </ul>
+                </dropdown-sort-b>
             </div>
         </div>
     </div>

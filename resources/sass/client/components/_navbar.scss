@@ -1,6 +1,8 @@
 .navbar {
     width: 100%;
     padding: 0.5rem 0rem;
+    // height: 90px;
+
     // text-align: center;
     // background: rgba($blue, 0.8);
     backdrop-filter: saturate(180%) blur(20px);
@@ -12,22 +14,20 @@
     }
     ul {
         display: flex;
-        position: relative;
         list-style: none;
         li {
             font-size: inherit;
             margin: 0 8px;
             a {
-                display: flex;
-                align-items: center;
+                // display: flex;
+                // align-items: center;
                 .icon {
                     font-size: 24px;
                     // color: #fdfdfd;
                     filter: contrast(4) invert(1) brightness(80%);
                     margin-right: 10px;
                 }
-                span {
-                    color: white;
+                .name {
                     display: none;
                 }
                 &:hover {
@@ -61,7 +61,8 @@
             li {
                 margin: 0;
                 a {
-                    span {
+                    .name {
+                        color: white;
                         display: block;
                     }
                 }
@@ -118,7 +119,7 @@
                         color: $light-violet;
                         margin-right: 10px;
                     }
-                    span {
+                    .name {
                         color: white;
                     }
                 }

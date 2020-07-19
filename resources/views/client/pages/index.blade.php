@@ -3,9 +3,10 @@
 
 @section('content')
 <div class="container">
-    <div class="content">
-        <h2>Boletas de pago</h2>
-        <div class="list__header">
+    <div class="content mt-5">
+        <h1>Boletas de pago</h1>
+        <h4 class="text-light-blue">Todos los pagos recibidos por cada mes.</h4>
+        <div class="list__header mt-2">
             <div class="filter flex align-center">
                 <div class="tooltip">
                     <i class="material-icons icon">filter_list</i>
@@ -29,12 +30,21 @@
                 </div>
             </div>
             <div class="order">
-                <dropdown-sort> 
-                        <ul class="dropdown__menu">
-                            <li>Último periodo</li>
-                            <li>Antiguo periodo</li>
-                        </ul>
-                </dropdown-sort>
+                <dropdown-sort-b> 
+                    <ul class="dropdown__menu">
+                        <li>tedxt</li>
+                        {{-- <li class="@if($sort == 'desc') active @endif">
+                            <a href="{{ route('users.index', ['sort' => 'desc']) }}">
+                                Último mes
+                            </a>
+                        </li>
+                        <li class="@if($sort == 'asc') active @endif">
+                            <a href="{{ route('users.index', ['sort' => 'asc']) }}">
+                                Antiguo registros
+                            </a>
+                        </li> --}}
+                    </ul>
+                </dropdown-sort-b>
             </div>
         </div>
     </div>
@@ -87,9 +97,9 @@
         </div>
     </div>
 </div>
+@endsection
 @push('scripts')
 <script>
-    window.Alpine.discoverUninitializedComponents(function(el){ window.Alpine.initializeComponent(el); console.log(el) })
     var a = document.querySelectorAll('.dropdown__container');
     // var dropdown = document.querySelector('.dropdown');
     a.forEach(element => {
@@ -101,4 +111,3 @@
     });
 </script>
 @endpush
-@endsection

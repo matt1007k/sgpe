@@ -50,6 +50,10 @@ Vue.component(
     require("./components/DropdownSort.vue").default
 );
 Vue.component(
+    "dropdown-sort-b",
+    require("./components/DropdownSortB.vue").default
+);
+Vue.component(
     "sent-message",
     require("./components/inboxes/sentMessage.vue").default
 );

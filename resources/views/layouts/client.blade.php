@@ -23,18 +23,21 @@
         <livewire:styles>
         @stack('styles')
     </head>
-    <body >
-        <div id="app">
-            
-            @include('partials.navbar')
-            
-            <main class="py-4">
-                @yield('content')
-            </main>
-            
+    <body>
+        <div id="app" style="width: 100%;
+        height: 100vh;">
+            <div class="container-layout">
+                
+                @include('partials.navbar')
+                
+                <main class="py-4">
+                    @yield('content')
+                </main>
+                
+                @include('partials.footer')
+            </div>
             @include('partials.alert-floating')
         </div>
-        @include('partials.footer')
         @stack('scripts')
     <livewire:scripts>
 </body>

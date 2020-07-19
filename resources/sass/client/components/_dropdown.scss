@@ -1,8 +1,6 @@
 .dropdown__container {
-    // width: 100%;
-
     position: relative;
-    // z-index: 1;
+
     &:hover .dropdown {
         clip-path: circle(75%);
         display: block;
@@ -24,9 +22,8 @@
         border-radius: 8px;
         padding: 1.5rem;
         box-shadow: 0 3px 6px rgba($light-blue, 0.2);
-        z-index: 2;
+        z-index: 1000;
         transition: all 0.5s ease-in-out;
-        // display: none;
         .dropdown__head {
             text-align: left;
         }
@@ -69,9 +66,6 @@
                     border-radius: 8px;
                 }
             }
-        }
-        &:after {
-            clear: none;
         }
     }
 }

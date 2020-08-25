@@ -9,15 +9,37 @@
 .card-profile {
     position: relative;
     z-index: 1;
-    height: 530px;
     object-position: center;
     // transition-delay: 0.2s;
-    a {
+    // background: repeating-radial-gradient(circle at 100%, $dark-blue, rgba(255, 255, 255, .2) 1px);
+    overflow: hidden;
+    margin: 0 -1rem;
+    border-radius: 0;
+    padding: 0.8rem;
+    &:before {
+        content: "";
+        position: absolute;
+        height: calc(80px * 4);
+        width: calc(80px * 4);
+        border: 1px solid rgba($light-blue, 0.4);
+        border-radius: 50%;
         z-index: 2;
+        top: -8rem;
+        right: 1rem;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        border: 1px solid rgba(white, 0.4);
+        border-radius: 50%;
+        z-index: 2;
+        top: -1rem;
     }
     .card-footer-float {
         background: white;
-        position: absolute;
+        // position: absolute;
         padding: 2rem;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
@@ -135,9 +157,6 @@
 }
 
 @include tablet {
-    .card-profile {
-        height: 430px;
-    }
     .items-count {
         gap: 20px;
     }
@@ -145,7 +164,9 @@
 
 @include desktop {
     .card-profile {
-        height: 440px;
+        border-radius: 8px;
+        padding: 2rem;
+        margin: 0;
     }
     .items-count {
         gap: 30px;

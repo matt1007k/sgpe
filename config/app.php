@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    //  
+    'url_api' => env('URL_API_SCP', 'http://localhost:8001/api/v1'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

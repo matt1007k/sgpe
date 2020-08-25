@@ -4,10 +4,13 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Services\MonthService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class UserService
 {
     protected $last_months;
+    protected $urlBase;
 
     public function __construct(int $last_months = 4)
     {
@@ -28,5 +31,23 @@ class UserService
             ]);
         }
         return $items;
+    }
+
+    public function getMyPayments()
+    {
+        $filterYear = request('year') ? request('year') : date('Y');
+        // $dni = '28211740';
+        $dni = Auth::user()->dni;
+
+        // $urlBase = 'http://scp.sharedwithexpose.com/api/v1/';
+        $token = 'dfdsfsd';
+        $this->urlBase = config('app.url_api');
+
+        $years = Http::get($this->urlBase . "/years?dni={$dni}")->json();
+        $payments = Http::withToken($token)->get($this->urlBase . "/payments?year={$filterYear}&dni={$dni}")->json();
+
+        return [
+            $years, $payments
+        ];
     }
 }

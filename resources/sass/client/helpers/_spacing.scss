@@ -4,6 +4,10 @@
 .text-left {
     text-align: left;
 }
+.-mx-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
 .mx-auto {
     margin-right: auto;
     margin-left: auto;
@@ -113,10 +117,21 @@
     .sm\:ml-0 {
         margin-left: 0;
     }
+    .sm\:mx-auto {
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 
 @include desktop {
     .md\:mt-2 {
         margin-top: 1rem;
+    }
+    .md\:ml-0 {
+        margin-left: 0;
+    }
+    .md\:mx-auto {
+        margin-right: auto;
+        margin-left: auto;
     }
 }

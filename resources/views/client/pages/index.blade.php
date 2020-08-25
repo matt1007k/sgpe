@@ -19,7 +19,7 @@
                                 <i class="material-icons left">check</i>
                                 {{ $year }}
                             </a>
-                        @else
+                       @else
                             <a href="{{ route('client.payments', ['year' => $year]) }}"  class="badge badge-default">
                                 {{ $year }}
                             </a>
@@ -28,23 +28,6 @@
                         <p class="text-light-blue">Sin años pagados.</p>
                     @endforelse
                 </div>
-            </div>
-            <div class="order">
-                <dropdown-sort-b> 
-                    <ul class="dropdown__menu">
-                        <li>tedxt</li>
-                        {{-- <li class="@if($sort == 'desc') active @endif">
-                            <a href="{{ route('users.index', ['sort' => 'desc']) }}">
-                                Último mes
-                            </a>
-                        </li>
-                        <li class="@if($sort == 'asc') active @endif">
-                            <a href="{{ route('users.index', ['sort' => 'asc']) }}">
-                                Antiguo registros
-                            </a>
-                        </li> --}}
-                    </ul>
-                </dropdown-sort-b>
             </div>
         </div>
     </div>

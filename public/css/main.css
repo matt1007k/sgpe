@@ -188,6 +188,10 @@ body {
   max-width: 100%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -211,6 +215,12 @@ body {
 
 .absolute {
   position: absolute;
+}
+
+@media (min-width: 640px) {
+  .sm\:w-1\/2 {
+    width: 50% !important;
+  }
 }
 
 .flex {
@@ -297,6 +307,10 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+}
+
+.gap-4 {
+  gap: 2rem;
 }
 
 .align-self-end {
@@ -459,6 +473,11 @@ body {
   text-align: left;
 }
 
+.-mx-0 {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
 .mx-auto {
   margin-right: auto;
   margin-left: auto;
@@ -594,11 +613,25 @@ body {
   .sm\:ml-0 {
     margin-left: 0;
   }
+
+  .sm\:mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 1024px) {
   .md\:mt-2 {
     margin-top: 1rem;
+  }
+
+  .md\:ml-0 {
+    margin-left: 0;
+  }
+
+  .md\:mx-auto {
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
@@ -612,6 +645,14 @@ body {
 
 .bg-light-blue-opacity-20 {
   background: rgba(156, 149, 220, 0.2) !important;
+}
+
+.bg-danger {
+  background: #fa3f3f !important;
+}
+
+.bg-dark {
+  background-color: #3f3d56 !important;
 }
 
 .bg-white {
@@ -1601,18 +1642,39 @@ h5 {
 .card-profile {
   position: relative;
   z-index: 1;
-  height: 530px;
   -o-object-position: center;
      object-position: center;
+  overflow: hidden;
+  margin: 0 -1rem;
+  border-radius: 0;
+  padding: 0.8rem;
 }
 
-.card-profile a {
+.card-profile:before {
+  content: "";
+  position: absolute;
+  height: calc(80px * 4);
+  width: calc(80px * 4);
+  border: 1px solid rgba(156, 149, 220, 0.4);
+  border-radius: 50%;
   z-index: 2;
+  top: -8rem;
+  right: 1rem;
+}
+
+.card-profile:after {
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  z-index: 2;
+  top: -1rem;
 }
 
 .card-profile .card-footer-float {
   background: white;
-  position: absolute;
   padding: 2rem;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1731,10 +1793,6 @@ h5 {
 }
 
 @media (min-width: 640px) {
-  .card-profile {
-    height: 430px;
-  }
-
   .items-count {
     gap: 20px;
   }
@@ -1742,7 +1800,9 @@ h5 {
 
 @media (min-width: 1024px) {
   .card-profile {
-    height: 440px;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 0;
   }
 
   .items-count {

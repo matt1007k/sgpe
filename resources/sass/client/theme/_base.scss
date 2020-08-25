@@ -18,6 +18,9 @@ body {
 .mw-full {
     max-width: 100%;
 }
+.w-1\/2 {
+    width: 50%;
+}
 
 .container {
     max-width: 1140px;
@@ -39,5 +42,10 @@ body {
     position: absolute;
 }
 
+@include tablet {
+    .sm\:w-1\/2 {
+        width: 50% !important;
+    }
+}
 @include desktop {
 }

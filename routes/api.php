@@ -20,7 +20,7 @@ Route::get('/messages/{message}', 'MessageController@show')->name('api.v1.messag
 Route::get('/verify-user', function () {
 
     // $urlBase = 'http://localhost:8001/api/v1/';
-    $urlBase = 'http://scp.sharedwithexpose.com/api/v1';
+    $urlBase = config('app.url_api');
     $users = Http::get("$urlBase/verify-user", ['q' => request('q')])->json();
 
     return $users;

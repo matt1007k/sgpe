@@ -26,16 +26,17 @@ class PageController extends Controller
      */
     public function index()
     {
+        $this->authorize('only-user');
         $filterYear = request('year') ? request('year') : date('Y');
         // $dni = '28211740';
         $dni = Auth::user()->dni;
 
-        $urlBase = 'http://scp.test/api/v1/';
+        $urlBase = config('app.url_api');
         // $urlBase = 'http://scp.sharedwithexpose.com/api/v1/';
         $token = 'dfdsfsd';
 
-        $years = Http::get($urlBase . "years?dni={$dni}")->json();
-        $payments = Http::withToken($token)->get($urlBase . "payments?year={$filterYear}&dni={$dni}")->json();
+        $years = Http::get($urlBase . "/years?dni={$dni}")->json();
+        $payments = Http::withToken($token)->get($urlBase . "/payments?year={$filterYear}&dni={$dni}")->json();
 
         return view('client.pages.index', compact('payments', 'years', 'filterYear'));
     }

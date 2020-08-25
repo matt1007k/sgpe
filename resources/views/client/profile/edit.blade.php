@@ -17,7 +17,7 @@
     <div class="card grid md:mb-2">
         <div class="cols-4 sm:cols-8 md:cols-6">
             <h3 class="mb-1">Datos del usuario</h3>
-            <p class="text-light-blue">Esta es la información para el contacto y verificación de los datos. </p>
+            <p class="text-light-blue">Esta es la información para el contacto de tu cuenta.</p>
         </div>
         <div class="cols-4 sm:cols-8 md:cols-6">
             <x-form method="put" :action="route('profile.update', $user)">

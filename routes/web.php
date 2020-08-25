@@ -11,7 +11,7 @@ Route::get('/success-register', function () {
     return view('client.messages.success-register');
 });
 
-Route::group(['namespace' => 'Client', ['middleware' => ['auth']]], function () {
+Route::group(['namespace' => 'Client'], function () {
     Route::get('/payments', 'PageController@index')->name('client.payments');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');

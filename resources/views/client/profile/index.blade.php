@@ -16,9 +16,9 @@
             
             <div class="flex flex-col justify-center align-center">
                 <div class="avatar avatar-xl">
-                    <!-- <div class="avatar&#45;default"> -->
-                    <!--     <i class="material&#45;icons&#45;two&#45;tone">face</i> -->
-                    <!-- </div> -->
+                    {{-- <div class="avatar&#45;default">
+                        <i class="material&#45;icons&#45;two&#45;tone">face</i>
+                    </div>  --}}
                     <div class="avatar-image">
                         <img src="https://e7.pngegg.com/pngimages/7/618/png-clipart-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl.png" alt="Avatar">
                     </div>

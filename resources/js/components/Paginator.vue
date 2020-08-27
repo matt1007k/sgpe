@@ -26,18 +26,18 @@ export default {
   props: {
     links: {
       type: Object,
-      required: true
+      required: true,
     },
     meta: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     pages() {
-      return this.meta.total / this.meta.per_page;
-    }
-  }
+      return this.meta.last_page;
+    },
+  },
 };
 </script>
 

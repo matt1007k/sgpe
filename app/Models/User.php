@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $allowedSorts = ['created_at'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -67,7 +69,7 @@ class User extends Authenticatable
             ->orWhere('dni', 'LIKE', "%$value%");
     }
 
-    public function scopeFilterStatus(Builder $query, $value)
+    public function scopeStatus(Builder $query, $value)
     {
         $query->where('status', $value);
     }

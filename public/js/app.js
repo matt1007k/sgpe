@@ -2275,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     pages: function pages() {
-      return this.meta.total / this.meta.per_page;
+      return this.meta.last_page;
     }
   }
 });
@@ -2636,7 +2636,7 @@ __webpack_require__.r(__webpack_exports__);
       meta: {},
       selectedMessage: null,
       filter: "me",
-      sort: "-subject",
+      sort: "-created_at",
       page: 1
     };
   },
@@ -2650,6 +2650,7 @@ __webpack_require__.r(__webpack_exports__);
     getMessages: function getMessages() {
       var _this = this;
 
+      this.resetPage();
       axios.get(this.getUrl).then(function (res) {
         _this.messages = res.data.data;
         _this.selectedMessage = _this.messages[0];
@@ -2676,6 +2677,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.filter = newFilter;
+      this.resetPage();
       axios.get(this.getUrl).then(function (res) {
         _this3.messages = res.data.data;
         _this3.selectedMessage = _this3.messages[0];
@@ -2689,6 +2691,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.sort = newSort;
+      this.resetPage();
       axios.get(this.getUrl).then(function (res) {
         _this4.messages = res.data.data;
         _this4.selectedMessage = _this4.messages[0];
@@ -2697,11 +2700,32 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    resetPage: function resetPage() {
+      this.page = 1;
     }
   },
   computed: {
     getUrl: function getUrl() {
-      return "/api/v1/messages?sort=".concat(this.sort, "&filter[send]=").concat(this.filter, "&filter[search]=").concat(this.search, "&page[number]=").concat(this.page);
+      return "/api/v1/messages?filter[search]=".concat(this.search, "&sort=").concat(this.sort, "&filter[send]=").concat(this.filter, "&page[number]=").concat(this.page);
+    }
+  },
+  watch: {
+    search: function search(value) {
+      var _this5 = this;
+
+      if (value.length > 3) {
+        axios.get(this.getUrl).then(function (res) {
+          _this5.messages = res.data.data;
+          _this5.selectedMessage = _this5.messages[0];
+          _this5.links = res.data.links;
+          _this5.meta = res.data.meta;
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+
+      this.getMessages();
     }
   }
 });

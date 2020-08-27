@@ -10,7 +10,7 @@ class Message extends Model
 {
     protected $fillable = ['to', 'subject', 'body'];
 
-    public $allowedSorts = ['subject'];
+    public $allowedSorts = ['subject', 'created_at'];
 
     // protected $events = [
     //     'created' => MessageCreated::class
@@ -32,8 +32,7 @@ class Message extends Model
             return $query->where('user_id', '!=', Auth::user()->id);
         } else if ($value == 'send') {
             return $query->where('user_id', Auth::user()->id);
-        }
-        else {
+        } else {
             return;
         }
     }

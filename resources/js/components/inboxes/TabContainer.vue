@@ -47,8 +47,8 @@ export default {
     meta: {},
     selectedMessage: null,
     filter: "me",
-    sort: "-subject",
-    page: 1
+    sort: "-created_at",
+    page: 1,
   }),
   created() {
     this.getMessages();
@@ -58,58 +58,80 @@ export default {
   },
   methods: {
     getMessages() {
+      this.resetPage();
       axios
         .get(this.getUrl)
-        .then(res => {
+        .then((res) => {
           this.messages = res.data.data;
           this.selectedMessage = this.messages[0];
           this.links = res.data.links;
           this.meta = res.data.meta;
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     },
     onPage(page) {
       this.page = page;
       axios
         .get(this.getUrl)
-        .then(res => {
+        .then((res) => {
           this.messages = res.data.data;
           this.selectedMessage = this.messages[0];
           this.links = res.data.links;
           this.meta = res.data.meta;
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     },
     onFilter(newFilter) {
       this.filter = newFilter;
+      this.resetPage();
       axios
         .get(this.getUrl)
-        .then(res => {
+        .then((res) => {
           this.messages = res.data.data;
           this.selectedMessage = this.messages[0];
           this.links = res.data.links;
           this.meta = res.data.meta;
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     },
     onSort(newSort) {
       this.sort = newSort;
+      this.resetPage();
       axios
         .get(this.getUrl)
-        .then(res => {
+        .then((res) => {
           this.messages = res.data.data;
           this.selectedMessage = this.messages[0];
           this.links = res.data.links;
           this.meta = res.data.meta;
         })
-        .catch(err => console.log(err));
-    }
+        .catch((err) => console.log(err));
+    },
+    resetPage() {
+      this.page = 1;
+    },
   },
   computed: {
     getUrl() {
-      return `/api/v1/messages?sort=${this.sort}&filter[send]=${this.filter}&filter[search]=${this.search}&page[number]=${this.page}`;
-    }
-  }
+      return `/api/v1/messages?filter[search]=${this.search}&sort=${this.sort}&filter[send]=${this.filter}&page[number]=${this.page}`;
+    },
+  },
+  watch: {
+    search(value) {
+      if (value.length > 3) {
+        axios
+          .get(this.getUrl)
+          .then((res) => {
+            this.messages = res.data.data;
+            this.selectedMessage = this.messages[0];
+            this.links = res.data.links;
+            this.meta = res.data.meta;
+          })
+          .catch((err) => console.log(err));
+      }
+      this.getMessages();
+    },
+  },
 };
 </script>
 

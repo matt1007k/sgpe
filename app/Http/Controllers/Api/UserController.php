@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::applyFilters()
+            ->applySorts()
+            ->jsonPaginate();
+        return UserResource::collection($users);
+    }
+
     public function show(User $user)
     {
         return UserResource::make($user);

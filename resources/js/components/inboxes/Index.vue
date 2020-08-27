@@ -33,7 +33,7 @@ import TabContainer from "./TabContainer";
 export default {
   components: { TextFieldSearch, TabContainer },
   data: () => ({
-    search: ""
-  })
+    search: "",
+  }),
 };
 </script>

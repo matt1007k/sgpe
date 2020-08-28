@@ -17,4 +17,6 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::put('/profile/{user}/update', 'ProfileController@update')->name('profile.update');
+    Route::get('/change-password/edit', 'ChangePasswordController@edit')->name('change-password.edit');
+    Route::put('/change-password/{user}', 'ChangePasswordController@update')->name('change-password.update');
 });

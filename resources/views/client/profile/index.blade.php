@@ -80,7 +80,7 @@
             <h4 class="mb-4 text-center">Puedes cambiar la información de tu cuenta.</h4>
             <div class="flex flex-row md:flex-col ">
                 <a href="{{ route('profile.edit') }}" class="mb-2 btn btn-primary btn-full text-center">Editar información</a>
-                <a href="#" class="mb-2 ml-2 md:ml-0 text-center btn btn-outline-primary btn-full">Cambiar contraseña</a>
+                <a href="{{ route('change-password.edit') }}" class="mb-2 ml-2 md:ml-0 text-center btn btn-outline-primary btn-full">Cambiar contraseña</a>
             </div>
         </div>
     </div>

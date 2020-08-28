@@ -16,6 +16,10 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->user = factory(User::class, ['email' => 'test1@gmail.com'])->create();
+        $this->user = factory(User::class)->create([
+            'email' => 'test1@gmail.com',
+            'dni' => '08977888',
+            'status' => 'verified'
+        ]);
     }
 }

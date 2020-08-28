@@ -22,6 +22,7 @@ import "./plugins/google-charts";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component("not-data", require("./components/NotData.vue").default);
 Vue.component("modal-left", require("./components/ModalLeft.vue").default);
 Vue.component(
     "alert-floating",
@@ -36,6 +37,7 @@ Vue.component(
     "btn-view-user",
     require("./components/users/BtnViewUser.vue").default
 );
+Vue.component("user-list", require("./components/users/Index.vue").default);
 Vue.component(
     "dropdown-auth",
     require("./components/users/DropdownAuth.vue").default

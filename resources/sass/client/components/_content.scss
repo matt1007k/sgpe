@@ -121,13 +121,13 @@
     height: 20px;
     width: 1px;
     // border-right: 1px solid $light-blue;
-    background-color: $light-blue;
+    background-color: rgba($light-blue, 0.5);
     margin: 0px 10px;
 }
 .divider-x {
     height: 1px;
     width: 100%;
-    background-color: $light-blue;
+    background-color: rgba($light-blue, 0.5);
     margin: 10px 0px;
 }
 

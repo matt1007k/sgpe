@@ -59,14 +59,16 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function scopeSearch(Builder $query, $value)
+    public function scopeSearch(Builder $query, $values)
     {
-        if ($value == "") {
+        if ($values == null) {
             return;
         }
 
-        return  $query->where('name', 'LIKE', "%$value%")
-            ->orWhere('dni', 'LIKE', "%$value%");
+        foreach (Str::of($values)->explode(' ') as $value) {
+            $query->orWhere('name', 'LIKE', "%$value%")
+                ->orWhere('dni', 'LIKE', "%$value%");
+        }
     }
 
     public function scopeStatus(Builder $query, $value)

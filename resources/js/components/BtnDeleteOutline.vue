@@ -1,9 +1,6 @@
 <template>
   <div>
-    <a @click="open = true" class="action tooltip">
-      <i class="material-icons-two-tone">delete</i>
-      <span>Eliminar</span>
-    </a>
+    <a @click="open = true" class="btn btn-outline-danger">Eliminar</a>
     <modal :open="open" @close="isClose => open = isClose">
       <div class="card">
         <div

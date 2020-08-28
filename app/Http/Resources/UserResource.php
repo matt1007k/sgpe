@@ -23,6 +23,7 @@ class UserResource extends JsonResource
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'status' => $this->status,
+                'created_at' => $this->created_at->diffForHumans(),
             ],
             'links' => [
                 'self' => route('api.v1.users.show', $this)

@@ -26,7 +26,8 @@ class ListUserTest extends TestCase
                     'dni' => $user->dni,
                     'email' => $user->email,
                     'phone' => $user->phone,
-                    'status' => $user->status
+                    'status' => $user->status,
+                    'created_at' => $user->created_at->diffForHumans()
                 ],
                 'links' => [
                     'self' => route('api.v1.users.show', $user)
@@ -56,6 +57,7 @@ class ListUserTest extends TestCase
                         'dni' => $this->user->dni,
                         'phone' => $this->user->phone,
                         'status' => $this->user->status,
+                        'created_at' => $this->user->created_at->diffForHumans()
                     ],
                     'links' => [
                         'self' => route('api.v1.users.show', $this->user)
@@ -69,7 +71,8 @@ class ListUserTest extends TestCase
                         'email' => $user1->email,
                         'dni' => $user1->dni,
                         'phone' => $user1->phone,
-                        'status' => $user1->status
+                        'status' => $user1->status,
+                        'created_at' => $user1->created_at->diffForHumans()
                     ],
                     'links' => [
                         'self' => route('api.v1.users.show', $user1)
@@ -84,6 +87,7 @@ class ListUserTest extends TestCase
                         'dni' => $user2->dni,
                         'phone' => $user2->phone,
                         'status' => $user2->status,
+                        'created_at' => $user2->created_at->diffForHumans()
                     ],
                     'links' => [
                         'self' => route('api.v1.users.show', $user2)

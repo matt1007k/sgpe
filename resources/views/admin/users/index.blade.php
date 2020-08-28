@@ -107,5 +107,5 @@
         </div>
     </div>
 </div> --}}
-<livewire:users.user-list />
+<user-list />
 @endsection

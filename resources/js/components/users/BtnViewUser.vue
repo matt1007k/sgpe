@@ -6,9 +6,14 @@
     </a>
     <modal-left :open="open" @close="isClose => open = isClose">
       <div class="card">
-        <div class="header header-linear-primary-red flex flex-col align-center justify-center">
+        <div class="header bg-dark profile flex flex-col align-center justify-center">
           <div class="avatar avatar-default avatar-xl bg-white">
-            <i class="material-icons">person</i>
+            <div class="avatar-image">
+              <img
+                src="https://e7.pngegg.com/pngimages/7/618/png-clipart-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl.png"
+                alt="Avatar"
+              />
+            </div>
           </div>
           <h3 class="mt-2 mb-1 text-white">{{ user.name }}</h3>
           <show-user-status :status="user.status" />
@@ -26,18 +31,7 @@
               <p class="text-light-blue text-sm">DNI</p>
             </span>
           </div>
-          <div class="flex mt-2">
-            <span
-              class="badge badge-primary badge-sm flex justify-center align-center"
-              style="height: 32px; width: 32px"
-            >
-              <i class="material-icons-two-tone">card_membership</i>
-            </span>
-            <span class="ml-2">
-              <span class="headline">{{ user.dni }}</span>
-              <p class="text-light-blue text-sm">Códido Modular</p>
-            </span>
-          </div>
+
           <div class="flex mt-2">
             <span
               class="badge badge-primary badge-sm flex justify-center align-center"
@@ -64,11 +58,11 @@
           </div>
         </div>
         <div class="mt-4">
-          <a :href="`/users/${user.id}/edit`">Verificar usuario</a>
+          <a :href="`/users/${id}/edit`">Verificar usuario</a>
         </div>
         <div class="mt-4 flex justity-end">
-          <a :href="`/users/${user.id}/edit`" class="btn btn-outline-danger">Eliminar</a>
-          <a :href="`/users/${user.id}/edit`" class="ml-2 btn btn-primary">Editar</a>
+          <!-- <BtnDeleteOutline :id="id" resource="users" /> -->
+          <a :href="`/users/${id}/edit`" class="ml-2 btn btn-primary">Editar</a>
         </div>
       </div>
     </modal-left>
@@ -77,19 +71,24 @@
 
 <script>
 import ShowUserStatus from "./ShowUserStatus.vue";
+import BtnDeleteOutline from "./../BtnDeleteOutline.vue";
 export default {
-  components: { ShowUserStatus },
+  components: { ShowUserStatus, BtnDeleteOutline },
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     user: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      open: false
+      open: false,
     };
-  }
+  },
 };
 </script>
 

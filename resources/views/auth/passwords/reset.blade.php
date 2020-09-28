@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container h-100 w-100 flex justify-center align-center">
+<div class="container h-100 w-100 flex justify-center align-center message">
     <div class="card form__register mt-4">
         <h3>{{ __('Reset Password') }}</h3>
 

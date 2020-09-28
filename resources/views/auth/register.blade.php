@@ -4,7 +4,7 @@
 @section('content')
         <div class="how">
             <div class="card">
-                <h3>Cómo crear una cuenta?</h3>
+                <h3>¿Cómo crear una cuenta?</h3>
                 <section>
                     <ul class="list-group mt-4">
                         <li class="list-item">

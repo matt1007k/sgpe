@@ -28,7 +28,7 @@
                     <span class="flex justity-between">
                         <label for="password">Contraseña</label>
                         @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="forgot-password">Olvide mi contraseña?</a>
+                            <a href="{{ route('password.request') }}" class="forgot-password">¿Olvide mi contraseña?</a>
                         @endif
                     </span>
                     <input type="password" id="password" name="password" class="input @error('password') is-invalid @enderror" value="{{ old('password') }}"  required>

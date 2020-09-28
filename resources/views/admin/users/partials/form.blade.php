@@ -29,7 +29,9 @@
             <livewire:users.show-status :status="$user->status" />
         </div>
         
-        <verify-user dni="{{ $user->dni }}" />
+        @if(!empty($user->dni) && old('status', $user->status) === 'unverified')
+            <verify-user dni="{{ $user->dni }}" />
+        @endif
 
     </div>
     @if(old('status', $user->status) === 'verified')

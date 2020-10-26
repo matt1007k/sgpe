@@ -124,15 +124,17 @@ a {
     }
 }
 .btn-secondary {
-    background-color: white;
+    background-color: transparent;
     color: $dark-blue;
+    border: 2px solid rgba(0, 0, 0, 0.1);
     i.left,
     i.rigth {
         color: $blue;
     }
     &:hover {
         text-decoration: none;
-        opacity: 0.85;
+        opacity: 1;
+        border: 2px solid rgba(white, 1);
         background: rgba(white, 1);
     }
 }

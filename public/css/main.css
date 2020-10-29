@@ -193,6 +193,10 @@ body {
   width: 50%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -709,6 +713,17 @@ body {
 .alert-success h5,
 .alert-success h4 {
   color: #65d16d;
+}
+
+.alert-info {
+  border-top: 4px solid #228cdb;
+  background: rgba(34, 140, 219, 0.2);
+  color: #228cdb;
+}
+
+.alert-info h5,
+.alert-info h4 {
+  color: #228cdb;
 }
 
 .alert-danger {
@@ -1458,9 +1473,9 @@ body {
 
   .hero-info .info-title {
     color: rgba(63, 61, 86, 0.5);
-    font-size: 10;
+    font-size: 12px;
     letter-spacing: 2px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .hero-info .info-content {
@@ -1986,6 +2001,7 @@ h5 {
   grid-column: 1/4;
   width: 100%;
   border-radius: 0;
+  overflow-x: scroll;
 }
 
 .form__auth img {

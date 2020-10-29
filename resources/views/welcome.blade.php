@@ -3,7 +3,8 @@
     <div class="bg-hero"></div>
     <div class="hero-info">
         <div class="info">
-            <div class="info-title">Contáctanos</div> <div class="info-content">
+            <div class="info-title">Contáctanos</div> 
+            <div class="info-content">
                 <div class="item-icon">
                     <i class="material-icons">phone</i>
                     <span>(066) 251123</span>
@@ -26,7 +27,7 @@
                 <h1>Boletas de Pago Electrónica</h1>
                 <p class="hero-paragraph">Recibe y observa tus boletas de pago electrónica cuando lo necesites.</p>
                 <div class="hero-actions">
-                    <a href="{{ route('login') }}" class="btn btn-primary">Ingresar</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary">Ingresar Ahora</a>
                     <a href="{{ route('register') }}" class="btn btn-secondary">Registrarse</a>
                 </div>
             </div>

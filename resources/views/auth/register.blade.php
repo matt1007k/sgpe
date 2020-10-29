@@ -48,11 +48,12 @@
                 <img src="{{ asset('images/client/logo_light.svg') }}" alt="Logo BPE Light">
             </div>
             <h2>Crear una cuenta,</h2>
-            <h4 class="text-primary">Ingresa tus datos para tener una cuenta</h4>
+            <h4 class="text-primary">Consulta tus datos para crear una cuenta.</h4>
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf 
-                <div class="group-input">
+                <livewire:code-verified.search-users></livewire:code-verified.search-users>
+                {{-- <div class="group-input">
                     <label for="name">Nombre Completo</label>
                     <input type="text" id="name" name="name" class="input"  value="{{ old('name') }}"  required autofocus>
                     @error('name')
@@ -60,12 +61,12 @@
                        {{ $message }} 
                     </div>
                     @enderror
-                </div>
-                <div class="group-input code">
-                    <div class="input1">
-                        <label for="dni">DNI</label>
-                        <input type="text" id="dni" name="dni" class="input"  value="{{ old('dni') }}" required>
-                        @error('dni')
+                </div> --}}
+                {{-- <div class="group-input code">
+                    <div class="input1 w-full md:w-1/2">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" value="{{ old('email') }}"  class="input">
+                        @error('email')
                         <div class="text-invalid">
                         {{ $message }} 
                         </div>
@@ -83,15 +84,6 @@
                         @enderror
                     </div>
                 </div>
-                <div class="group-input">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Ingresar tu correo electrónico"  value="{{ old('email') }}"  class="input">
-                    @error('email')
-                    <div class="text-invalid">
-                       {{ $message }} 
-                    </div>
-                    @enderror
-                </div>
                 <div class="group-checkbox">
                     <label for="accept">
                         <input type="checkbox" name="accept" id="accept" {{ old('accept') ? 'checked' : '' }}>
@@ -102,7 +94,7 @@
                     </label>
                 </div>
 
-                <button class="btn btn-primary btn-full">Registrarse</button>
+                <button class="btn btn-primary btn-full">Registrarse</button> --}}
                 <div class="link">Ya tengo una cuenta. <a href="{{ route('login') }}" class="ml-1">Ingresar</a></div>
             </form>
 

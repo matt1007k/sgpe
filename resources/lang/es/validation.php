@@ -153,7 +153,8 @@ return [
         'password' => 'contraseña',
         'to' => 'para',
         'subject' => 'asunto',
-        'body' => 'mensaje'
+        'body' => 'mensaje',
+        'file' => 'archivo'
     ],
 
 ];

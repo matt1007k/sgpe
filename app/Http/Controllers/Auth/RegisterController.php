@@ -69,6 +69,7 @@ class RegisterController extends Controller
             'dni' => ['required', 'numeric', 'digits_between:8,9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'numeric', 'digits_between:6,9'],
+            'file' => ['required']
         ]);
     }
 

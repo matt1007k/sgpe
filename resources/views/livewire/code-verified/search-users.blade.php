@@ -2,7 +2,7 @@
     <div class="group-input code">
         <div class="input1">
             <label for="dni">DNI</label>
-            <input type="text" id="dni" class="input" name="dni"  value="{{ old('dni') }}" required wire:model="dni">
+            <input type="text" id="dni" class="input" name="dni"  value="{{ old('dni') }}" required wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
             @error('dni')
             <div class="text-invalid">
             {{ $message }} 
@@ -11,7 +11,7 @@
         </div>
         <div class="input2">
             <label for="code_verified">Código Verificada</label>
-            <input type="text" id="code_verified" class="input"  value="{{ old('code_verified') }}" required wire:model="code_verified">                        
+            <input type="text" id="code_verified" class="input"  value="{{ old('code_verified') }}" required wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
             @error('code_verified')
             <div class="text-invalid">
             {{ $message }} 
@@ -24,9 +24,14 @@
         </button>
         </div>
     </div>
-    <div wire:loading wire.target="dni" class="alert alert-info w-full">
+    @if ($searched)
+    <div wire:loading wire.target="searched" class="alert alert-info w-full">
         Buscando...
     </div>
+    @endif
+    @if($count === 3)
+        <div class="alert alert-info">{{ $message_wait }}</div>
+    @endif 
     @if(!empty($user))
         @if($user['codVerifica'] === $code_verified)
             <div class="group-input">

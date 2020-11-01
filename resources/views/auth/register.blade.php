@@ -49,8 +49,8 @@
             </div>
             <h2>Crear una cuenta,</h2>
             <h4 class="text-primary">Consulta tus datos para crear una cuenta.</h4>
-
-            <form method="POST" action="{{ route('register') }}">
+            {{ session('errors')}}
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf 
                 <livewire:code-verified.search-users></livewire:code-verified.search-users>
                 {{-- <div class="group-input">

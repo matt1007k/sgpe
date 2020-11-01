@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'dni' => ['required', 'numeric', 'digits_between:8,9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'numeric', 'digits_between:6,9'],
-            'file' => ['required']
+            'file' => ['required', 'file', 'max:5000', 'mimes:pdf,docx,doc,xls,xlt,xlsx']
         ]);
     }
 
@@ -86,6 +86,7 @@ class RegisterController extends Controller
             'dni' => $data['dni'],
             'email' => $data['email'],
             'phone' => $data['phone'],
+            'file' => request()->file('file')->store('files', 'public'),
         ]);
     }
 }

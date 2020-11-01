@@ -1,8 +1,11 @@
 <div>
+    @if($count < 3)
+    <div class="mt-2"><span class="text-invalid">(*)</span> Tienes <strong>{{ 3 - $count}}</strong> intentos para ingresar el <strong>Código Verificada</strong></div>
+    @endif
     <div class="group-input code">
         <div class="input1">
             <label for="dni">DNI</label>
-            <input type="text" id="dni" class="input" name="dni"  value="{{ old('dni') }}" required wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
+            <input type="text" id="dni" class="input" name="dni"  :value="old('dni')"  wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
             @error('dni')
             <div class="text-invalid">
             {{ $message }} 
@@ -11,7 +14,7 @@
         </div>
         <div class="input2">
             <label for="code_verified">Código Verificada</label>
-            <input type="text" id="code_verified" class="input"  value="{{ old('code_verified') }}" required wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
+            <input type="text" id="code_verified" class="input"  value="{{ old('code_verified') }}"  wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
             @error('code_verified')
             <div class="text-invalid">
             {{ $message }} 
@@ -19,9 +22,9 @@
             @enderror
         </div>
         <div class="flex align-end">
-        <button wire:click.prevent="searchUser" class="btn btn-primary" {{ empty($dni) || empty($code_verified) ? 'disabled' : ''}}>
-            <i class="material-icons">search</i>
-        </button>
+            <button wire:click.prevent="searchUser" class="btn btn-primary" {{ empty($dni) || empty($code_verified) || $count === 3 ? 'disabled' : ''}}>
+                <i class="material-icons">search</i>
+            </button>
         </div>
     </div>
     @if ($searched)
@@ -36,7 +39,7 @@
         @if($user['codVerifica'] === $code_verified)
             <div class="group-input">
                 <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" class="input"  value="{{ old('name', $full_name) }}"  required disabled>
+                <input type="text" id="name" name="name" class="input"  value="{{ old('name', $full_name) }}">
                 @error('name')
                 <div class="text-invalid">
                    {{ $message }} 
@@ -46,7 +49,7 @@
             <div class="group-input code">
                 <div class="input1 w-full md:w-1/2">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}"  class="input" required>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}"  class="input" >
                     @error('email')
                     <div class="text-invalid">
                     {{ $message }} 
@@ -55,7 +58,7 @@
                 </div>
                 <div class="input2 w-full md:w-1/2">
                     <label for="phone">Telefóno o Celular</label>
-                    <input type="text" id="phone" name="phone" class="input"  value="{{ old('phone') }}" required>                        
+                    <input type="text" id="phone" name="phone" class="input"  value="{{ old('phone') }}" >                        
                     @error('phone')
                     <div class="text-invalid">
                     {{ $message }} 
@@ -68,7 +71,7 @@
                 name="file" 
                 :value="old('file')"
                 type="file"
-                help="El archivo no debe de superar los 10MB"
+                help="El archivo no debe de superar los 5MB"
             />
 
             <div class="group-checkbox">

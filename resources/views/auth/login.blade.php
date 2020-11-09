@@ -28,9 +28,6 @@
                 <div class="group-input">
                     <span class="flex justity-between">
                         <label for="password">Contraseña</label>
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="forgot-password">¿Olvide mi contraseña?</a>
-                        @endif
                     </span>
                     <input type="password" id="password" name="password" class="input @error('password') is-invalid @enderror" value="{{ old('password') }}"  required>
                     @error('password')
@@ -48,6 +45,9 @@
                     </label>
                 </div>
                 <button class="btn btn-primary btn-full">Ingresar</button>
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="mt-2 forgot-password">¿Olvide mi contraseña?</a>
+                        @endif
                 <div class="link">No tengo una cuenta. <a href="{{ route('register') }}" class="ml-1">Registrarse</a></div>
             </form>
 

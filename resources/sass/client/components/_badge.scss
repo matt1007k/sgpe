@@ -41,6 +41,10 @@
         filter: $filter-blue;
     }
 }
+.badge-primary-2 {
+    background: rgba($blue, 1);
+    color: white;
+}
 .badge-default {
     background-color: white;
     color: $dark-blue;

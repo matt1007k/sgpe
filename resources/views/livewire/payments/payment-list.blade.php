@@ -1,10 +1,5 @@
-@extends('layouts.client')
-@section('title', 'Mis boletas de pago')
-
-@section('content')
-<div class="container">
-    <livewire:payments.payment-list />
-    {{-- <div class="content mt-5">
+<div>
+    <div class="content mt-5">
         <div class="header-page">
             <div>
             <h2>Boletas de pago</h2>
@@ -37,7 +32,7 @@
     <div class="content">
         <div class="list__item">
         
-            @forelse($new_payments as $payment)
+            @forelse($payments as $payment)
             <div class="card item {{ $payment['status'] === 'received' ? 'received' : '' }}">
                 <div class="row">
                     <h3>{{ $payment['periodo'] }}</h3>
@@ -63,13 +58,9 @@
                 </div>
                 <div class="row">
                     <div class="actions">
-                        <a href="{{ $payment['link'] }}" target="_blank" class="action tooltip">
+                        <a wire:click="markReceivedPayment({{ $payment['id'] }},'{{ $payment['link'] }}')" target="_blank" class="action tooltip">
                             <i class="material-icons-two-tone">print</i>
                             <span>Imprimir</span>
-                        </a>
-                        <a href="{{ $payment['link'] }}" target="_blank" class="action tooltip">
-                           <i class="material-icons-two-tone">save_alt</i> 
-                            <span>Descargar</span>
                         </a>
                     </div>
                 </div>
@@ -81,7 +72,26 @@
             @endforelse
 
         </div>
-    </div> --}}
+    </div>
 </div>
-@endsection
 
+@push('scripts')
+<script>
+    document.addEventListener('livewire:load', function () {
+        // Get the value of the "count" property
+        var someValue = @this.years
+
+        // Set the value of the "count" property
+        // @this.count = 5
+
+        // Call the increment component action
+        // @this.increment()
+
+            console.log('someValue')
+        // Run a callback when an event ("foo") is emitted from this component
+        @this.on('foo', () => {
+            console.log('someValue')
+        })
+    })
+</script>   
+@endpush

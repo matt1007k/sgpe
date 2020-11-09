@@ -174,7 +174,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: #f8f8f8;
   font-size: 14px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .h-screen {
@@ -1080,6 +1080,27 @@ body {
   min-height: 100%;
 }
 
+.header-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: #f7ede1;
+  overflow: hidden;
+}
+
+.header-page .paragraph {
+  color: rgba(63, 61, 86, 0.8);
+}
+
+.header-page .image {
+  width: 153px;
+  height: auto;
+  margin: -2.5rem 0;
+  -o-object-position: bottom !important;
+     object-position: bottom !important;
+}
+
 .landing-auth {
   width: 100%;
   display: grid;
@@ -1226,21 +1247,27 @@ body {
 .content .list__header {
   flex-direction: row;
   color: #9c95dc;
-  align-items: center;
+  align-items: center !important;
   width: 100%;
 }
 
 .content .list__header .filter {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin: 1.5rem 0 0 0;
+}
+
+.content .list__header .filter span {
+  color: rgba(63, 61, 86, 0.8);
+  margin-bottom: 15px;
 }
 
 .content .list__header .filter .list-year {
   display: flex;
   max-width: 100%;
   overflow-x: scroll;
-  margin-left: 5px;
+  margin-left: 10px;
+  height: auto;
 }
 
 .content .list__header .filter .list-year div {
@@ -1274,6 +1301,11 @@ body {
   grid-gap: 20px;
   margin-bottom: 10px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-left: 8px solid rgba(63, 61, 86, 0.25);
+}
+
+.content .list__item .item.received {
+  border-left: 8px solid #228cdb;
 }
 
 .content .list__item .item .row {
@@ -1539,6 +1571,7 @@ body {
 
   .hero-header .hero-section .hero-content h1 {
     width: 80%;
+    line-height: 1.2;
   }
 
   .hero-header .hero-section .hero-content .hero-paragraph {
@@ -1647,14 +1680,11 @@ body {
   .content .list__header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center !important;
     flex-direction: row;
   }
 
   .content .list__header .filter {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
     padding: 0;
   }
 
@@ -2350,7 +2380,7 @@ a:hover {
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: white;
   color: #3f3d56;
   border: 2px solid rgba(0, 0, 0, 0.1);
 }
@@ -2785,6 +2815,11 @@ a:hover {
 .badge-primary i {
   -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
           filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+}
+
+.badge-primary-2 {
+  background: #228cdb;
+  color: white;
 }
 
 .badge-default {

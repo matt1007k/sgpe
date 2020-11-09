@@ -4,6 +4,23 @@
     grid-template-columns: 100%;
     min-height: 100%;
 }
+.header-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: #f7ede1;
+    overflow: hidden;
+    .paragraph {
+        color: rgba($dark-blue, 0.8);
+    }
+    .image {
+        width: 153px;
+        height: auto;
+        margin: -2.5rem 0;
+        object-position: bottom !important;
+    }
+}
 .landing-auth {
     width: 100%;
     display: grid;
@@ -136,17 +153,22 @@
     .list__header {
         flex-direction: row;
         color: $light-blue;
-        align-items: center;
+        align-items: center !important;
         width: 100%;
         .filter {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin: 1.5rem 0 0 0;
+            span {
+                color: rgba($dark-blue, 0.8);
+                margin-bottom: 15px;
+            }
             .list-year {
                 display: flex;
                 max-width: 100%;
                 overflow-x: scroll;
-                margin-left: 5px;
+                margin-left: 10px;
+                height: auto;
                 // &::-webkit-scrollbar {
                 //     display: none;
                 // }
@@ -182,6 +204,10 @@
             grid-gap: 20px;
             margin-bottom: 10px;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            border-left: 8px solid rgba($dark-blue, 0.25);
+            &.received {
+                border-left: 8px solid $blue;
+            }
             .row {
                 text-transform: capitalize;
                 text-align: left;
@@ -416,6 +442,7 @@
                 width: 50%;
                 h1 {
                     width: 80%;
+                    line-height: 1.2;
                 }
                 .hero-paragraph {
                     width: 80%;
@@ -512,12 +539,12 @@
         .list__header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center !important;
             flex-direction: row;
             .filter {
-                display: flex;
-                align-items: center;
-                flex-direction: row;
+                // display: flex;
+                // align-items: center !important;
+                // flex-direction: row;
                 padding: 0;
                 .divider-y {
                     display: block;

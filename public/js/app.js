@@ -3064,6 +3064,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -58955,7 +58967,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("btn-delete", { attrs: { model: _vm.message, resource: "inboxes" } })
+        _c("btn-delete", { attrs: { id: _vm.message.id, resource: "inboxes" } })
       ],
       1
     ),
@@ -59489,7 +59501,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("h3", { staticClass: "mt-2 mb-1 text-white" }, [
+                _c("h3", { staticClass: "mt-2 mb-1 text-white text-center" }, [
                   _vm._v(_vm._s(_vm.user.name))
                 ]),
                 _vm._v(" "),
@@ -59575,7 +59587,35 @@ var render = function() {
                     _vm._v("Correo Electrónico")
                   ])
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _vm.user.file
+                ? _c("div", { staticClass: "flex mt-2" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "badge badge-primary badge-sm flex justify-center align-center",
+                        staticStyle: { height: "32px", width: "32px" }
+                      },
+                      [
+                        _c("i", { staticClass: "material-icons-two-tone" }, [
+                          _vm._v("insert_drive_file")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-2" }, [
+                      _c("a", { attrs: { href: _vm.user.file } }, [
+                        _vm._v("Ver")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-light-blue text-sm" }, [
+                        _vm._v("Archivo Adjunto")
+                      ])
+                    ])
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "mt-4" }, [

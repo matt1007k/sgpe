@@ -23,6 +23,18 @@
         name="email" 
         :value="old('email', $user->email)" required /> 
 
+    <div>
+        <p>Archivo adjunto:</p>
+        @if($user->file)
+        <a href="{{ $user->pathFile() }}" target="_blank" class="btn btn-secondary">
+            <i class="material-icons icon">download</i>
+            <span>Descargar</span>
+        </a>
+        @else
+        <p class="text-light-blue">No tiene un archivo.</p>
+        @endif
+    </div>
+
     <div class="my-2 flex justity-between flex-col sm:flex-row">
         <div>
             <p>Estado</p>

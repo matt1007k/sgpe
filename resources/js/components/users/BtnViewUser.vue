@@ -15,7 +15,7 @@
               />
             </div>
           </div>
-          <h3 class="mt-2 mb-1 text-white">{{ user.name }}</h3>
+          <h3 class="mt-2 mb-1 text-white text-center">{{ user.name }}</h3>
           <show-user-status :status="user.status" />
         </div>
         <div class="mt-6 flex flex-wrap flex-col">
@@ -54,6 +54,18 @@
             <span class="ml-2">
               <span class="headline">{{ user.email }}</span>
               <p class="text-light-blue text-sm">Correo Electrónico</p>
+            </span>
+          </div>
+          <div v-if="user.file" class="flex mt-2">
+            <span
+              class="badge badge-primary badge-sm flex justify-center align-center"
+              style="height: 32px; width: 32px"
+            >
+              <i class="material-icons-two-tone">insert_drive_file</i>
+            </span>
+            <span class="ml-2">
+              <a :href="user.file">Ver</a>
+              <p class="text-light-blue text-sm">Archivo Adjunto</p>
             </span>
           </div>
         </div>

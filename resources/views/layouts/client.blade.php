@@ -38,7 +38,7 @@
             </div>
             @include('partials.alert-floating')
         </div>
-        @stack('scripts')
     <livewire:scripts>
+        @stack('scripts')
 </body>
 </html>

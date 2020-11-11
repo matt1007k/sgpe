@@ -1101,6 +1101,142 @@ body {
      object-position: bottom !important;
 }
 
+.bg-hero {
+  background-image: url("/images/bg.png");
+  background-repeat: none !important;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+  width: 100%;
+}
+
+.hero-info {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-info .info:nth-child(2),
+.hero-info .info:nth-child(3),
+.hero-info .info:nth-child(4) {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.hero-info .info-title {
+  color: rgba(63, 61, 86, 0.5);
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.hero-info .info-content {
+  margin-top: 5px;
+}
+
+.hero-info .item-icon {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.hero-info .item-icon i {
+  margin-right: 6px;
+}
+
+.hero-header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-header .hero-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.hero-header .hero-head .logo:hover {
+  -webkit-filter: brightness(100%);
+          filter: brightness(100%);
+}
+
+.hero-header .hero-head .menu {
+  display: flex;
+  padding: 20px 0;
+}
+
+.hero-header .hero-head .menu a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+  margin-left: 40px;
+}
+
+.hero-header .hero-head .menu a:hover {
+  color: black;
+}
+
+.hero-header .hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.hero-header .hero-section .hero-content {
+  width: 85%;
+}
+
+.hero-header .hero-section .hero-content h1 {
+  width: 100%;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.hero-header .hero-section .hero-content .hero-paragraph {
+  width: 100%;
+  text-align: center;
+  color: #9c95dc;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.hero-header .hero-section .hero-content .hero-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-header .hero-section .hero-content .hero-actions .btn:nth-child(2) {
+  margin-top: 20px;
+  margin-left: 0;
+}
+
+.hero-header .hero-section .hero-image {
+  width: 80%;
+}
+
+.hero-header .hero-section .hero-image img {
+  width: 90%;
+  height: auto;
+  -webkit-animation: pulse 5s infinite;
+          animation: pulse 5s infinite;
+  transform: skewX(35deg);
+}
+
 .landing-auth {
   width: 100%;
   display: grid;
@@ -1493,6 +1629,7 @@ body {
     border: 2px solid rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
     display: flex;
+    flex-direction: row;
   }
 
   .hero-info .info:nth-child(2),
@@ -1532,6 +1669,7 @@ body {
 
   .hero-header .hero-head {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
@@ -1544,6 +1682,8 @@ body {
 
   .hero-header .hero-head .menu {
     display: flex;
+    flex-direction: row;
+    padding: 0 0;
   }
 
   .hero-header .hero-head .menu a {
@@ -1572,11 +1712,13 @@ body {
   .hero-header .hero-section .hero-content h1 {
     width: 80%;
     line-height: 1.2;
+    text-align: left;
   }
 
   .hero-header .hero-section .hero-content .hero-paragraph {
     width: 80%;
     color: #9c95dc;
+    text-align: left;
     font-size: 17px;
     margin-bottom: 20px;
   }
@@ -1584,9 +1726,11 @@ body {
   .hero-header .hero-section .hero-content .hero-actions {
     width: 80%;
     display: flex;
+    flex-direction: row;
   }
 
   .hero-header .hero-section .hero-content .hero-actions .btn:nth-child(2) {
+    margin-top: 0;
     margin-left: 20px;
   }
 

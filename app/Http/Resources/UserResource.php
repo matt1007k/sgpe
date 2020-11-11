@@ -23,6 +23,7 @@ class UserResource extends JsonResource
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'status' => $this->status,
+                'file' => $this->pathFile(),
                 'created_at' => $this->created_at->diffForHumans(),
             ],
             'links' => [

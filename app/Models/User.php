@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -116,9 +117,16 @@ class User extends Authenticatable
         return route('users.edit', $this);
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function pathFile(): string
+    {
+        return Storage::disk('public')->exists($this->file) 
+            ? Storage::url($this->file)
+            : '';
     }
 
     public function messages()

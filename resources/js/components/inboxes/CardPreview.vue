@@ -10,7 +10,7 @@
           class="text-light-blue text-sm"
         >Para {{ send === 'me' ? 'mí' : message.attributes.to }}</span>
       </div>
-      <btn-delete :model="message" resource="inboxes"></btn-delete>
+      <btn-delete :id="message.id" resource="inboxes"></btn-delete>
     </div>
     <h2>{{ message.attributes.subject }}</h2>
     <p class="mb-2 text-light-blue text-sm">{{ message.attributes.created_date }}</p>

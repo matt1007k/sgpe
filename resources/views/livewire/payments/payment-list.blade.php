@@ -58,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="actions">
-                        <a wire:click="markReceivedPayment({{ $payment['id'] }},'{{ $payment['link'] }}')" target="_blank" class="action tooltip">
+                        <a wire:click="markReceivedPayment({{ $payment['id'] }},'{{ $payment['link'] }}')" class="action tooltip">
                             <i class="material-icons-two-tone">print</i>
                             <span>Imprimir</span>
                         </a>
@@ -77,21 +77,11 @@
 
 @push('scripts')
 <script>
-    document.addEventListener('livewire:load', function () {
-        // Get the value of the "count" property
-        var someValue = @this.years
 
-        // Set the value of the "count" property
-        // @this.count = 5
 
-        // Call the increment component action
-        // @this.increment()
-
-            console.log('someValue')
-        // Run a callback when an event ("foo") is emitted from this component
-        @this.on('foo', () => {
-            console.log('someValue')
-        })
+    Livewire.on('onUrl', postId => {
+        alert('A post was added with the id of: ' + postId);
     })
+    
 </script>   
 @endpush

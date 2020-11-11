@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Payments;
 
 use Livewire\Component;
-use App\Models\ReceivedPayment;
 use App\Services\PaymentService;
 use Illuminate\Support\Facades\Redirect;
 
@@ -12,10 +11,18 @@ class PaymentList extends Component
     public $payments, $years, $filterYear;
     protected $paymentService;
     
-    public function mount(){
+    public function mount(): void{
         $this->paymentService = new PaymentService();
         $this->getPayments();
     }
+
+    // public function updated($value){
+    //     if($value === 'filterYear'){
+    //         request()->request->add(['year' > $this->filterYear]);
+    //         $this->paymentService = new PaymentService();
+    //         $this->getPayments();
+    //     }
+    // }
 
     public function getPayments(){
         [$this->payments, $this->years, $this->filterYear] = $this->paymentService->getPayments();
@@ -24,10 +31,9 @@ class PaymentList extends Component
     public function markReceivedPayment(int $id, string $url){
         $this->paymentService = new PaymentService();
         $this->paymentService->createReceived($id);
-        $this->getPayments();
         // request()->session()->flash('message', 'Boleta marcada como recibida.');
-        
-        return Redirect::away($url);
+        $this->getPayments();
+        return redirect()->to($url);
     }
 
     public function render()

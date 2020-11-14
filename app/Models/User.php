@@ -133,4 +133,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function userPayment(){
+        return $this->belongsTo(UserPayment::class, 'user_id');
+    }
 }

@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <livewire:styles>
-        @stack('styles')
+        @stack('css')
     </head>
     <body>
         <div id="app" style="width: 100%;
@@ -39,6 +39,6 @@
             @include('partials.alert-floating')
         </div>
     <livewire:scripts>
-        @stack('scripts')
+        @stack('js')
 </body>
 </html>

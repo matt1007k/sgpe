@@ -3,11 +3,14 @@
 namespace App\Services;
 
 use App\Models\ReceivedPayment;
+use App\Models\UserPayment;
+use App\Notifications\NotifyUserPaymentNotification;
+use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class PaymentService {
-    protected $payments = array(), $years = array();
+    protected $payments = array(), $years = array(), $count_new_payments = 0;
 
     public function __construct(){
 
@@ -27,6 +30,7 @@ class PaymentService {
         $paymentsApi = Http::withToken($token)->get($urlBase . "/payments?year={$filterYear}&dni={$dni}")->json();
 
         $this->getNewPayments($paymentsApi);
+        $this->notifyUserLatestPayments();
 
         return [$this->payments, $this->years, $filterYear];
     }
@@ -63,5 +67,36 @@ class PaymentService {
 
             request()->session()->flash('message', 'Boleta marcada como recibida.');
         }
+    }
+
+    public function notifyUserLatestPayments() : void{
+        if(date('Y') === $this->years['data'][0]){
+            if($this->verifyNewPayments()){
+                // notify user
+                Auth::user()->notify(new NotifyUserPaymentNotification($this->count_new_payments));
+            }
+        }
+    }
+
+    public function verifyNewPayments() : bool {
+        $payment = UserPayment::where('user_id', Auth::id())->first();
+        $payments = count($this->payments) > 0 ? $this->payments : '';
+        if(!$payment){
+            UserPayment::create([
+                'count_latest_payments' => count($payments),
+                'user_id' => Auth::id()
+            ]);
+            $this->count_new_payments = count($payments);
+
+        }else{
+            $this->count_new_payments = count($payments) - $payment->count_latest_payments;
+            if($this->count_new_payments > 0){
+                $payment->update([
+                    'count_latest_payments' => count($payments)
+                ]);
+            }
+        }
+
+        return $this->count_new_payments > 0;
     }
 }

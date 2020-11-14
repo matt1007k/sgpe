@@ -18,11 +18,11 @@
         </ul>
         @endif
         <ul>            
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="material-icons-two-tone icon">notifications</i>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="dropdown__container" x-data="{ open: false}">
                 <a class="cursor-pointer" @click="open = true">
                     <i class="material-icons-two-tone icon text-invalid">verified_user</i>

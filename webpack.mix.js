@@ -24,4 +24,4 @@ mix.js("resources/js/client.js", "public/js").sass(
 mix.browserSync({
     proxy: "http://localhost:8000",
     open: false
-});
+}).disableNotifications();

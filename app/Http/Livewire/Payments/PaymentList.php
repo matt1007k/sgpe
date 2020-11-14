@@ -33,7 +33,8 @@ class PaymentList extends Component
         $this->paymentService->createReceived($id);
         // request()->session()->flash('message', 'Boleta marcada como recibida.');
         $this->getPayments();
-        return redirect()->to($url);
+        $this->emit('onUrl', $url);
+        // return redirect()->to($url);
     }
 
     public function render()

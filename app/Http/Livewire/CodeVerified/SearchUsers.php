@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\CodeVerified;
 
-use App\UserAttempt;
+use App\Models\UserAttempt;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 

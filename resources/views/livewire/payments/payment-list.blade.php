@@ -18,7 +18,7 @@
                                 {{ $year }}
                             </a>
                        @else
-                            <a href="{{ route('client.payments', ['year' => $year]) }}"  class="badge badge-default">
+                            <a href="{{ route('client.payments', ['year' => $year]) }}"  class="ml-1 badge badge-default">
                                 {{ $year }}
                             </a>
                         @endif
@@ -74,14 +74,3 @@
         </div>
     </div>
 </div>
-
-@push('scripts')
-<script>
-
-
-    Livewire.on('onUrl', postId => {
-        alert('A post was added with the id of: ' + postId);
-    })
-    
-</script>   
-@endpush

@@ -125,7 +125,7 @@
 </div> --}}
 
 @endsection
-@push('scripts')
+@push('js')
 <script src="https://unpkg.com/marked@0.3.6"></script>
     
 @endpush

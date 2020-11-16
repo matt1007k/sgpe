@@ -82,10 +82,11 @@ class User extends Authenticatable
         $body = $this->getBodyMessageToAdmin();
 
         $this->messages()->create([
-            'to' => 'admin@drea.com',
+            'to' => config('mail.from.address'),
             'subject' => 'Activación de cuenta',
             'body' => $body,
         ]);
+
     }
 
     public function getBodyMessageToAdmin()
@@ -106,11 +107,39 @@ class User extends Authenticatable
         $this->phone
 
         [Verificar usuario]($url)
+        
 
         Gracias por su atención,\t
         ##### $this->name
         EOT;
     }
+
+    public function getBodyMessageToUpdateUser($password)
+    {
+        $url = route('login');
+
+        return <<<EOT
+        Hola, se te comunica la actualización de tu cuenta.
+
+        **DNI** \t
+        $this->dni
+
+        **CONTRASEÑA** \t
+        $password
+
+        **Correo electrónico**\t
+        $this->email
+                
+        **Teléfono o celular**\t
+        $this->phone
+
+        [Ingresar al Sistema]($url)
+        
+        Gracias por su atención,\t
+        ##### DRE AYACUCHO - INFORMATICA
+        EOT;
+    }
+
 
     public function pathEdit()
     {

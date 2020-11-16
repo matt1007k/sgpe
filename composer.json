@@ -46,7 +46,7 @@
             "database/factories"
         ],
         "files": [
-            "app/helpers/Route.php"
+            "app/Helpers/Route.php"
         ]
     },
     "autoload-dev": {

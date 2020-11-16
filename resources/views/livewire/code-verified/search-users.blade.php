@@ -5,7 +5,7 @@
     <div class="group-input code">
         <div class="input1">
             <label for="dni">DNI</label>
-            <input type="text" id="dni" class="input" name="dni"  :value="old('dni')"  wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
+            <input type="text" id="dni" maxlength="8" class="input" name="dni"  :value="old('dni')"  wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
             @error('dni')
             <div class="text-invalid">
             {{ $message }} 
@@ -14,7 +14,7 @@
         </div>
         <div class="input2">
             <label for="code_verified">Código Verificada</label>
-            <input type="text" id="code_verified" class="input"  value="{{ old('code_verified') }}"  wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
+            <input type="text" id="code_verified" maxlength="1" class="input"  value="{{ old('code_verified') }}"  wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
             @error('code_verified')
             <div class="text-invalid">
             {{ $message }} 
@@ -39,7 +39,7 @@
         @if($user['codVerifica'] === $code_verified)
             <div class="group-input">
                 <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" class="input"  value="{{ old('name', $full_name) }}">
+                <input type="text" id="name" name="name" class="input" readonly value="{{ old('name', $full_name) }}">
                 @error('name')
                 <div class="text-invalid">
                    {{ $message }} 

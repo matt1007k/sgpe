@@ -7,7 +7,7 @@
     </div>
     @else
     <div class="help-text">
-        {{ $help }}
+       
     </div>
     @enderror
 </div>

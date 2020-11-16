@@ -29,7 +29,7 @@ class SentActivationAccount
      */
     public function handle(Registered $event)
     {
-        $user = User::where('email', 'admin@drea.com')->first();
+        $user = User::where('email', config('mail.from.address'))->first();
         Notification::send($user, new SentActivitionAccountNotification($event->user));
     }
 }

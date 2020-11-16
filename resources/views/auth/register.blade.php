@@ -49,7 +49,18 @@
             </div>
             <h2>Crear una cuenta,</h2>
             <h4 class="text-primary">Consulta tus datos para crear una cuenta.</h4>
-            {{ session('errors')}}
+            
+            @if(count($errors)>0)
+            <div class="alert alert-danger ">
+                    <ul style="margin-left: 10px;">
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            @endif
+  
+           
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf 
                 <livewire:code-verified.search-users></livewire:code-verified.search-users>

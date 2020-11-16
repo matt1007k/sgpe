@@ -10,7 +10,7 @@ class SearchUsers extends Component
 {
     public $dni, $code_verified, $user, $full_name, $message_wait;
     public $searched = false;
-    public $count = 0;
+    public $count = 1;
     public $time_wait = 0;
 
     public function mount(){

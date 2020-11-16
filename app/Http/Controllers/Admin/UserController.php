@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserCreatedRequest;
 use App\Models\User;
-use App\Services\MonthService;
 use App\Services\UserService;
+use App\Events\MessageCreated;
+use App\Services\MonthService;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserCreatedRequest;
 
 class UserController extends Controller
 {
@@ -25,23 +27,7 @@ class UserController extends Controller
 
     public function index()
     {
-        // $status = request('f') ? request('f') : 'verified';
-        // $sort = request('sort') ? request('sort') : 'desc';
-        // $search = request('search') ? request('search') : '';
-
-        // $users = User::filterStatus($status)
-        //     ->search($search)
-        //     ->orderBy('created_at', $sort)
-        //     ->paginate(10);
-
-        return view('admin.users.index',
-            // compact(
-            //     'users',
-            //     'status',
-            //     'search',
-            //     'sort'
-            // )
-        );
+        return view('admin.users.index');
     }
 
     public function create()
@@ -82,7 +68,20 @@ class UserController extends Controller
                 ['password' =>  $password]
             )
         );
-        // return $user;
+
+        $message = Auth::user()->messages()->create(
+            [
+                'to' => $user->email,
+                'subject' => 'Actualización de Cuenta',
+                'body' => $user->getBodyMessageToUpdateUser($request->password), 
+
+            ]    
+        );
+
+        event(new MessageCreated($message));
+
+        /* return $request->password; */
+
         return redirect()->route('users.index')->with('message', 'Usuario editado con exitó.');
     }
 

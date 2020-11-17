@@ -57,7 +57,7 @@ Vue.component(
 );
 Vue.component(
     "sent-message",
-    require("./components/inboxes/sentMessage.vue").default
+    require("./components/inboxes/SentMessage.vue").default
 );
 Vue.component(
     "inboxes-index",

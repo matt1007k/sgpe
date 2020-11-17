@@ -14,7 +14,7 @@
                 <label for="email">{{ __('E-Mail Address') }}</label>
 
                 <div class="col-md-6">
-                    <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" readonly class="input @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="invalid-text" role="alert">

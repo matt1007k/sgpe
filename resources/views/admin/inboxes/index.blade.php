@@ -8,7 +8,7 @@
         <div class="my-2 flex justity-between">
             <h2>Correos</h2>
             @can('create', $message)
-                <x-inboxes.sent-message />
+                <!-- <x-inboxes.sent-message /> -->
             @endcan
         </div>
         <div class="grid">

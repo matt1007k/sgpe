@@ -11,7 +11,20 @@
             <div class="filter">
                 <span>Filtrar por Año</span>
                 <div class="list-year">
+                    <!-- Vista de solo este año -->
                     @forelse($years['data'] as $year)
+                        @if($year === date("Y") )
+                            <a class="badge badge-primary-2">
+                                <i class="material-icons left">check</i>
+                                {{ $year }}
+                            </a>
+                       
+                        @endif
+                    @empty
+                        <p class="text-light-blue">Sin años pagados.</p>
+                    @endforelse
+                    <!-- Vista de todos los años -->
+                    <!-- @forelse($years['data'] as $year)
                         @if($year === $filterYear)
                             <a class="badge badge-primary-2">
                                 <i class="material-icons left">check</i>
@@ -24,7 +37,7 @@
                         @endif
                     @empty
                         <p class="text-light-blue">Sin años pagados.</p>
-                    @endforelse
+                    @endforelse -->
                 </div>
             </div>
         </div>

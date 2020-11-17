@@ -37,6 +37,7 @@ class PaymentService {
 
     public function getNewPayments($paymentsApi){
         foreach($paymentsApi['data'] as $payment){
+            
             $payment_received = ReceivedPayment::where('payment_id', $payment['id'])->first();
             if($payment_received){
                 array_push($this->payments, array_merge(

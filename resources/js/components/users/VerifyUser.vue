@@ -153,7 +153,7 @@ export default {
       axios
         .post(`/mark-verified/${this.users[0]["dni"]}`)
         .then(res => {
-          location.href = "/users";
+          location.reload();
         })
         .catch(error => console.log(error));
     },

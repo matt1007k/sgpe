@@ -65,7 +65,7 @@ class NotifyUserPaymentNotification extends Notification
     public function getTextNotification() : string{
         $text = "";
         if($this->countPayments > 1){
-            $text = "Tienes {$this->countPayment} nuevos pagos.";
+            $text = "Tienes {$this->countPayments} nuevos pagos.";
         }else{
             $text = "Tienes un nuevo pago.";
         }

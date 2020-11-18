@@ -8,10 +8,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::get('/people/{person}', 'PersonController@show')->name('api.v1.people.show');
-Route::get('/people', 'PersonController@index')->name('api.v1.people.index');
-
 Route::get('/users', 'UserController@index')->name('api.v1.users.index');
 Route::get('/users/{user}', 'UserController@show')->name('api.v1.users.show');
 Route::get('/messages/{message}', 'MessageController@show')->name('api.v1.messages.show');

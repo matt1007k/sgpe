@@ -16,7 +16,7 @@
             <h3 class="mb-1">Eliminar registro</h3>
             <p
               class="text-light-blue"
-            >Estas seguro de eliminar el registro?. Esto borrar todos los datos existentes de manejar definitiva.</p>
+            >¿Estás seguro de eliminar el registro?. La operación borra todos los datos existentes de manejar definitiva.</p>
           </div>
         </div>
         <div class="actions">

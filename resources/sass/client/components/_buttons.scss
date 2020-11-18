@@ -45,12 +45,13 @@ a {
     }
     &:disabled {
         cursor: no-drop;
-        // background: rgba($light-blue, 0.8);
+        background: rgba($light-blue, 0.5);
+        border: 1px solid rgba($light-blue, 0.5);
         filter: opacity(50%);
         // color: $dark-blue;
         &:hover {
             text-decoration: none;
-            // background: rgba($light-blue, 0.8);
+            background: rgba($light-blue, 0.8);
             filter: opacity(50%);
         }
     }
@@ -154,7 +155,7 @@ a {
 .btn-outline-primary {
     background-color: transparent;
     color: $blue;
-    border: 1px solid rgba($blue, 1);
+    border: 2px solid rgba($blue, 1);
     &:hover {
         text-decoration: none;
         opacity: 0.85;

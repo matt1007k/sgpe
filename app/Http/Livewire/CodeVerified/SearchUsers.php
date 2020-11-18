@@ -12,6 +12,7 @@ class SearchUsers extends Component
     public $searched = false;
     public $count = 1;
     public $time_wait = 0;
+    public $open = false;
 
     public function mount(){
         $userAttempt = UserAttempt::where([
@@ -19,22 +20,22 @@ class SearchUsers extends Component
             'user_agent' => request()->userAgent(),
         ])->latest()->first();
         if($userAttempt){
-            $created_at = $userAttempt->created_at;
-            $time = json_decode($userAttempt->payload)->wait_time;
-            $new_time = \Carbon\Carbon::parse($created_at)->addMinutes($time);
-            $this->time_wait = $new_time->format('i') - date('i');
-            $this->message_wait = $this->getMessageWait(); 
-                // dd($this->time_wait);
-            if($new_time > now()){
-
-                // dd($this->time_wait);
-                $this->count = 3;
-                $this->resetState();
-            }else{
-    
+            $this->getTimeForWait($userAttempt);
+        }else{
             $this->count = 0;
+        }
+    }
 
-            }
+    public function getTimeForWait(UserAttempt $userAttempt){
+        $created_at = $userAttempt->created_at;
+        $time = json_decode($userAttempt->payload)->wait_time;
+        $new_time = \Carbon\Carbon::parse($created_at)->addMinutes($time);
+        $this->time_wait = $new_time->format('i') - date('i');
+        $this->message_wait = $this->getMessageWait(); 
+        
+        if($new_time > now()){
+            $this->count = 3;
+            $this->resetState();
         }else{
             $this->count = 0;
         }
@@ -78,13 +79,14 @@ class SearchUsers extends Component
         if($values == 'code_verified'){
             if(!empty($this->user)) $this->count++;
             if($this->count === 3){
-                UserAttempt::create([
+                $userAttempt = UserAttempt::create([
                     'ip_address' => request()->ip(),
                     'user_agent' => request()->userAgent(),
                     'payload' => json_encode([
                         'wait_time' => '4'
                     ])
                 ]);
+                $this->getTimeForWait($userAttempt);
                 $this->resetState();
                 // dd("Usted ha superado los 3 intentos, intentelo más tarde.");
             }
@@ -97,6 +99,10 @@ class SearchUsers extends Component
         $this->full_name = '';
         $this->code_verified = '';
         $this->searched = false;
+    }
+
+    public function toggle(){
+        $this->open = $this->open ? false : true;
     }
 
     public function render()

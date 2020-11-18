@@ -96,6 +96,10 @@ h5 {
     font-weight: 500;
 }
 
+.text-right {
+    text-align: right;
+}
+
 @include desktop {
     body {
         font-size: 14px;

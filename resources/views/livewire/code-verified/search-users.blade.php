@@ -1,9 +1,15 @@
 <div>
     @if($count < 3)
-    <div class="mt-2"><span class="text-invalid">(*)</span> Tienes <strong>{{ 3 - $count}}</strong> intentos para ingresar el <strong>Código Verificada</strong></div>
+    <div class="mt-2">
+        <span class="text-invalid">(*)</span> 
+        Tienes <strong>{{ 3 - $count}}</strong> {{ $count > 1 ? 'intentos' : 'intento' }} para ingresar el 
+        <span>
+            <strong>Dígito de Verificación</strong>
+        </span>
+        
+    </div>
     @endif
-    <div class="group-input code">
-        <div class="input1">
+        <div class="group-input">
             <label for="dni">DNI</label>
             <input type="text" id="dni" maxlength="8" class="input" name="dni"  :value="old('dni')"  wire:model.delay.1000ms="dni" {{ $count === 3 ? 'disabled' : ''}}>
             @error('dni')
@@ -12,31 +18,38 @@
             </div>
             @enderror
         </div>
-        <div class="input2">
-            <label for="code_verified">Código Verificada</label>
+        <div class="group-input">
+            <label for="code_verified">Dígito de Verificación</label>
             <input type="text" id="code_verified" maxlength="1" class="input"  value="{{ old('code_verified') }}"  wire:model.delay.1000ms="code_verified" {{ $count === 3 ? 'disabled' : ''}}>                        
             @error('code_verified')
             <div class="text-invalid">
             {{ $message }} 
             </div>
             @enderror
+            <div  class="text-right text-primary pointer" wire:click="toggle">¿Dónde esta el dígito de verificación?</div>
+            <div class="view__code__verified {{ $open ? 'active' : '' }}">
+                <img src="{{ asset('images/dniverificacion.png') }}" alt="DNI Verificación">
+            </div>
         </div>
-        <div class="flex align-end">
-            <button wire:click.prevent="searchUser" class="btn btn-primary" {{ empty($dni) || empty($code_verified) || $count === 3 ? 'disabled' : ''}}>
-                <i class="material-icons">search</i>
+        <div class="">
+            <button wire:click.prevent="searchUser" class="btn btn-outline-primary btn-full" {{ empty($dni) || empty($code_verified) || $count === 3 ? 'disabled' : ''}}>
+                <i class="material-icons left">search</i>
+                <span>Buscar</span>
             </button>
         </div>
-    </div>
-    @if ($searched)
-    <div wire:loading wire.target="searched" class="alert alert-info w-full">
+    {{-- @if ($searched) --}}
+    <div wire:loading wire.target="searched" class="my-2 alert alert-info w-full">
         Buscando...
     </div>
-    @endif
+    {{-- @endif --}}
     @if($count === 3)
-        <div class="alert alert-info">{{ $message_wait }}</div>
+        <div class="my-2 alert alert-info">{{ $message_wait }}</div>
     @endif 
     @if(!empty($user))
         @if($user['codVerifica'] === $code_verified)
+            <div class="mt-3"></div>
+            <div class="divider-x"></div>
+            <h4 class="mt-3 font-bold">Datos Personales</h4>
             <div class="group-input">
                 <label for="name">Nombre Completo</label>
                 <input type="text" id="name" name="name" class="input" readonly value="{{ old('name', $full_name) }}">
@@ -86,12 +99,12 @@
 
             <button class="btn btn-primary btn-full">Registrarse</button>
         @else
-        <div class="alert alert-danger w-full">
-            Código Verificada no es válido
+        <div class="my-2 alert alert-danger w-full">
+            Dígito de verificación no es válido
         </div>
         @endif
     @elseif(empty($user) && !empty($dni) && $searched)
-        <div class="alert alert-danger w-full">
+        <div class="my-2 alert alert-danger w-full">
             Usuario no ha sido encontrado con el DNI: {{ $dni }}
         </div>
     @endif

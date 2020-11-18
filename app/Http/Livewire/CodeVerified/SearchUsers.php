@@ -13,6 +13,7 @@ class SearchUsers extends Component
     public $count = 1;
     public $time_wait = 0;
     public $open = false;
+    public $tabSelect = 'azul';
 
     public function mount(){
         $userAttempt = UserAttempt::where([
@@ -77,7 +78,14 @@ class SearchUsers extends Component
 
     public function updated($values){
         if($values == 'code_verified'){
-            if(!empty($this->user)) $this->count++;
+            if(!empty($this->user)) 
+            {
+                /* request()->session()->flash('message', 'Tienes '.$this->count.' intentos para ingresar'); */
+                $this->count++;
+            }
+            
+            
+
             if($this->count === 3){
                 $userAttempt = UserAttempt::create([
                     'ip_address' => request()->ip(),
@@ -88,6 +96,7 @@ class SearchUsers extends Component
                 ]);
                 $this->getTimeForWait($userAttempt);
                 $this->resetState();
+
                 // dd("Usted ha superado los 3 intentos, intentelo más tarde.");
             }
         }
@@ -103,6 +112,13 @@ class SearchUsers extends Component
 
     public function toggle(){
         $this->open = $this->open ? false : true;
+    }
+
+    public function tabAzul(){
+        $this->tabSelect = 'azul';
+    }
+    public function tabElectronico(){
+        $this->tabSelect = 'electronico';
     }
 
     public function render()

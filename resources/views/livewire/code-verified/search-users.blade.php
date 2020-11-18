@@ -1,13 +1,13 @@
 <div>
     @if($count < 3)
-    <div class="mt-2">
+    <h3 class="mt-2">
         <span class="text-invalid">(*)</span> 
-        Tienes <strong>{{ 3 - $count}}</strong> {{ $count > 1 ? 'intentos' : 'intento' }} para ingresar el 
+        Tienes <strong class="text-invalid"><b>{{ 3 - $count}}</b> </strong> {{ $count > 1 ? 'intentos' : 'intento' }} para ingresar el 
         <span>
             <strong>Dígito de Verificación</strong>
         </span>
         
-    </div>
+    </h3>
     @endif
         <div class="group-input">
             <label for="dni">DNI</label>
@@ -28,7 +28,33 @@
             @enderror
             <div  class="text-right text-primary pointer" wire:click="toggle">¿Dónde esta el dígito de verificación?</div>
             <div class="view__code__verified {{ $open ? 'active' : '' }}">
-                <img src="{{ asset('images/dniverificacion.png') }}" alt="DNI Verificación">
+            <div class="btn-group">
+            <a wire:click="tabAzul"
+                class="btn btn-full {{$tabSelect == 'azul' ? 'btn-secondary' : ''}} "
+                {{-- :class="{ 'btn-secondary': filter === 'verified' }"
+                @click="$emit('onFilter', 'verified')" --}}
+            >
+              
+                <span>DNI Azul</span>
+            </a>
+            <a
+                class="ml-1 btn btn-full {{$tabSelect == 'electronico' ? 'btn-secondary' : ''}} "
+                {{-- :class="{ 'btn-secondary': filter === 'unverified' }"
+                @click="$emit('onFilter', 'unverified')" --}}
+                wire:click = "tabElectronico"
+            >
+               
+                <span>DNI Electrónico</span>
+
+            </a>
+            </div>
+        <div style="display:{{$tabSelect == 'azul' ? 'block' : 'none'}}">
+                    <img src="{{ asset('images/dniverificacion.png') }}" alt="DNI Verificación">
+                </div> 
+                <div style="display:{{$tabSelect == 'electronico' ? 'block' : 'none'}}">
+                    <img src="{{ asset('images/payment-processed.png') }}" alt="DNI Verificación">
+                </div>     
+            
             </div>
         </div>
         <div class="">

@@ -17,12 +17,14 @@
     <livewire:styles>
         
      <!-- Scripts -->
-     {{-- <script src="{{ asset('js/client.js') }}"></script> --}}
+    <script src="{{ asset('js/client.js') }}"></script>
 </head>
-<body> 
+<body id="app"> 
     <main class="landing-auth">
         @yield('content')
     </main>
+    @include('partials.alert-floating')
     <livewire:scripts>
+    
 </body>
 </html>

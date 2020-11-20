@@ -18,7 +18,7 @@
                 <p class="text-light-blue">Esta es la información para el contacto y verificación de los datos. </p>
 
                 @if($user->file)
-                    <h3 class="mt-2">Archivo Adjunto</h3>
+                    <h4 class="mt-2">Archivo Adjunto</h4>
                     <div id="preview-file"></div>
                 @else
                     <div class="mt-2"></div>

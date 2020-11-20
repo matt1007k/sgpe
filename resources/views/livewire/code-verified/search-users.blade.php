@@ -28,31 +28,26 @@
             @enderror
             <div  class="text-right text-primary pointer" wire:click="toggle">¿Dónde esta el dígito de verificación?</div>
             <div class="view__code__verified {{ $open ? 'active' : '' }}">
-            <div class="btn-group">
-            <a wire:click="tabAzul"
-                class="btn btn-full {{$tabSelect == 'azul' ? 'btn-secondary' : ''}} "
-                {{-- :class="{ 'btn-secondary': filter === 'verified' }"
-                @click="$emit('onFilter', 'verified')" --}}
-            >
-              
-                <span>DNI Azul</span>
-            </a>
-            <a
-                class="ml-1 btn btn-full {{$tabSelect == 'electronico' ? 'btn-secondary' : ''}} "
-                {{-- :class="{ 'btn-secondary': filter === 'unverified' }"
-                @click="$emit('onFilter', 'unverified')" --}}
-                wire:click = "tabElectronico"
-            >
-               
-                <span>DNI Electrónico</span>
 
-            </a>
-            </div>
-        <div style="display:{{$tabSelect == 'azul' ? 'block' : 'none'}}">
-                    <img src="{{ asset('images/dniverificacion.png') }}" alt="DNI Verificación">
+                <div class="btn-group">
+                    <a 
+                        wire:click="tabAzul"
+                        class="btn btn-full {{$tabSelect == 'azul' ? 'btn-secondary' : ''}} "
+                    >
+                        <span>DNI Azul</span>
+                    </a>
+                    <a
+                        class="ml-1 btn btn-full {{$tabSelect == 'electronico' ? 'btn-secondary' : ''}} "
+                        wire:click = "tabElectronico"
+                    >
+                        <span>DNI Electrónico</span>
+                    </a>
+                </div>
+                <div style="display:{{$tabSelect == 'azul' ? 'block' : 'none'}}; padding: 20px">
+                        <img src="{{ asset('images/dniverificacion.png') }}" alt="DNI Verificación">
                 </div> 
-                <div style="display:{{$tabSelect == 'electronico' ? 'block' : 'none'}}">
-                    <img src="{{ asset('images/payment-processed.png') }}" alt="DNI Verificación">
+                <div style="display:{{$tabSelect == 'electronico' ? 'block' : 'none'}}; padding: 20px">
+                    <img src="{{ asset('images/electronicoverificacion.png') }}" alt="DNI Verificación">
                 </div>     
             
             </div>

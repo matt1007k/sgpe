@@ -10,7 +10,7 @@
     padding: 2rem;
     border-radius: 16px;
     background-color: #f7ede1;
-    overflow: hidden;
+    // overflow: hidden;
     .paragraph {
         color: rgba($dark-blue, 0.8);
     }
@@ -23,15 +23,12 @@
 }
 .bg-hero {
     background-image: url("/images/bg.png");
-    background-repeat: none !important;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    // top: -20%;
-    // right: -38%;
-    height: 100px;
+    background-repeat: no-repeat !important;
+    position: absolute;
+    bottom: -30%;
+    height: 100%;
     width: 100%;
-    // z-index: -1;
+    z-index: -1;
 }
 .hero-info {
     position: relative;
@@ -76,6 +73,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         padding: 20px 0;
         .logo {
             &:hover {
@@ -130,7 +128,7 @@
         .hero-image {
             width: 80%;
             img {
-                width: 90%;
+                width: 100%;
                 height: auto;
                 animation: pulse 5s infinite;
                 transform: skewX(35deg);
@@ -382,6 +380,41 @@
 }
 
 @include tablet {
+    .bg-hero {
+        bottom: -10%;
+        right: -30%;
+    }
+    .hero-header {
+        .hero-head {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 50px;
+        }
+        .hero-section {
+            flex-direction: row;
+            height: 60%;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+            .hero-content {
+                width: 85%;
+                h1 {
+                    text-align: left;
+                }
+                .hero-paragraph {
+                    text-align: left;
+                    width: 80%;
+                }
+                .hero-actions {
+                    flex-direction: row;
+                    .btn:nth-child(2) {
+                        margin-top: 0;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
     .landing-auth {
         .image {
             grid-column: 2 / 4;
@@ -474,125 +507,20 @@
 
 @include desktop {
     .bg-hero {
-        background-image: url("/images/bg.png");
-        background-repeat: none;
-        position: absolute;
         bottom: 0;
-        top: -50%;
-        right: -38%;
-        height: auto;
-        width: 100%;
-        z-index: -1;
+        top: 0;
+        right: -30%;
     }
     .hero-info {
         position: absolute;
         bottom: 0;
         right: 10%;
         width: auto;
-        background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(10px);
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         border: 2px solid rgba(0, 0, 0, 0.1);
         padding: 15px 20px;
-        display: flex;
-        flex-direction: row;
-        .info:nth-child(2),
-        .info:nth-child(3),
-        .info:nth-child(4) {
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
-            margin-left: 20px;
-            padding-left: 20px;
-        }
-        .info-title {
-            color: rgba($dark-blue, 0.5);
-            font-size: 12px;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-        .info-content {
-            margin-top: 5px;
-        }
-        .item-icon {
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            i {
-                margin-right: 6px;
-            }
-        }
-    }
-    .hero-header {
-        height: 100vh;
-        width: 100%;
-        // position: absolute;
-        z-index: 1;
-        .hero-head {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            .logo {
-                &:hover {
-                    filter: brightness(100%);
-                }
-            }
-            .menu {
-                display: flex;
-                flex-direction: row;
-                padding: 0 0;
-                a {
-                    text-decoration: none;
-                    color: rgba(255, 255, 255, 0.8);
-                    margin-left: 40px;
-                    &:hover {
-                        color: rgba(255, 255, 255, 1);
-                    }
-                }
-            }
-        }
-        .hero-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 50px 0;
-            .hero-content {
-                width: 50%;
-                h1 {
-                    width: 80%;
-                    line-height: 1.2;
-                    text-align: left;
-                }
-                .hero-paragraph {
-                    width: 80%;
-                    color: $light-blue;
-                    text-align: left;
-                    font-size: 17px;
-                    margin-bottom: 20px;
-                }
-                .hero-actions {
-                    width: 80%;
-                    display: flex;
-                    flex-direction: row;
-                    .btn:nth-child(2) {
-                        margin-top: 0;
-                        margin-left: 20px;
-                    }
-                }
-            }
-            .hero-image {
-                width: 50%;
-                img {
-                    width: 90%;
-                    height: auto;
-                    animation: pulse 5s infinite;
-                    transform: skewX(35deg);
-                }
-            }
-        }
     }
     .landing-auth {
         height: 100vh;

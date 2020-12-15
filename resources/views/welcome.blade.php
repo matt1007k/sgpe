@@ -7,7 +7,7 @@
             <div class="info-content">
                 <div class="item-icon">
                     <i class="material-icons">phone</i>
-                    <span>(066) 251123</span>
+                    <span>(01) 6155800</span>
                 </div>
             </div>
         </div>

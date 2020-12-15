@@ -38,8 +38,18 @@
                     <p>
                         Tu dirección de correo y número de (teléfono o celular) ingresado debe de existir, para recibir los datos de tu cuenta u otras actualizaciones.
                     </p>
+                    
 
                 </div>
+                <div class="note">
+                    <i class="icon">*</i>
+                    <p>
+                        Puedes descargar el Formato de la Ficha de Registro haciendo click 
+                    </p>
+                    <a class="btn btn-primary " href="{{asset('pdf/formato_boletas.pdf')}}" target="_blank" style="margin-left: 5px;"> Descargar Formato</a>
+
+                </div>
+                
 
             </div>
         </div>

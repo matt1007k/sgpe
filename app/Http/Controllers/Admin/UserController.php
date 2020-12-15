@@ -43,14 +43,14 @@ class UserController extends Controller
     {
         $password = $request->password ? Hash::make($request->password) : null;
 
-        User::create(
+        $user = User::create(
             array_merge(
                 $request->validated(),
                 ['password' => $password]
             )
         );
-
-        return redirect()->route('users.index')->with('message', 'Usuario registrado con exitó.');
+        
+        return redirect()->route('users.edit',$user)->with('message', 'Usuario registrado con exitó.');
     }
 
     public function edit(User $user)

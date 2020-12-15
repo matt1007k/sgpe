@@ -8,11 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Sistema de Boletas de Pago Electrónica - @yield('title', 'Inicio')</title>
-
+    <meta name="description" content="BOLETAS DREA, BOLETAS DREAYAC,BOLETAS DREAYACUCHO, Boletas de Pago Electrónica de la Dirección Regional de Educación de Ayacucho ,  Boletas de Pago Electrónica de la Dirección Regional de Educación, Educación" />
+    <meta name="keywords" content="DREA, DRE AYAC, DREAYACUCHO, BPE,Boletas de Pago Electrónica de la Dirección Regional de Educación de Ayacucho,  Boletas de Pago Electrónica de la Dirección Regional de Educación, Educación" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     {{-- <script src="{{ asset('js/client.js') }}" defer></script> --}}
-    
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone"

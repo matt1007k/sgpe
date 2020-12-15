@@ -36,7 +36,7 @@ class StoreMessageRequest extends FormRequest
             ],
             'body' => [
                 'required',
-                'max:255'
+                
             ]
         ];
     }

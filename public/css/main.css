@@ -805,8 +805,7 @@ body {
 .avatar-default i,
 .avatar-default span {
   color: #9c95dc;
-  -webkit-filter: opacity(50%);
-          filter: opacity(50%);
+  filter: opacity(50%);
 }
 
 .avatar-image {
@@ -889,8 +888,7 @@ body {
 }
 
 .icon-dash-blue i {
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .icon-danger {
@@ -901,8 +899,7 @@ body {
 .icon-danger i,
 .icon-danger span {
   color: #fa3f3f;
-  -webkit-filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
-          filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
+  filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
 }
 
 .icon-blue {
@@ -913,8 +910,7 @@ body {
 .icon-blue i,
 .icon-blue span {
   color: #228cdb;
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .icon-success {
@@ -925,13 +921,11 @@ body {
 .icon-success i,
 .icon-success span {
   color: #65d16d;
-  -webkit-filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
-          filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
+  filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
 }
 
 .logo:hover {
-  -webkit-filter: brightness(100%) !important;
-          filter: brightness(100%) !important;
+  filter: brightness(100%) !important;
 }
 
 .navbar {
@@ -949,8 +943,7 @@ body {
 }
 
 .navbar img:hover {
-  -webkit-filter: brightness(100%);
-          filter: brightness(100%);
+  filter: brightness(100%);
 }
 
 .navbar ul {
@@ -965,8 +958,7 @@ body {
 
 .navbar ul li a .icon {
   font-size: 24px;
-  -webkit-filter: contrast(4) invert(1) brightness(80%);
-          filter: contrast(4) invert(1) brightness(80%);
+  filter: contrast(4) invert(1) brightness(80%);
   margin-right: 10px;
 }
 
@@ -1168,8 +1160,7 @@ body {
 }
 
 .hero-header .hero-head .logo:hover {
-  -webkit-filter: brightness(100%);
-          filter: brightness(100%);
+  filter: brightness(100%);
 }
 
 .hero-header .hero-head .menu {
@@ -1832,8 +1823,7 @@ h5 {
 
 .text-light-blue {
   color: #9c95dc;
-  -webkit-filter: inherit;
-          filter: inherit;
+  filter: inherit;
 }
 
 .text-white {
@@ -1970,8 +1960,7 @@ h5 {
 }
 
 .card-profile .card-footer-float div span i {
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .card-message .message-body > * {
@@ -2004,13 +1993,11 @@ h5 {
 
 .card-items-count .more i {
   color: rgba(63, 61, 86, 0.5);
-  -webkit-filter: opacity(50%);
-          filter: opacity(50%);
+  filter: opacity(50%);
 }
 
 .card-items-count .more:hover i {
-  -webkit-filter: opacity(100%);
-          filter: opacity(100%);
+  filter: opacity(100%);
 }
 
 .card-email {
@@ -2068,8 +2055,7 @@ h5 {
 }
 
 .card-light-blue .action i {
-  -webkit-filter: opacity(50%);
-          filter: opacity(50%);
+  filter: opacity(50%);
 }
 
 .shadow-sm {
@@ -2200,11 +2186,6 @@ input:active {
   color: #9c95dc;
 }
 
-.input::-ms-input-placeholder {
-  font-size: 14px;
-  color: #9c95dc;
-}
-
 .input::placeholder {
   font-size: 14px;
   color: #9c95dc;
@@ -2251,10 +2232,6 @@ input:active {
 }
 
 .search-input input:-ms-input-placeholder {
-  color: #9c95dc;
-}
-
-.search-input input::-ms-input-placeholder {
   color: #9c95dc;
 }
 
@@ -2305,8 +2282,7 @@ a {
 }
 
 a:hover {
-  -webkit-filter: brightness(120%);
-          filter: brightness(120%);
+  filter: brightness(120%);
 }
 
 .btn {
@@ -2332,36 +2308,31 @@ a:hover {
 
 .btn i.left {
   margin-right: 5px;
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .btn i.right {
   margin-left: 5px;
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .btn:hover {
   text-decoration: none;
   background: rgba(63, 61, 86, 0.2);
-  -webkit-filter: opacity(80%);
-          filter: opacity(80%);
+  filter: opacity(80%);
 }
 
 .btn:disabled {
   cursor: no-drop;
   background: rgba(156, 149, 220, 0.5);
   border: 1px solid rgba(156, 149, 220, 0.5);
-  -webkit-filter: opacity(50%);
-          filter: opacity(50%);
+  filter: opacity(50%);
 }
 
 .btn:disabled:hover {
   text-decoration: none;
   background: rgba(156, 149, 220, 0.8);
-  -webkit-filter: opacity(50%);
-          filter: opacity(50%);
+  filter: opacity(50%);
 }
 
 .btn-primary {
@@ -2371,8 +2342,7 @@ a:hover {
 
 .btn-primary i.left,
 .btn-primary i.right {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
 
 .btn-primary:hover {
@@ -2388,8 +2358,7 @@ a:hover {
 
 .btn-success i.left,
 .btn-success i.right {
-  -webkit-filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
-          filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
+  filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
 }
 
 .btn-success:hover {
@@ -2405,8 +2374,7 @@ a:hover {
 
 .btn-danger i.left,
 .btn-danger i.right {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
 
 .btn-danger:hover {
@@ -2422,8 +2390,7 @@ a:hover {
 
 .btn-teal i.left,
 .btn-teal i.right {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
 
 .btn-teal:hover {
@@ -2440,8 +2407,7 @@ a:hover {
 .btn-violet i.left,
 .btn-violet i.right {
   color: #c19ab7;
-  -webkit-filter: invert(0.2) saturate(2);
-          filter: invert(0.2) saturate(2);
+  filter: invert(0.2) saturate(2);
 }
 
 .btn-violet:hover {
@@ -2514,8 +2480,7 @@ a:hover {
 
 .btn-outline-teal i.left,
 .btn-outline-teal i.right {
-  -webkit-filter: invert(0.2) saturate(1);
-          filter: invert(0.2) saturate(1);
+  filter: invert(0.2) saturate(1);
 }
 
 .btn-outline-teal:hover {
@@ -2532,8 +2497,7 @@ a:hover {
 
 .btn-outline-danger i.left,
 .btn-outline-danger i.right {
-  -webkit-filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
-          filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
+  filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
 }
 
 .btn-outline-danger:hover {
@@ -2863,8 +2827,7 @@ a:hover {
 }
 
 .badge-danger i {
-  -webkit-filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
-          filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
+  filter: invert(38%) sepia(63%) saturate(3762%) hue-rotate(339deg) brightness(99%) contrast(100%);
 }
 
 .badge-success {
@@ -2873,8 +2836,7 @@ a:hover {
 }
 
 .badge-success i {
-  -webkit-filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
-          filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
+  filter: invert(61%) sepia(86%) saturate(281%) hue-rotate(74deg) brightness(100%) contrast(89%);
 }
 
 .badge-primary {
@@ -2883,8 +2845,7 @@ a:hover {
 }
 
 .badge-primary i {
-  -webkit-filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
-          filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
+  filter: invert(0.5) sepia(1) saturate(10) hue-rotate(180deg);
 }
 
 .badge-primary-2 {
@@ -3069,8 +3030,7 @@ a:hover {
 
 .modal-right .modal-content .close i {
   color: rgba(63, 61, 86, 0.7);
-  -webkit-filter: opacity(70%);
-          filter: opacity(70%);
+  filter: opacity(70%);
 }
 
 .modal-right .modal-content .close:hover {
@@ -3078,8 +3038,7 @@ a:hover {
 }
 
 .modal-right .modal-content .close:hover i {
-  -webkit-filter: opacity(100%);
-          filter: opacity(100%);
+  filter: opacity(100%);
   opacity: 1;
 }
 

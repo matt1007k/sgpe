@@ -101,7 +101,7 @@
                 </div>
             </div>
             <x-field
-                label="Adjuntar Archivo"
+                label="Adjuntar Ficha"
                 name="file" 
                 :value="old('file')"
                 type="file"

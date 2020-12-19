@@ -15,84 +15,94 @@ class SearchUsers extends Component
     public $open = false;
     public $tabSelect = 'azul';
 
-    public function mount(){
+    public function mount()
+    {
         $userAttempt = UserAttempt::where([
             'ip_address' => request()->ip(),
             'user_agent' => request()->userAgent(),
         ])->latest()->first();
-        if($userAttempt){
+        if ($userAttempt) {
             $this->getTimeForWait($userAttempt);
-        }else{
+        } else {
             $this->count = 0;
         }
     }
 
-    public function getTimeForWait(UserAttempt $userAttempt){
+    public function getTimeForWait(UserAttempt $userAttempt)
+    {
         $created_at = $userAttempt->created_at;
         $time = json_decode($userAttempt->payload)->wait_time;
         $new_time = \Carbon\Carbon::parse($created_at)->addMinutes($time);
         $this->time_wait = $new_time->format('i') - date('i');
-        $this->message_wait = $this->getMessageWait(); 
-        
-        if($new_time > now()){
+        $this->message_wait = $this->getMessageWait();
+
+        if ($new_time > now()) {
             $this->count = 3;
             $this->resetState();
-        }else{
+        } else {
             $this->count = 0;
         }
     }
 
-    public function getMessageWait(){
+    public function getMessageWait()
+    {
         $minutes = $this->getMessageWaitMinutes();
 
         return "Usted ha superado los 3 intentos. Por favor espere {$minutes} e inténtelo nuevamente.";
     }
 
-    public function getMessageWaitMinutes(){
-        if($this->time_wait != 1){
+    public function getMessageWaitMinutes()
+    {
+        if ($this->time_wait != 1) {
             return "{$this->time_wait} minutos";
-        }else{
+        } else {
             return "{$this->time_wait} minuto";
         }
         return '';
     }
 
-    public function searchUser(): void {
+    public function searchUser(): void
+    {
         $this->validate([
             'dni' => 'required',
             'code_verified' => 'required',
         ]);
         $this->searched = true;
         $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImptcmFtb3NyaW9zQGdtYWlsLmNvbSJ9.JsAfdKQ9A7aA5NXeNeXLW_IZJHKP715GpeZ2deAXMZ0';
-        $url = "https://dniruc.apisperu.com/api/v1/dni/".$this->dni;
+        $url = "https://dniruc.apisperu.com/api/v1/dni/" . $this->dni;
 
-        $this->user = Http::get($url, ['token' => $token])->json();
-        $this->full_name = $this->getFullName(); 
+        $user = Http::get($url, ['token' => $token])->json();
+        if ($user) {
+            $this->setUserState($user);
+        }
+
+        $this->full_name = $this->getFullName();
     }
 
-    public function getFullName(){
-        if(!empty($this->user)) 
-            return "{$this->user['nombres']} {$this->user['apellidoPaterno']} {$this->user['apellidoMaterno']}"; 
+    public function getFullName()
+    {
+        if (!empty($this->user)) {
+            return "{$this->user['nombres']} {$this->user['apellidoPaterno']} {$this->user['apellidoMaterno']}";
+        }
+
         return "";
     }
 
-    public function updated($values){
-        if($values == 'code_verified'){
-            if(!empty($this->user)) 
-            {
+    public function updated($values)
+    {
+        if ($values == 'code_verified') {
+            if (!empty($this->user)) {
                 /* request()->session()->flash('message', 'Tienes '.$this->count.' intentos para ingresar'); */
                 $this->count++;
             }
-            
-            
 
-            if($this->count === 3){
+            if ($this->count === 3) {
                 $userAttempt = UserAttempt::create([
                     'ip_address' => request()->ip(),
                     'user_agent' => request()->userAgent(),
                     'payload' => json_encode([
-                        'wait_time' => '4'
-                    ])
+                        'wait_time' => '4',
+                    ]),
                 ]);
                 $this->getTimeForWait($userAttempt);
                 $this->resetState();
@@ -102,7 +112,8 @@ class SearchUsers extends Component
         }
     }
 
-    public function resetState(){
+    public function resetState()
+    {
         $this->user = [];
         $this->dni = '';
         $this->full_name = '';
@@ -110,19 +121,33 @@ class SearchUsers extends Component
         $this->searched = false;
     }
 
-    public function toggle(){
+    public function toggle()
+    {
         $this->open = $this->open ? false : true;
     }
 
-    public function tabAzul(){
+    public function tabAzul()
+    {
         $this->tabSelect = 'azul';
     }
-    public function tabElectronico(){
+    public function tabElectronico()
+    {
         $this->tabSelect = 'electronico';
+    }
+
+    public function setUserState(array $user)
+    {
+        $this->user = [
+            'nombres' => html_entity_decode($user['nombres']),
+            'apellidoPaterno' => html_entity_decode($user['apellidoPaterno']),
+            'apellidoMaterno' => html_entity_decode($user['apellidoMaterno']),
+            'codVerifica' => html_entity_decode($user['codVerifica']),
+        ];
     }
 
     public function render()
     {
         return view('livewire.code-verified.search-users');
     }
+
 }

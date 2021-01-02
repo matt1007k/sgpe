@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="">
-            <button wire:click.prevent="searchUser" class="btn btn-outline-primary btn-full" {{ empty($dni) || empty($code_verified) || $count === 3 ? 'disabled' : ''}}>
+            <button wire:click.prevent="searchUser" class="btn btn-outline-primary btn-full" {{ empty($dni) || $count === 3 || $code_verified < 0 ? 'disabled' : ''}}>
                 <i class="material-icons left">search</i>
                 <span>Buscar</span>
             </button>

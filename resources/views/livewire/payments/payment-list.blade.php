@@ -13,7 +13,7 @@
                 <div class="list-year">
                     <!-- Vista de solo este año -->
                     @forelse($years['data'] as $year)
-                        @if($year === date("Y") )
+                    @if($year == 2020 && $year == 2021)
                             <a class="badge badge-primary-2">
                                 <i class="material-icons left">check</i>
                                 {{ $year }}

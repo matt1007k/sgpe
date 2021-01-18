@@ -18,7 +18,8 @@ class PaymentService {
     
     public function getPayments(){
 
-        $filterYear = request('year') ? request('year') : date('Y');
+        /* $filterYear = request('year') ? request('year') : date('Y'); */
+        $filterYear = request('year') ? request('year') : '2020';
         // $dni = '28211740';
         $dni = Auth::user()->dni;
 

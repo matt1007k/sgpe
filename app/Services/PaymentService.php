@@ -21,13 +21,16 @@ class PaymentService
     {
 
         $filterYear = request('year') ? request('year') : date('Y');
+        // $dni = '28211740';
         $dni = Auth::user()->dni;
+        $numberOfYearsToSee = 2;
 
         $urlBase = config('app.url_api');
+        // $urlBase = 'http://scp.sharedwithexpose.com/api/v1/';
         $token = 'dfdsfsd';
 
         $yearsApi = Http::get($urlBase . "/years?dni={$dni}")->json();
-        $this->years = collect($yearsApi['data'])->take(2)->all();
+        $this->years = collect($yearsApi['data'])->take($numberOfYearsToSee)->all();
 
         $paymentsApi = Http::withToken($token)->get($urlBase . "/payments?year={$filterYear}&dni={$dni}")->json();
 

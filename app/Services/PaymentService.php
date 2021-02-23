@@ -21,12 +21,18 @@ class PaymentService
     {
 
         $filterYear = request('year') ? request('year') : date('Y');
-        // $dni = '28211740';
+
         $dni = Auth::user()->dni;
         $numberOfYearsToSee = 2;
+        $yearToSeeMenor = (int) date('Y') - ($numberOfYearsToSee - 1);
+
+        if ($filterYear < $yearToSeeMenor) {
+            $filterYear = date('Y');
+            request()->session()->flash('message', 'No tienes permitido ver ese año.');
+
+        }
 
         $urlBase = config('app.url_api');
-        // $urlBase = 'http://scp.sharedwithexpose.com/api/v1/';
         $token = 'dfdsfsd';
 
         $yearsApi = Http::get($urlBase . "/years?dni={$dni}")->json();

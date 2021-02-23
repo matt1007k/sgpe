@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\MessageCreated;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreatedRequest;
 use App\Models\User;
 use App\Services\UserService;
-use App\Events\MessageCreated;
-use App\Services\MonthService;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserCreatedRequest;
 
 class UserController extends Controller
 {
@@ -49,8 +48,8 @@ class UserController extends Controller
                 ['password' => $password]
             )
         );
-        
-        return redirect()->route('users.edit',$user)->with('message', 'Usuario registrado con exitó.');
+
+        return redirect()->route('users.edit', $user)->with('message', 'Usuario registrado con exitó.');
     }
 
     public function edit(User $user)
@@ -65,7 +64,7 @@ class UserController extends Controller
         $user->update(
             array_merge(
                 $request->validated(),
-                ['password' =>  $password]
+                ['password' => $password]
             )
         );
 
@@ -73,9 +72,9 @@ class UserController extends Controller
             [
                 'to' => $user->email,
                 'subject' => 'Actualización de Cuenta',
-                'body' => $user->getBodyMessageToUpdateUser($request->password), 
+                'body' => $user->getBodyMessageToUpdateUser($request->password),
 
-            ]    
+            ]
         );
 
         event(new MessageCreated($message));
@@ -92,7 +91,7 @@ class UserController extends Controller
         Gate::authorize('update', $user); // Or $this->authorize()
 
         $user->update([
-            'status' => 'verified'
+            'status' => 'verified',
         ]);
 
         request()->session()->flash('message', 'Usuario ha sido verificado con exitó.');
@@ -112,6 +111,6 @@ class UserController extends Controller
         $items = (new UserService())->getUsersCountByLastMounts();
         $data = array_merge($titles, $items);
 
-        return  response()->json($data);
+        return response()->json($data);
     }
 }

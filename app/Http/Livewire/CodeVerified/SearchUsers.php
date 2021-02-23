@@ -68,10 +68,10 @@ class SearchUsers extends Component
             'code_verified' => 'required',
         ]);
         $this->searched = true;
-        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImptcmFtb3NyaW9zQGdtYWlsLmNvbSJ9.JsAfdKQ9A7aA5NXeNeXLW_IZJHKP715GpeZ2deAXMZ0';
-        $url = "https://dniruc.apisperu.com/api/v1/dni/" . $this->dni;
+        // $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImptcmFtb3NyaW9zQGdtYWlsLmNvbSJ9.JsAfdKQ9A7aA5NXeNeXLW_IZJHKP715GpeZ2deAXMZ0';
+        $url = "https://api.reniec.cloud/dni/" . $this->dni;
 
-        $user = Http::get($url, ['token' => $token])->json();
+        $user = Http::get($url)->json();
         if ($user) {
             $this->setUserState($user);
         }
@@ -139,9 +139,9 @@ class SearchUsers extends Component
     {
         $this->user = [
             'nombres' => html_entity_decode($user['nombres']),
-            'apellidoPaterno' => html_entity_decode($user['apellidoPaterno']),
-            'apellidoMaterno' => html_entity_decode($user['apellidoMaterno']),
-            'codVerifica' => html_entity_decode($user['codVerifica']),
+            'apellidoPaterno' => html_entity_decode($user['apellido_paterno']),
+            'apellidoMaterno' => html_entity_decode($user['apellido_materno']),
+            'codVerifica' => html_entity_decode($user['cui']),
         ];
     }
 

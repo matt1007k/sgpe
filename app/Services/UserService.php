@@ -20,14 +20,19 @@ class UserService
     public function getUsersCountByLastMounts()
     {
         $items = array();
-        $months = (new MonthService())->getLastMonths();
+        $months = (new MonthService())->getLastMonthsAndYear();
+        $yearNow = date('Y');
         foreach ($months as $month) {
-            $count_verified = User::whereMonth('created_at', $month['number'])->where('status', 'verified')->get()->count();
-            $count_unverified = User::whereMonth('created_at', $month['number'])->where('status', 'unverified')->get()->count();
+            $count_verified = User::whereMonth('created_at', $month['number'])
+                ->whereYear('created_at', $yearNow)
+                ->where('status', 'verified')->get()->count();
+            $count_unverified = User::whereMonth('created_at', $month['number'])
+                ->whereYear('created_at', $yearNow)
+                ->where('status', 'unverified')->get()->count();
             array_push($items, [
                 $month['short_name'],
                 $count_verified,
-                $count_unverified
+                $count_unverified,
             ]);
         }
         return $items;
@@ -47,7 +52,7 @@ class UserService
         $payments = Http::withToken($token)->get($this->urlBase . "/payments?year={$filterYear}&dni={$dni}")->json();
 
         return [
-            $years, $payments
+            $years, $payments,
         ];
     }
 }

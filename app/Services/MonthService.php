@@ -40,17 +40,19 @@ class MonthService
         }
     }
 
-    public function getLastMonths()
+    public function getLastMonthsAndYear()
     {
         $months = array();
-        for ($i = 0; $i <  $this->last_months; $i++) {
-            $month = (int)date('m') - $i;
+        for ($i = 0; $i < $this->last_months; $i++) {
+            $month = (int) date('m') - $i;
             $this->month_number = $month;
             $short_name = $this->getShortName();
-            array_push($months, [
-                "number" => $month,
-                "short_name" => $short_name,
-            ]);
+            if ($month > 0) {
+                array_push($months, [
+                    "number" => $month,
+                    "short_name" => $short_name,
+                ]);
+            }
         }
         return collect($months)->sortBy('number');
     }
